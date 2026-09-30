@@ -1,13 +1,51 @@
 <%- include('../partials/head') %>
 <%- include('../partials/header') %>
-<%- include('../partials/page-hero', { eyebrow: "Esame d'avvocato", heading: 'Diventa Avvocato <span class="hl">con Giurello</span>', lead: site.lawyer.intro }) %>
-<%- include('../partials/trust') %>
+<% const L = site.lawyer; const full = plans.find(function (x) { return x.featured; }); %>
+
+<section class="law-hero">
+  <div class="container law-hero__inner">
+    <div class="reveal">
+      <span class="eyebrow">Esame d'avvocato 2026-2027</span>
+      <h1>Diventa avvocato <span class="hl">con un metodo</span>, non con più manuali.</h1>
+      <p class="lead"><%= L.intro %></p>
+      <div class="hero__actions">
+        <a class="btn btn--yellow btn--lg" href="#piani">Scegli il tuo percorso <%- include('../partials/icon', { name: 'arrow' }) %></a>
+        <a class="btn btn--ghost-light btn--lg" href="#programma">Guarda il programma</a>
+      </div>
+      <ul class="law-hero__facts">
+        <li><strong>7 mesi</strong><span>di roadmap guidata</span></li>
+        <li><strong>6</strong><span>correzioni con griglia ministeriale</span></li>
+        <li><strong>100%</strong><span>online, da pc e smartphone</span></li>
+      </ul>
+    </div>
+    <% if (full) { %>
+    <aside class="law-card reveal">
+      <span class="badge">Il più scelto</span>
+      <img src="<%= full.p.image %>" alt="" width="800" height="500">
+      <h2><%= full.p.name %></h2>
+      <div class="law-card__price"><%= full.p.price %><small>oppure <%= full.installments %></small></div>
+      <form method="post" action="/carrello/aggiungi" data-add-form data-buy-anchor>
+        <input type="hidden" name="slug" value="<%= full.p.slug %>">
+        <button class="btn btn--primary btn--lg btn--block" name="buyNow" value="1">Inizia il percorso completo</button>
+        <button class="btn btn--ghost btn--block"><%- include('../partials/icon', { name: 'cart' }) %> Aggiungi al carrello</button>
+      </form>
+      <ul><% full.points.slice(0, 3).forEach(function (pt) { %><li><%- include('../partials/icon', { name: 'check' }) %> <%= pt %></li><% }) %></ul>
+    </aside>
+    <% } %>
+  </div>
+</section>
 
 <section class="section">
   <div class="container">
-    <div class="tiles">
-      <% site.lawyer.services.forEach(function (t) { %>
-        <a class="card tile reveal" href="<%= t.href %>"><span class="icon-tile"><%- include('../partials/icon', { name: t.icon }) %></span><h3><%= t.title %></h3><p><%= t.text %></p><span class="link-arrow">Scopri <%- include('../partials/icon', { name: 'arrow' }) %></span></a>
+    <div class="section__head center reveal">
+      <span class="eyebrow">Perché è diverso</span>
+      <h2>Meno dispersione, <span class="hl">più esercizio</span></h2>
+      <p class="lead"><%= L.forWho %></p>
+    </div>
+    <div class="compare reveal" role="table" aria-label="Confronto tra corsi classici e Giurello">
+      <div class="compare__row compare__row--head" role="row"><span role="columnheader">Corsi classici</span><span role="columnheader"><img src="/img/logo.webp" alt="Giurello" width="84" height="36"></span></div>
+      <% L.compare.forEach(function (c) { %>
+        <div class="compare__row" role="row"><span role="cell"><%- include('../partials/icon', { name: 'x' }) %><%= c[0] %></span><span role="cell"><%- include('../partials/icon', { name: 'check' }) %><%= c[1] %></span></div>
       <% }) %>
     </div>
   </div>
@@ -15,9 +53,107 @@
 
 <section class="section section--cream">
   <div class="container">
-    <div class="section__head reveal"><span class="eyebrow">Avvocato</span><h2>Tracce, correzioni e percorso completo</h2></div>
-    <div class="grid"><% products.forEach(function (p) { %><%- include('../partials/product-card', { p: p }) %><% }) %></div>
+    <div class="section__head reveal"><span class="eyebrow">Cosa trovi nel corso completo</span><h2>Tutto e solo quello che serve</h2></div>
+    <div class="features">
+      <% L.inside.forEach(function (f) { %><article class="card feature reveal"><span class="icon-tile"><%- include('../partials/icon', { name: f.icon }) %></span><h3><%= f.title %></h3><p><%= f.text %></p></article><% }) %>
+    </div>
   </div>
 </section>
-<%- include('../partials/cta-tutor') %>
+
+<section class="section" id="programma">
+  <div class="container">
+    <div class="section__head reveal"><span class="eyebrow">Il programma</span><h2>Mese per mese, <span class="hl">fino a dicembre</span></h2><p class="lead">Ogni mese: obiettivi e attività per civile, penale e amministrativo, più una lezione speciale con il consiglio della tutor.</p></div>
+    <ol class="roadmap">
+      <% L.months.forEach(function (m, i) { %>
+        <li class="roadmap__step reveal <%= i === L.months.length - 1 ? 'is-last' : '' %>"><span class="roadmap__dot"><%= i === L.months.length - 1 ? '🎓' : i + 1 %></span><strong><%= m.m %></strong><p><%= m.t %></p></li>
+      <% }) %>
+    </ol>
+  </div>
+</section>
+
+<section class="section section--purple">
+  <div class="container split">
+    <div class="reveal">
+      <span class="eyebrow">Le correzioni</span>
+      <h2>Non solo un voto: <span class="hl">un metodo che replichi all'esame</span></h2>
+      <p>Invii l'atto alla tutor e ricevi una correzione puntigliosa, con la griglia ministeriale di valutazione: sai esattamente cosa aspettarti il giorno della prova.</p>
+    </div>
+    <div class="law-grid reveal">
+      <% L.correction.forEach(function (c, i) { %><div class="law-grid__item"><span><%= String(i + 1).padStart(2, '0') %></span><strong><%= c.title %></strong><small><%= c.text %></small></div><% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="piani">
+  <div class="container">
+    <div class="section__head center reveal"><span class="eyebrow">Scegli come prepararti</span><h2>Tre percorsi, <span class="hl">un obiettivo</span></h2><p class="lead">Tutti acquistabili anche a rate. Puoi fare il reso fino al 15% di utilizzo.</p></div>
+    <div class="offers">
+      <% plans.forEach(function (pl) { %>
+        <article class="offer reveal <%= pl.featured ? 'offer--featured' : '' %>">
+          <span class="tag"><%= pl.tag %></span>
+          <h3><%= pl.p.name %></h3>
+          <p><%= pl.p.description %></p>
+          <ul><% pl.points.forEach(function (pt) { %><li><%- include('../partials/icon', { name: 'check' }) %><%= pt %></li><% }) %></ul>
+          <div class="offer__price"><%= pl.p.price %></div>
+          <p class="offer__note"><%= pl.installments ? 'oppure ' + pl.installments : 'pagamento unico' %></p>
+          <form method="post" action="/carrello/aggiungi" data-add-form class="offer__form">
+            <input type="hidden" name="slug" value="<%= pl.p.slug %>">
+            <button class="btn <%= pl.featured ? 'btn--yellow' : 'btn--primary' %> btn--block"><%- include('../partials/icon', { name: 'cart' }) %> Aggiungi al carrello</button>
+          </form>
+          <a class="offer__more" href="/prodotto/<%= pl.p.slug %>">Dettagli →</a>
+        </article>
+      <% }) %>
+    </div>
+    <div class="fit reveal">
+      <div><h3><%- include('../partials/icon', { name: 'check' }) %> Fa per te se…</h3><ul><% L.fit.forEach(function (f) { %><li><%= f[0] %></li><% }) %></ul></div>
+      <div><h3><%- include('../partials/icon', { name: 'x' }) %> Non fa per te se…</h3><ul><% L.fit.forEach(function (f) { %><li><%= f[1] %></li><% }) %></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--cream">
+  <div class="container tutor reveal">
+    <div class="tutor__avatar" aria-hidden="true">BD</div>
+    <div>
+      <span class="eyebrow">La tua tutor</span>
+      <h2><%= L.tutor.name %></h2>
+      <p class="tutor__role"><%= L.tutor.role %></p>
+      <p><%= L.tutor.bio %></p>
+      <p class="muted"><%= L.tutor.session %></p>
+    </div>
+    <% if (tutorProduct) { %>
+      <div class="tutor__cta card">
+        <strong>Un'ora con Beatrice</strong>
+        <span class="buy__price"><%= tutorProduct.price %></span>
+        <form method="post" action="/carrello/aggiungi" data-add-form><input type="hidden" name="slug" value="<%= tutorProduct.slug %>"><button class="btn btn--primary btn--block">Prenota la consulenza</button></form>
+      </div>
+    <% } %>
+  </div>
+</section>
+
+<% if (singles.length) { %>
+<section class="section">
+  <div class="container">
+    <div class="section__head reveal"><span class="eyebrow">Materiali singoli</span><h2>Ti serve solo un aiuto mirato?</h2></div>
+    <div class="grid"><% singles.forEach(function (p) { %><%- include('../partials/product-card', { p: p }) %><% }) %></div>
+  </div>
+</section>
+<% } %>
+
+<section class="section section--cream">
+  <div class="container faq-split">
+    <div class="reveal"><span class="eyebrow">FAQ</span><h2>Domande sull'esame d'avvocato</h2><p class="lead">Hai altri dubbi? <a href="/help#contatti">Scrivici</a>: rispondiamo entro 48 ore.</p></div>
+    <div class="faq faq--left"><% L.faq.forEach(function (f) { %><details class="reveal"><summary><%= f.q %></summary><div><p><%= f.a %></p></div></details><% }) %></div>
+  </div>
+</section>
+
+<% if (full) { %>
+<div class="buybar" data-buybar>
+  <div class="container buybar__inner">
+    <div class="buybar__info"><strong><%= full.p.name %></strong><span><%= full.p.price %> · <%= full.installments %></span></div>
+    <form method="post" action="/carrello/aggiungi" data-add-form><input type="hidden" name="slug" value="<%= full.p.slug %>"><button class="btn btn--primary"><%- include('../partials/icon', { name: 'cart' }) %> Aggiungi</button></form>
+  </div>
+</div>
+<% } %>
+<script type="application/ld+json"><%- JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: L.faq.map(function (f) { return { '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } }; }) }).replace(/</g, '\\u003c') %></script>
 <%- include('../partials/footer') %>

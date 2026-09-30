@@ -136,10 +136,17 @@ router.get('/galletto', (req, res) => {
 });
 
 router.get('/avvocato', (req, res) => {
+  const L = site.lawyer;
+  const plans = L.plans.map((pl) => ({ ...pl, p: catalog.byNames([pl.find])[0] })).filter((pl) => pl.p);
+  const used = new Set(plans.map((pl) => pl.p.slug));
+  const tutor = catalog.search({ area: 'esame-avvocato', type: 'tutor' })[0] || null;
+  if (tutor) used.add(tutor.slug);
   res.render('pages/avvocato', {
-    title: "Esame d'avvocato | Giurello",
-    metaDescription: site.lawyer.intro,
-    products: catalog.search({ area: 'esame-avvocato' })
+    title: "Esame d'avvocato: corso completo, tracce e tutor | Giurello",
+    metaDescription: L.intro,
+    plans,
+    tutorProduct: tutor,
+    singles: catalog.search({ area: 'esame-avvocato' }).filter((p) => !used.has(p.slug))
   });
 });
 

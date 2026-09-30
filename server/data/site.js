@@ -141,16 +141,68 @@ module.exports = {
     { icon: 'book', title: 'Ebook normativi', text: 'La normativa che ti serve per il tuo concorso, selezionata e raccolta in un unico documento facile da consultare.', href: '/concorsi?tipo=ebook' },
     { icon: 'doc', title: 'Schemi Salva Estate', text: 'Schemi essenziali e semplificati per ripassare rapidamente le materie più complesse e fissare i concetti davvero importanti.', href: '/concorsi?tipo=schemi' }
   ],
-  // Pagina Avvocato
+  // Pagina Avvocato (landing): contenuti dalle schede dei corsi per l'esame d'avvocato
   lawyer: {
     title: 'Diventa Avvocato con Giurello',
-    intro: 'Tutte le risorse e i servizi pensati per accompagnarti durante il tuo percorso universitario e oltre.',
-    services: [
-      { icon: 'doc', title: 'Riassunti e dispense', text: 'Accedi a migliaia di riassunti e dispense dei tuoi esami.', href: '/dispense' },
-      { icon: 'users', title: 'Prenota un incontro con il tutor', text: 'Parla con un tutor esperto e ricevi supporto personalizzato.', href: '/concorsi?tipo=tutor' },
-      { icon: 'headphones', title: 'Podcast di ripasso', text: 'Ascolta i podcast per ripassare ovunque e quando vuoi.', href: '/concorsi?tipo=podcast' },
-      { icon: 'compass', title: 'Metodo di studio', text: 'Scopri strategie e tecniche per studiare meglio e ottenere risultati concreti.', href: '/universita' },
-      { icon: 'road', title: 'Orientamento post laurea', text: 'Scopri opportunità, percorsi e consigli per il tuo futuro professionale.', href: productHref('LEGALPATH') }
+    intro: 'Non ti serve studiare di più. Ti serve studiare con un metodo: un percorso guidato che ti dice ogni mese cosa studiare, come esercitarti e su cosa concentrarti, fino alla prova.',
+    forWho: 'Per chi non sa da dove iniziare, ha poco tempo perché lavora e cerca un metodo pratico, chiaro e orientato al superamento della prova. Studi quando vuoi, da pc o da smartphone.',
+    compare: [
+      ['Ti riempiono di manuali e materiali spesso inutili o dispersivi', 'Ti diamo tutto e solo quello che serve davvero'],
+      ['Tanta teoria senza un piano concreto', 'Ogni mese sai esattamente cosa fare'],
+      ['Studio difficile da gestire se lavori', 'Organizziamo noi lo studio, in modo sostenibile'],
+      ['Poche esercitazioni davvero utili', 'Una simulazione al mese con correzione della tutor'],
+      ['Correzioni generiche', 'Correzioni secondo la griglia ministeriale'],
+      ['Accumuli nozioni senza allenarti sugli atti', 'Scrivi e lavori sugli atti fin da subito'],
+      ['Nessuna guida sul ripasso', 'Ripasso strategico e organizzato di tutti gli argomenti'],
+      ['Supporto impersonale', 'Una tutor che ha già accompagnato tanti candidati']
+    ],
+    inside: [
+      { icon: 'headphones', title: 'Podcast di ripasso', text: 'Non videolezioni: podcast legati ai capitoli fondamentali delle dispense, per studiare più in fretta.' },
+      { icon: 'book', title: 'Dispense operative', text: 'Complete ma essenziali: niente materiale inutile.' },
+      { icon: 'doc', title: 'Schemi e mappe', text: 'Schemi scaricabili per velocizzare il ripasso degli argomenti chiave.' },
+      { icon: 'pen', title: 'Tracce e 6 correzioni', text: 'Tante tracce per materia e 6 correzioni puntigliose della tutor, con la griglia ministeriale di valutazione.' },
+      { icon: 'calendar', title: 'Un metodo per ogni mese', text: 'Quante pagine studiare, quale podcast ascoltare, su cosa esercitarti: arrivi a dicembre sereno.' },
+      { icon: 'users', title: 'Forum degli studenti', text: 'Confrontati con altri candidati che stanno preparando l’esame come te.' }
+    ],
+    months: [
+      { m: 'Giugno', t: 'Si parte: obiettivi di civile, penale e amministrativo e le novità dell’esame.' },
+      { m: 'Luglio', t: 'Si consolida il diritto sostanziale e si inizia con la procedura.' },
+      { m: 'Agosto', t: 'Ritmo sostenibile anche d’estate, con i primi atti da inviare alla tutor.' },
+      { m: 'Settembre', t: 'Attività obbligatorie per tutti: si entra nel vivo della scrittura degli atti.' },
+      { m: 'Ottobre', t: 'Simulazioni e correzioni: si lavora su impostazione e argomentazione.' },
+      { m: 'Novembre', t: 'Ripasso strategico e gestione dei tempi della prova.' },
+      { m: 'Dicembre', t: 'Ultimi consigli della tutor e si va all’esame.' }
+    ],
+    correction: [
+      { title: 'Errori giuridici', text: 'Individuare norme, istituti e soluzioni corrette.' },
+      { title: 'Impostazione dell’atto', text: 'Dare ordine logico e struttura all’elaborato.' },
+      { title: 'Argomentazione', text: 'Rendere più solide e persuasive le conclusioni.' },
+      { title: 'Gestione del tempo', text: 'Scrivere in modo efficace nei tempi d’esame.' },
+      { title: 'Tecnica redazionale', text: 'Uno stile chiaro, tecnico e professionale.' }
+    ],
+    plans: [
+      { find: 'Programma di studio per l', tag: 'Il metodo', points: ['Roadmap mese per mese fino all’esame', 'Cosa studiare e quali atti svolgere', '56 lezioni con i consigli della tutor', 'Programma di studio stampabile'] },
+      { find: 'Corso completo per l', tag: 'Tutto incluso', featured: true, installments: '5 rate da €140', points: ['Podcast di ripasso e dispense operative', 'Schemi, mappe e tracce per ogni materia', '6 correzioni con griglia ministeriale', 'Programma mese per mese', 'Accesso al forum degli studenti'] },
+      { find: 'SOLO TRACCE', tag: 'Solo scrittura', points: ['Tracce reali riadattate alla nuova prova', 'Guide operative ed esempi svolti', '3 correzioni personali del tutor', 'Soluzioni a tutte le tracce'] }
+    ],
+    fit: [
+      ['Vuoi imparare a impostare correttamente un atto', 'Vuoi solo memorizzare formule standard'],
+      ['Vuoi allenarti con casi realistici', 'Non vuoi esercitarti in modo concreto'],
+      ['Vuoi ricevere feedback tecnici e mirati', 'Cerchi solo un voto finale'],
+      ['Vuoi migliorare la scrittura giuridica in ottica d’esame', 'Non sei disposto a rivedere il tuo elaborato']
+    ],
+    tutor: {
+      name: 'Beatrice Donati',
+      role: 'Avvocato · Tutor del team Avvocatura',
+      bio: 'Laureata in Giurisprudenza con 110 e lode all’Università di Firenze, ha svolto la pratica forense e il tirocinio ex art. 73 presso il Tribunale di Arezzo e ha conseguito l’abilitazione forense nel 2024. Oggi è avvocato, docente di Diritto ed Economia politica e sta preparando il concorso in magistratura: sa bene cosa significa studiare con costanza.',
+      session: 'Consulenza individuale di 60 minuti su Google Meet: piano di studio personalizzato, analisi delle difficoltà, metodo e motivazione. Disponibili anche pacchetti da 3 ore o più con sconto.'
+    },
+    faq: [
+      { q: 'Posso prepararmi se lavoro?', a: 'Sì: il corso è pensato proprio per chi ha poco tempo. Ogni mese sai cosa fare e quanto studiare, e accedi quando vuoi da pc o smartphone.' },
+      { q: 'Quante correzioni sono incluse?', a: 'Il corso completo include 6 correzioni della tutor con la griglia ministeriale; il percorso «Solo tracce» ne include 3. Puoi sempre acquistare correzioni aggiuntive a prezzo scontato.' },
+      { q: 'Non ho dimestichezza con gli atti: fa per me?', a: 'Sì. Trovi guide operative per impostare l’atto di civile, penale e amministrativo, esempi svolti e le soluzioni a tutte le tracce.' },
+      { q: 'Posso pagare a rate?', a: 'Sì, il corso completo si può pagare in 5 rate da €140.' },
+      { q: 'Posso parlare con la tutor prima di scegliere?', a: 'Certo: puoi prenotare un’ora di consulenza individuale o scriverci a info@giurello.it.' }
     ]
   },
   // Pagina Chi siamo

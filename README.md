@@ -13,7 +13,8 @@ Contenuti, testi, logo, colori e catalogo sono ripresi dal sito attuale di Giure
 | `/concorsi`, `/concorsi/:area` | Catalogo completo (163 prodotti) con aree, tipologie, ricerca, ordinamento, filtri attivi rimovibili e paginazione, tutto lato server |
 | `/preferiti` | Prodotti salvati con il cuore |
 | `/prodotto/:slug` | Scheda prodotto: descrizione, prezzo, "Acquista ora" e "Aggiungi al carrello". Per i simulatori anche "Perché scegliere il nostro simulatore" e le FAQ originali; in fondo i prodotti correlati |
-| `/dispense`, `/universita`, `/podcast-e-altro`, `/avvocato` | Pagine di sezione con i testi originali e i prodotti collegati |
+| `/avvocato` | **Pagina di vendita per l'esame d'avvocato**: confronto con i corsi classici, contenuti del corso completo, programma mese per mese, correzioni, tre percorsi a confronto, tutor, materiali singoli e FAQ |
+| `/dispense`, `/universita`, `/podcast-e-altro` | Pagine di sezione con i testi originali e i prodotti collegati |
 | `/galletto` | Galletto AI: presentazione, piani di abbonamento, chat demo e generatore del piano di studio |
 | `/chi-siamo`, `/help` | Team, community e modulo "Hai domande?" (nome, cognome, email, telefono, messaggio) |
 | `/prova-simulatore` | Quiz demo con correzione lato server |
