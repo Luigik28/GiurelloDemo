@@ -1,0 +1,24 @@
+# Build & deploy automatico su Cloud Run.
+# gcloud builds submit --config cloudbuild.yaml --substitutions=_REGION=europe-west8,_SERVICE=giurello-web
+substitutions:
+  _REGION: europe-west8
+  _SERVICE: giurello-web
+  _REPO: web
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args: ['build', '-t', '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$BUILD_ID', '.']
+  - name: gcr.io/cloud-builders/docker
+    args: ['push', '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$BUILD_ID']
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - ${_SERVICE}
+      - --image=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$BUILD_ID
+      - --region=${_REGION}
+      - --allow-unauthenticated
+      - --set-env-vars=NODE_ENV=production
+      - --set-secrets=APP_SECRET=giurello-app-secret:latest
+images:
+  - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$BUILD_ID

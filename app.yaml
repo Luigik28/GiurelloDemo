@@ -1,0 +1,15 @@
+# Google App Engine (standard) – alternativa a Cloud Run.
+# Deploy: gcloud app deploy
+# Il build (gcp-build) minifica e offusca gli asset sui server di Google.
+runtime: nodejs22
+instance_class: F1
+env_variables:
+  NODE_ENV: production
+  # APP_SECRET: impostarlo (meglio tramite Secret Manager) per firmare i token dei quiz.
+automatic_scaling:
+  min_instances: 0
+  max_instances: 3
+handlers:
+  - url: /.*
+    secure: always
+    script: auto

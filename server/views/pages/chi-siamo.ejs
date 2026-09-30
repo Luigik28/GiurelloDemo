@@ -1,0 +1,40 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<%- include('../partials/page-hero', { eyebrow: 'Chi siamo', heading: 'Nati da studenti, <em>per gli studenti</em>.', lead: 'Giurello è una start-up fondata da studenti che sanno cosa significa studiare, con l’obiettivo di aiutare studenti e concorsisti del mondo giuridico.' }) %>
+
+<section class="section section--flush">
+  <div class="container split">
+    <div class="split__copy reveal">
+      <h2>Un progetto, <em>non un volto</em>.</h2>
+      <p class="lead">Giurello non si fonda sull’immagine di un singolo fondatore, ma su un’idea condivisa di autonomia, coerenza e solidità. È una realtà indipendente, costruita su ciò che offre, non su chi la rappresenta.</p>
+      <p>Abbiamo vissuto in prima persona le sessioni d’esame, i manuali da mille pagine e i bandi di concorso. Per questo ogni corso è pensato per farti lavorare poco ma ogni giorno, con strumenti che ti tolgono il peso dell’organizzazione.</p>
+    </div>
+    <div class="values">
+      <div class="card value reveal"><strong>Autonomia</strong><p>Una realtà indipendente, libera di scegliere cosa è davvero utile a chi studia.</p></div>
+      <div class="card value reveal"><strong>Coerenza</strong><p>Contenuti costruiti sui bandi e sui programmi reali, senza fronzoli.</p></div>
+      <div class="card value reveal"><strong>Solidità</strong><p>Metodo testato da centinaia di studenti di Giurisprudenza e concorsisti.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint">
+  <div class="container"><div class="stats__grid">
+    <% site.stats.forEach(function (s) { %>
+      <div class="stat reveal"><strong data-count="<%= s.value %>" data-suffix="<%= s.suffix %>"><%= s.value %><%= s.suffix %></strong><span><%= s.label %></span></div>
+    <% }) %>
+  </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container company card reveal">
+    <div>
+      <span class="eyebrow">Sede</span>
+      <h2><%= site.company.legalName %></h2>
+      <p class="lead"><%= site.company.address %>, <%= site.company.zip %> <%= site.company.city %> (<%= site.company.province %>)</p>
+      <p class="muted">Corsi di formazione e aggiornamento professionale in ambito giuridico.</p>
+    </div>
+    <a href="/contatti" class="btn btn--primary btn--lg">Contattaci</a>
+  </div>
+</section>
+<%- include('../partials/footer') %>

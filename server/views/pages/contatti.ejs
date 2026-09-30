@@ -1,0 +1,29 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<%- include('../partials/page-hero', { eyebrow: 'Contatti', heading: 'Parliamone.', lead: 'Hai domande su un concorso, un corso universitario o vuoi collaborare con noi? Scrivici: ti rispondiamo il prima possibile.' }) %>
+
+<section class="section section--flush">
+  <div class="container contact">
+    <form class="card form" data-contact-form novalidate>
+      <div class="form__row">
+        <label>Nome <input name="name" autocomplete="name" required maxlength="100"><small class="form__err" data-err="name"></small></label>
+        <label>Email <input type="email" name="email" autocomplete="email" required maxlength="150"><small class="form__err" data-err="email"></small></label>
+      </div>
+      <label>Argomento
+        <select name="topic"><% topics.forEach(function (t) { %><option><%= t %></option><% }) %></select>
+      </label>
+      <label>Messaggio <textarea name="message" rows="6" required maxlength="3000"></textarea><small class="form__err" data-err="message"></small></label>
+      <label class="hp" aria-hidden="true">Sito web <input name="website" tabindex="-1" autocomplete="off"></label>
+      <label class="check"><input type="checkbox" name="consent"> <span>Ho letto l’<a href="/privacy">informativa privacy</a> e acconsento al trattamento dei dati.</span></label>
+      <small class="form__err" data-err="consent"></small>
+      <button class="btn btn--primary btn--lg">Invia messaggio</button>
+      <p class="form__ok" data-contact-ok hidden>Grazie! Abbiamo ricevuto il tuo messaggio.</p>
+    </form>
+    <aside class="contact__side">
+      <div class="card info"><span class="icon-tile"><%- include('../partials/icon', { name: 'pin' }) %></span><h3>Sede</h3><p><%= site.company.legalName %><br><%= site.company.address %><br><%= site.company.zip %> <%= site.company.city %> (<%= site.company.province %>)</p></div>
+      <div class="card info"><span class="icon-tile"><%- include('../partials/icon', { name: 'spark' }) %></span><h3>Serve una risposta subito?</h3><p><a href="/galletto">Chiedi a Galletto</a>, il nostro assistente sempre disponibile.</p></div>
+      <div class="card info"><span class="icon-tile"><%- include('../partials/icon', { name: 'instagram' }) %></span><h3>Social</h3><p><% site.social.forEach(function (s, i) { %><a href="<%= s.url %>" target="_blank" rel="noopener"><%= s.name %> <%= s.handle %></a><%= i < site.social.length - 1 ? ' · ' : '' %><% }) %></p></div>
+    </aside>
+  </div>
+</section>
+<%- include('../partials/footer') %>

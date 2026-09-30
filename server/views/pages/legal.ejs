@@ -1,0 +1,26 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<%- include('../partials/page-hero', { eyebrow: 'Informazioni legali', heading: heading }) %>
+<section class="section section--flush">
+  <div class="container prose card">
+    <p class="notice">Testo segnaposto per la demo: il testo definitivo va fornito dal cliente / consulente legale.</p>
+    <% if (kind === 'privacy') { %>
+      <h2>Titolare del trattamento</h2>
+      <p><%= site.company.legalName %>, <%= site.company.address %>, <%= site.company.zip %> <%= site.company.city %> (<%= site.company.province %>).</p>
+      <h2>Dati trattati</h2>
+      <p>Dati di navigazione tecnici e dati forniti volontariamente tramite il modulo di contatto (nome, email, messaggio).</p>
+      <h2>Cookie</h2>
+      <p>Il sito utilizza esclusivamente cookie tecnici necessari al funzionamento. Nessun cookie di profilazione.</p>
+      <h2>Diritti dell’interessato</h2>
+      <p>Puoi esercitare in ogni momento i diritti previsti dagli artt. 15-22 del Regolamento (UE) 2016/679 scrivendo al titolare.</p>
+    <% } else { %>
+      <h2>Oggetto</h2>
+      <p>Le presenti condizioni regolano l’accesso ai corsi e ai simulatori erogati da <%= site.company.legalName %> tramite la piattaforma e-learning.</p>
+      <h2>Prezzi</h2>
+      <p>I prezzi dei simulatori sono indicati nella pagina di ciascun corso; il prezzo di lancio è valido nelle prime 24 ore dalla pubblicazione.</p>
+      <h2>Accesso ai contenuti</h2>
+      <p>I contenuti sono per uso personale e non possono essere riprodotti o distribuiti.</p>
+    <% } %>
+  </div>
+</section>
+<%- include('../partials/footer') %>

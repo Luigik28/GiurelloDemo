@@ -1,0 +1,189 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<section class="hero">
+  <div class="hero__bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="grid-lines"></span></div>
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <span class="eyebrow"><span class="dot"></span> E-learning per il mondo giuridico</span>
+      <h1>Il tuo compagno di studio per diventare un <em>vero giurista</em>.</h1>
+      <p class="lead">Simulatori per i concorsi pubblici, metodo di studio per Giurisprudenza e Galletto, il tutor AI che ti dice esattamente cosa fare ogni giorno, settimana e mese.</p>
+      <div class="hero__actions">
+        <a href="/concorsi" class="btn btn--primary btn--lg">Trova il tuo concorso <%- include('../partials/icon', { name: 'arrow' }) %></a>
+        <a href="/simulatore" class="btn btn--ghost btn--lg">Prova un quiz gratis</a>
+      </div>
+      <ul class="hero__trust">
+        <li><%- include('../partials/icon', { name: 'check' }) %> Quiz dalla banca dati ufficiale</li>
+        <li><%- include('../partials/icon', { name: 'check' }) %> Piano di studio integrato</li>
+        <li><%- include('../partials/icon', { name: 'check' }) %> Da computer e smartphone</li>
+      </ul>
+    </div>
+
+    <div class="hero__visual" aria-hidden="true">
+      <div class="mock card-glass">
+        <div class="mock__head">
+          <span class="mock__avatar"><%- include('../partials/logo', { uid: 'm' }) %></span>
+          <div><strong>Galletto</strong><small>il tuo piano di oggi</small></div>
+          <span class="pill pill--live">live</span>
+        </div>
+        <ul class="mock__tasks">
+          <li class="done"><span></span>30 quiz · Diritto amministrativo</li>
+          <li class="done"><span></span>Ripasso L. 241/1990</li>
+          <li><span></span>20 quiz · Diritto tributario</li>
+          <li><span></span>Quiz situazionali</li>
+        </ul>
+        <div class="mock__progress"><div><small>Settimana 2 di 6</small><small>62%</small></div><div class="bar"><i class="w-62"></i></div></div>
+      </div>
+      <div class="float-card card-glass f1"><%- include('../partials/icon', { name: 'trophy' }) %><div><strong>28/30</strong><small>ultima simulazione</small></div></div>
+      <div class="float-card card-glass f2"><%- include('../partials/icon', { name: 'clock' }) %><div><strong>45 min</strong><small>al giorno</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container"><div class="stats__grid">
+    <% site.stats.forEach(function (s) { %>
+      <div class="stat reveal"><strong data-count="<%= s.value %>" data-suffix="<%= s.suffix %>"><%= s.value %><%= s.suffix %></strong><span><%= s.label %></span></div>
+    <% }) %>
+  </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow">Perché Giurello</span>
+      <h2>Non devi più capire <em>come</em> studiare.<br>Devi solo studiare.</h2>
+      <p class="lead">Metodo, organizzazione e tempistiche li gestiamo noi: tu apri la piattaforma e sai cosa fare.</p>
+    </div>
+    <div class="bento">
+      <% site.pillars.forEach(function (p, i) { %>
+        <article class="card bento__item reveal <%= i === 2 ? 'bento__item--accent' : '' %>">
+          <span class="icon-tile"><%- include('../partials/icon', { name: p.icon }) %></span>
+          <h3><%= p.title %></h3>
+          <p><%= p.text %></p>
+        </article>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint">
+  <div class="container">
+    <div class="section__head section__head--row reveal">
+      <div>
+        <span class="eyebrow">Concorsi pubblici</span>
+        <h2>Simulatori pensati per <em>superare la prova</em>.</h2>
+      </div>
+      <a href="/concorsi" class="btn btn--ghost">Tutti i <%= courseCount %> concorsi <%- include('../partials/icon', { name: 'arrow' }) %></a>
+    </div>
+    <div class="chips-row reveal">
+      <% categories.forEach(function (cat) { %><a class="chip chip--lg" href="/concorsi?categoria=<%= cat.id %>"><%= cat.label %></a><% }) %>
+    </div>
+    <div class="course-grid">
+      <% featured.forEach(function (c) { %><%- include('../partials/course-card', { c: c }) %><% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split">
+    <div class="split__copy reveal">
+      <span class="eyebrow">Galletto AI</span>
+      <h2>Un tutor che <em>ti conosce</em> e non si stanca mai.</h2>
+      <p class="lead">La sua peculiarità è la capacità empatica e il supporto personalizzato: ti dice esattamente cosa fare e quanto farne.</p>
+      <ul class="checklist">
+        <li><%- include('../partials/icon', { name: 'check' }) %> Pianifica lo studio in modo personalizzato</li>
+        <li><%- include('../partials/icon', { name: 'check' }) %> Ti interroga con domande d’esame sulle materie giuridiche</li>
+        <li><%- include('../partials/icon', { name: 'check' }) %> Analizza le risposte e ti guida nel miglioramento</li>
+        <li><%- include('../partials/icon', { name: 'check' }) %> Ti aiuta a ripassare e consolidare i concetti chiave</li>
+      </ul>
+      <a href="/galletto" class="btn btn--primary">Parla con Galletto <%- include('../partials/icon', { name: 'arrow' }) %></a>
+    </div>
+    <div class="chat-preview card reveal" aria-hidden="true">
+      <div class="bubble bubble--user">Ho il concorso Agenzia delle Entrate fra 6 settimane, da dove parto?</div>
+      <div class="bubble bubble--bot">Partiamo dal diritto tributario: 45 minuti al giorno, 5 giorni a settimana. Le ultime due settimane le dedichiamo a ripasso e simulazioni complete. Ti preparo il piano?</div>
+      <div class="bubble bubble--user">Sì, grazie!</div>
+      <div class="typing"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow">Come funziona</span>
+      <h2>Quattro passi, un obiettivo.</h2>
+    </div>
+    <ol class="steps">
+      <% site.howItWorks.forEach(function (s) { %>
+        <li class="step reveal"><span class="step__n"><%= s.step %></span><h3><%= s.title %></h3><p><%= s.text %></p></li>
+      <% }) %>
+    </ol>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split split--reverse">
+    <div class="split__copy reveal">
+      <span class="eyebrow">Università</span>
+      <h2><%= masterclass.title %>: <em>come studiare</em> a Giurisprudenza.</h2>
+      <p class="lead"><%= masterclass.description %></p>
+      <div class="hero__actions">
+        <a href="/universita" class="btn btn--primary">Scopri la masterclass</a>
+        <a href="/universita#supporto" class="btn btn--ghost">Tesi e post-laurea</a>
+      </div>
+    </div>
+    <div class="modules card reveal">
+      <% masterclass.modules.forEach(function (m, i) { %>
+        <div class="module"><span><%= String(i + 1).padStart(2, '0') %></span><p><%= m %></p></div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow">Dicono di noi</span>
+      <h2>Chi ha studiato con Giurello.</h2>
+    </div>
+    <div class="quotes">
+      <% site.testimonials.forEach(function (t) { %>
+        <figure class="card quote reveal">
+          <blockquote>“<%= t.quote %>”</blockquote>
+          <figcaption><strong><%= t.author %></strong><span><%= t.role %></span></figcaption>
+        </figure>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container faq-wrap">
+    <div class="section__head reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Domande frequenti</h2>
+      <p class="lead">Non trovi la risposta? <a href="/contatti">Scrivici</a> o chiedi a <a href="/galletto">Galletto</a>.</p>
+    </div>
+    <div class="faq">
+      <% site.faq.forEach(function (f) { %>
+        <details class="faq__item reveal"><summary><%= f.q %></summary><p><%= f.a %></p></details>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta-band__inner reveal">
+    <div>
+      <h2>Inizia oggi. Poco, ma ogni giorno.</h2>
+      <p>Scegli il tuo percorso e lascia a Galletto l’organizzazione.</p>
+    </div>
+    <a href="/concorsi" class="btn btn--light btn--lg">Inizia ora <%- include('../partials/icon', { name: 'arrow' }) %></a>
+  </div>
+</section>
+
+<p class="container footnote">* Dato riferito al simulatore Magistratura tributaria, sulla base dei feedback degli utenti.</p>
+
+<%- include('../partials/footer') %>

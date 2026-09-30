@@ -1,0 +1,50 @@
+</main>
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <a class="brand" href="/"><%- include('logo', { uid: 'f' }) %><span>Giurello</span></a>
+      <p><%= site.tagline %>.</p>
+      <div class="footer__social">
+        <% site.social.forEach(function (s) { %>
+          <a class="icon-btn" href="<%= s.url %>" target="_blank" rel="noopener" aria-label="<%= s.name %> <%= s.handle %>"><%- include('icon', { name: s.icon }) %></a>
+        <% }) %>
+      </div>
+    </div>
+    <div>
+      <h3>Percorsi</h3>
+      <ul>
+        <li><a href="/concorsi">Concorsi pubblici</a></li>
+        <li><a href="/universita">Università</a></li>
+        <li><a href="/galletto">Galletto AI</a></li>
+        <li><a href="/simulatore">Simulatore demo</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Giurello</h3>
+      <ul>
+        <li><a href="/chi-siamo">Chi siamo</a></li>
+        <li><a href="/contatti">Contatti</a></li>
+        <li><a href="/condizioni">Condizioni generali</a></li>
+        <li><a href="/privacy">Privacy</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Sede</h3>
+      <address>
+        <%= site.company.legalName %><br>
+        <%= site.company.address %><br>
+        <%= site.company.zip %> <%= site.company.city %> (<%= site.company.province %>)
+      </address>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <span>© <%= year %> <%= site.company.legalName %> · <%= site.company.vat %></span>
+    <span>Fatto con cura per chi studia diritto.</span>
+  </div>
+</footer>
+<div class="cookie" data-cookie hidden>
+  <p>Usiamo solo cookie tecnici necessari al funzionamento del sito. <a href="/privacy">Maggiori info</a></p>
+  <button type="button" class="btn btn--primary btn--sm" data-cookie-ok>Ho capito</button>
+</div>
+</body>
+</html>

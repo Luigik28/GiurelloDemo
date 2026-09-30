@@ -1,0 +1,30 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<%- include('../partials/page-hero', { eyebrow: 'Concorsi pubblici', heading: 'Simulatori per <em>ogni concorso</em>.', lead: 'Quiz su tutte le materie del bando, spesso tratti dalla banca dati ufficiale, con piano di studio integrato. Devi solo acquistare ed esercitarti seguendo le indicazioni.' }) %>
+
+<section class="section section--flush">
+  <div class="container">
+    <div class="toolbar" data-catalog-tools>
+      <div class="chips-row" role="tablist" aria-label="Filtra per categoria">
+        <button type="button" class="chip chip--lg <%= active === 'tutti' ? 'is-on' : '' %>" data-filter="tutti">Tutti</button>
+        <% categories.forEach(function (cat) { %>
+          <button type="button" class="chip chip--lg <%= active === cat.id ? 'is-on' : '' %>" data-filter="<%= cat.id %>"><%= cat.label %></button>
+        <% }) %>
+      </div>
+      <label class="search"><span class="sr-only">Cerca un concorso</span><input type="search" placeholder="Cerca per ente o materia…" data-search-input></label>
+    </div>
+    <div class="course-grid" data-catalog data-active="<%= active %>">
+      <% courses.forEach(function (c) { %><%- include('../partials/course-card', { c: c }) %><% }) %>
+    </div>
+    <p class="empty" data-empty hidden>Nessun concorso trovato. <a href="/contatti">Segnalaci il tuo concorso</a>: potremmo prepararlo.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container info-grid">
+    <div class="card info reveal"><span class="icon-tile"><%- include('../partials/icon', { name: 'clock' }) %></span><h3>Prezzo di lancio 24 ore</h3><p>Ogni simulatore esce con un prezzo di lancio valido nelle prime 24 ore; poi il prezzo diventa definitivo.</p></div>
+    <div class="card info reveal"><span class="icon-tile"><%- include('../partials/icon', { name: 'calendar' }) %></span><h3>Piano già pronto</h3><p>Settimane divise in giorni e giorni divisi in materie: lavori poco, ma tutti i giorni.</p></div>
+    <div class="card info reveal"><span class="icon-tile"><%- include('../partials/icon', { name: 'spark' }) %></span><h3>Con Galletto</h3><p>Il tutor AI monitora i progressi e ti ripropone le domande sbagliate.</p></div>
+  </div>
+</section>
+<%- include('../partials/footer') %>

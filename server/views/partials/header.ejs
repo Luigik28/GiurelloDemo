@@ -1,0 +1,16 @@
+<header class="nav" data-nav>
+  <div class="container nav__inner">
+    <a class="brand" href="/" aria-label="Giurello – home"><%- include('logo', { uid: 'h' }) %><span>Giurello</span></a>
+    <nav class="nav__links" id="menu" aria-label="Principale">
+      <% site.nav.forEach(function (item) { const on = currentPath === item.href || currentPath.startsWith(item.href + '/'); %>
+        <a href="<%= item.href %>" class="<%= on ? 'is-active' : '' %>" <%- on ? 'aria-current="page"' : '' %>><%= item.label %></a>
+      <% }) %>
+      <a href="/contatti" class="btn btn--primary btn--sm nav__cta">Contattaci</a>
+    </nav>
+    <div class="nav__tools">
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Cambia tema"><%- include('icon', { name: 'moon', cls: 'i-moon' }) %><%- include('icon', { name: 'sun', cls: 'i-sun' }) %></button>
+      <button class="icon-btn nav__burger" type="button" data-menu-toggle aria-controls="menu" aria-expanded="false" aria-label="Apri menu"><%- include('icon', { name: 'menu' }) %></button>
+    </div>
+  </div>
+</header>
+<main id="main">

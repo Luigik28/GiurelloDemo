@@ -1,0 +1,62 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<%- include('../partials/page-hero', { eyebrow: 'Galletto AI', heading: 'Il tutor che ti dice <em>cosa fare oggi</em>.', lead: 'Galletto pianifica lo studio, ti interroga con domande d’esame, analizza le tue risposte e ti guida nel ripasso. Provalo qui sotto: questa è una demo.' }) %>
+
+<section class="section section--flush">
+  <div class="container galletto">
+    <div class="card chat" data-chat>
+      <div class="chat__head">
+        <span class="mock__avatar"><%- include('../partials/logo', { uid: 'c' }) %></span>
+        <div><strong>Galletto</strong><small><span class="dot"></span> online</small></div>
+      </div>
+      <div class="chat__log" data-chat-log aria-live="polite">
+        <div class="bubble bubble--bot">Chicchirichì! Sono Galletto. Dimmi per quale concorso o esame ti prepari, oppure chiedimi un consiglio sul metodo di studio.</div>
+      </div>
+      <div class="chat__suggest" data-chat-suggest>
+        <button type="button" class="chip">Come mi organizzo?</button>
+        <button type="button" class="chip">Concorso Agenzia delle Entrate</button>
+        <button type="button" class="chip">Voglio fare dei quiz</button>
+        <button type="button" class="chip">Aiuto con la tesi</button>
+      </div>
+      <form class="chat__form" data-chat-form>
+        <label class="sr-only" for="chat-input">Messaggio</label>
+        <input id="chat-input" name="message" autocomplete="off" maxlength="500" placeholder="Scrivi a Galletto…" required>
+        <button class="btn btn--primary btn--icon" aria-label="Invia"><%- include('../partials/icon', { name: 'send' }) %></button>
+      </form>
+    </div>
+
+    <div class="card planner" id="piano">
+      <span class="eyebrow">Piano di studio</span>
+      <h2>Il tuo piano, in 10 secondi.</h2>
+      <form class="form" data-plan-form>
+        <label>Concorso
+          <select name="course" required>
+            <% courseOptions.forEach(function (c) { %><option value="<%= c.slug %>" <%= selected === c.slug ? 'selected' : '' %>><%= c.title %></option><% }) %>
+          </select>
+        </label>
+        <label>Data della prova <input type="date" name="examDate" required data-min-today></label>
+        <div class="form__row">
+          <label>Ore al giorno <input type="number" name="hoursPerDay" min="0.5" max="10" step="0.5" value="1.5"></label>
+          <label>Giorni a settimana <input type="number" name="daysPerWeek" min="1" max="7" value="5"></label>
+        </div>
+        <button class="btn btn--primary btn--block">Genera il piano</button>
+        <p class="form__error" data-plan-error hidden></p>
+      </form>
+    </div>
+  </div>
+  <div class="container">
+    <div class="plan-out" data-plan-out hidden></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="bento bento--even">
+      <article class="card bento__item reveal"><span class="icon-tile"><%- include('../partials/icon', { name: 'calendar' }) %></span><h3>Pianifica</h3><p>Ti dice cosa fare e quanto farne ogni giorno, settimana e mese.</p></article>
+      <article class="card bento__item reveal"><span class="icon-tile"><%- include('../partials/icon', { name: 'chat' }) %></span><h3>Interroga</h3><p>Ti mette alla prova con domande d’esame sulle materie giuridiche.</p></article>
+      <article class="card bento__item reveal"><span class="icon-tile"><%- include('../partials/icon', { name: 'target' }) %></span><h3>Analizza</h3><p>Esamina le tue risposte e ti indica dove migliorare.</p></article>
+      <article class="card bento__item reveal"><span class="icon-tile"><%- include('../partials/icon', { name: 'spark' }) %></span><h3>Consolida</h3><p>Ti aiuta nel ripasso dei concetti chiave prima della prova.</p></article>
+    </div>
+  </div>
+</section>
+<%- include('../partials/footer') %>

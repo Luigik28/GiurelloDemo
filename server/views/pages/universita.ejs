@@ -1,0 +1,49 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<%- include('../partials/page-hero', { eyebrow: 'Università', heading: 'Studia Giurisprudenza <em>con metodo</em>.', lead: 'Per chi è in crisi con il metodo di studio, l’organizzazione della sessione, la tesi o il dopo-laurea: qui trovi soluzioni concrete ai tuoi problemi.' }) %>
+
+<section class="section section--flush">
+  <div class="container split">
+    <div class="split__copy reveal">
+      <span class="eyebrow">Masterclass</span>
+      <h2><%= masterclass.title %> <br><em><%= masterclass.subtitle %></em></h2>
+      <p class="lead"><%= masterclass.description %></p>
+      <a href="<%= masterclassUrl %>" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Accedi alla masterclass <%- include('../partials/icon', { name: 'arrow' }) %></a>
+    </div>
+    <div class="modules card reveal">
+      <% masterclass.modules.forEach(function (m, i) { %>
+        <div class="module"><span><%= String(i + 1).padStart(2, '0') %></span><p><%= m %></p></div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint">
+  <div class="container">
+    <div class="section__head reveal"><span class="eyebrow">Corsi per materia</span><h2>Dal diritto commerciale al diritto romano.</h2></div>
+    <div class="subject-grid subject-grid--4">
+      <% subjects.forEach(function (s) { %>
+        <article class="card subject-card reveal"><span class="icon-tile"><%- include('../partials/icon', { name: 'book' }) %></span><h3><%= s.title %></h3><p><%= s.text %></p></article>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="supporto">
+  <div class="container">
+    <div class="section__head reveal"><span class="eyebrow">Supporto</span><h2>Ti aiutiamo dove ti blocchi.</h2></div>
+    <div class="bento bento--even">
+      <% support.forEach(function (s) { %>
+        <article class="card bento__item reveal"><span class="icon-tile"><%- include('../partials/icon', { name: s.icon }) %></span><h3><%= s.title %></h3><p><%= s.text %></p></article>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta-band__inner reveal">
+    <div><h2>Non sai da dove iniziare?</h2><p>Racconta a Galletto il tuo esame: ti suggerisce il percorso giusto.</p></div>
+    <a href="/galletto" class="btn btn--light btn--lg">Chiedi a Galletto</a>
+  </div>
+</section>
+<%- include('../partials/footer') %>
