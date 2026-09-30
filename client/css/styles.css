@@ -866,3 +866,11 @@ body.is-locked { overflow: hidden; }
 kbd { white-space: nowrap; }
 .nav__links { flex: 0 1 auto; min-width: 0; }
 @media (max-width: 1280px) { .nav__links { display: none; } .nav__burger { display: inline-grid; } }
+
+/* Nav: le voci non si comprimono mai; sotto i 1480px la ricerca diventa un'icona,
+   sotto i 1200px il menu passa al pannello laterale. */
+.nav__links { flex: none; }
+.nav__links > a, .nav__drop > button { padding: 9px 10px; letter-spacing: 0.03em; }
+@media (max-width: 1480px) { .search-trigger:not(.search-trigger--block) { display: none; } .hide-lg { display: inline-grid; } }
+@media (max-width: 1280px) { .nav__links { display: flex; } .nav__burger { display: none; } }
+@media (max-width: 1200px) { .nav__links { display: none; } .nav__burger { display: inline-grid; } }
