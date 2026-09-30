@@ -497,6 +497,19 @@ function initImages() {
   });
 }
 
+/* Chi siamo: il logo rotola quando la sezione entra nello schermo */
+function initRoll() {
+  const sec = $('[data-roll]');
+  if (!sec) return;
+  if (!('IntersectionObserver' in window)) return sec.classList.add('is-rolling');
+  const io = new IntersectionObserver(([en]) => {
+    if (!en.isIntersecting) return;
+    sec.classList.add('is-rolling');
+    io.disconnect();
+  }, { threshold: 0.35 });
+  io.observe(sec);
+}
+
 /* Newsletter ---------------------------------------------------------------- */
 function initNewsletter() {
   const form = $('[data-newsletter]');
@@ -788,6 +801,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initReveal();
   initCounters();
   initRails();
+  initRoll();
   initImages();
   initNewsletter();
   initQuiz();

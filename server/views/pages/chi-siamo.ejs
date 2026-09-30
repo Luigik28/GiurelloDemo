@@ -11,29 +11,30 @@
   </div>
 </section>
 
-<section class="section section--purple">
-  <div class="container split">
-    <div class="reveal">
-      <span class="eyebrow"><%= site.about.milestoneTitle %></span>
-      <h2>Il nostro più grande traguardo?</h2>
-      <p><%= site.about.milestone %></p>
-    </div>
-    <div class="reveal center">
-      <img src="/img/logo-cerchio.webp" alt="" width="220" height="220" loading="lazy" class="about-logo">
-      <p class="about-count"><strong data-count="10000" data-suffix="+">10.000+</strong><span>successi di studenti</span></p>
+<section class="startup">
+  <div class="container">
+    <div class="startup__box reveal">
+      <div class="startup__photo"><img src="/img/team.webp" alt="Il team Giurello" width="1000" height="1500" loading="lazy"></div>
+      <div class="startup__text">
+        <img class="startup__logo" src="/img/logo.webp" alt="Giurello" width="84" height="36">
+        <h2>Una <span class="startup__accent">startup</span> che cammina con le proprie gambe</h2>
+        <h3>Il nostro più grande traguardo?</h3>
+        <p><strong>Essere arrivati fin qui grazie alla qualità del prodotto e alla forza del metodo.</strong> Giurello non si basa sull’immagine di un singolo founder, ma su un’idea condivisa di autonomia, coerenza e solidità. È una realtà indipendente, costruita su ciò che offre, non su chi la rappresenta.</p>
+        <div class="startup__stat">
+          <span class="startup__num" data-count="<%= site.about.successCount %>" data-suffix=""><%= site.about.successCount %></span><span class="startup__plus">+</span><span class="startup__label">Successo studenti</span>
+        </div>
+        <div class="startup__bar" aria-hidden="true"><i></i></div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container split">
-    <div class="split__img reveal"><img src="/img/tesi.jpg" alt="Studenti durante una lezione" loading="lazy"></div>
-    <div class="reveal">
-      <span class="eyebrow">Community</span>
-      <h2><%= site.about.communityTitle %></h2>
-      <p class="lead"><%= site.about.community %></p>
-      <div class="hero__actions"><a class="btn btn--primary" href="/concorsi">Inizia ora</a><a class="btn btn--ghost" href="<%= site.social[0].url %>" target="_blank" rel="noopener">Seguici su Instagram</a></div>
-    </div>
+<section class="community" data-roll>
+  <div class="container">
+    <div class="community__track" aria-hidden="true"><img class="community__logo" src="/img/logo-cerchio.webp" alt="" width="124" height="124"></div>
+    <h2><%= site.about.communityTitle %></h2>
+    <p>Abbiamo costruito una community fatta di studenti determinati, appassionati, capaci di affrontare i momenti difficili con metodo e coraggio. Giurello non promette miracoli. <strong>Promette un passo alla volta, fatto bene.</strong> È quel segnale che ti rimette in moto, quando la disperazione prende il sopravvento. È metodo, costanza e fiducia in sé.</p>
+    <div class="hero__actions community__actions"><a class="btn btn--primary" href="/concorsi">Inizia ora</a><a class="btn btn--ghost" href="<%= site.social[0].url %>" target="_blank" rel="noopener">Seguici su Instagram</a></div>
   </div>
 </section>
 

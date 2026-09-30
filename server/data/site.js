@@ -215,6 +215,7 @@ module.exports = {
       { icon: 'laptop', title: 'Marketing e sviluppo informatico', text: 'Professionisti della comunicazione e dello sviluppo digitale lavorano per rendere Giurello accessibile, riconoscibile e funzionale. Portano il nostro metodo dove serve, con gli strumenti e i linguaggi giusti.' },
       { icon: 'shield', title: 'I nostri alleati silenziosi: i beta tester', text: 'Una community attiva di beta tester verifica i contenuti prima del rilascio. Il loro contributo è fondamentale per garantire qualità, precisione e aggiornamento continuo.' }
     ],
+    successCount: 800, // contatore "Successo studenti" come sul sito attuale
     milestoneTitle: 'Una startup che cammina con le proprie gambe',
     milestone: 'Essere arrivati fin qui grazie alla qualità del prodotto e alla forza del metodo. Giurello non si basa sull’immagine di un singolo founder, ma su un’idea condivisa di autonomia, coerenza e solidità. È una realtà indipendente, costruita su ciò che offre, non su chi la rappresenta.',
     communityTitle: 'Una community vera, che non si arrende',
