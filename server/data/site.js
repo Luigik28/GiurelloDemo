@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Contenuti del sito, ripresi da giurello.it e giurello.thinkific.com.
+ * Contenuti del sito, ripresi dal sito attuale di Giurello.
  * In un prodotto completo possono arrivare da un CMS: le viste leggono solo da qui.
  */
 
@@ -12,8 +12,6 @@ const productHref = (name) => {
   return p ? `/prodotto/${p.slug}` : '/concorsi';
 };
 
-const STORE = 'https://giurello.thinkific.com';
-
 module.exports = {
   name: 'Giurello',
   tagline: 'Il tuo compagno di studio per diventare un vero giurista',
@@ -21,9 +19,9 @@ module.exports = {
   description:
     'Giurello è la prima piattaforma che integra piani di studio passo passo nella formazione: simulatori per concorsi pubblici, dispense, podcast, corsi per l’università e l’esame d’avvocato.',
   baseUrl: process.env.PUBLIC_BASE_URL || 'https://www.giurello.it',
-  storeUrl: STORE,
-  loginUrl: `${STORE}/users/sign_in`,
-  cartUrl: `${STORE}/cart`,
+  loginUrl: '/accedi',
+  accountUrl: '/area-studenti',
+  cartUrl: '/carrello',
   company: {
     legalName: 'Giurello S.r.l.',
     address: 'Viale del Lavoro 43',
@@ -36,7 +34,7 @@ module.exports = {
   legal: {
     privacy: 'https://www.iubenda.com/privacy-policy/98702159',
     cookie: 'https://www.iubenda.com/privacy-policy/98702159/cookie-policy',
-    terms: `${STORE}/pages/condizioni-generali-del-servizio`
+    terms: '/condizioni'
   },
   social: [
     { name: 'Instagram', url: 'https://www.instagram.com/giurello_official/', icon: 'instagram' },
@@ -96,7 +94,7 @@ module.exports = {
       href: '/podcast-e-altro'
     }
   ],
-  // "Tutti i nostri corsi comprendono" (giurello.thinkific.com)
+  // "Tutti i nostri corsi comprendono"
   promises: [
     { icon: 'clock', title: 'Lezioni di impatto', text: 'Ogni corso è composto da tante lezioni brevi di 5/10 minuti, con il tempo necessario per capire e seguire il ragionamento. Tutti i nostri corsi sono ADHD friendly.' },
     { icon: 'heart', title: 'Supporto emotivo', text: 'I corsi sono pensati per non impattare troppo sulla psiche dello studente: il nostro obiettivo è darti serenità nello studio, non l’esaurimento.' },
@@ -105,7 +103,7 @@ module.exports = {
     { icon: 'check', title: 'Soddisfatto o rimborsato', text: 'Puoi fare il reso di ogni corso fino al 15% del suo utilizzo.' },
     { icon: 'mail', title: 'Dai un’occhiata prima', text: 'Scrivici a info@giurello.it per ricevere un’anteprima delle nostre dispense prima di acquistare.' }
   ],
-  // Recensioni pubblicate su giurello.thinkific.com
+  // Recensioni degli studenti pubblicate da Giurello
   reviews: [
     { title: 'Soddisfacente', author: 'Tiziana Persico', text: 'Il simulatore risulta completo e ben costruito, i quiz non sono banali e trattano ampiamente le materie previste dal bando. La parte dei quiz situazionali rappresenta un tratto distintivo rispetto agli altri simulatori presenti sul mercato, ho particolarmente apprezzato la suddivisione in settimane e ritengo questo strumento molto utile!' },
     { title: 'Consiglio a tutti di provare almeno una volta i loro corsi!', author: 'Antonietta Violante', text: 'Ho trovato il loro corso il più centrato sulla prova rispetto ad altre banche dati utilizzate. La ripetizione costante dei quiz aiuta tantissimo nella memorizzazione delle normative utili per il superamento delle prove!' },

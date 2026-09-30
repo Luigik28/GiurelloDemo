@@ -1,0 +1,53 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<section class="section section--cream shop">
+  <div class="container">
+    <nav class="crumbs" aria-label="Percorso"><a href="/carrello">Carrello</a> / Pagamento</nav>
+    <h1 class="shop__title">Pagamento</h1>
+    <p class="notice"><%- include('../partials/icon', { name: 'shield' }) %> <span><strong>Demo:</strong> il pagamento è simulato, nessun addebito reale. Usa la carta di prova <strong>4242 4242 4242 4242</strong>, una scadenza futura e un CVC qualsiasi (la carta 4000 0000 0000 0002 simula un rifiuto).</span></p>
+    <% const err = function (k) { return errors[k] ? '<small class="form__err">' + errors[k] + '</small>' : ''; }; %>
+    <div class="shop__grid">
+      <form class="card form checkout" method="post" action="/checkout" novalidate data-checkout>
+        <% if (errors.form) { %><p class="form__err"><%= errors.form %></p><% } %>
+        <h2>1. I tuoi dati</h2>
+        <div class="form__row">
+          <label>Nome <input name="firstName" autocomplete="given-name" required value="<%= data.firstName || '' %>"><%- err('firstName') %></label>
+          <label>Cognome <input name="lastName" autocomplete="family-name" required value="<%= data.lastName || '' %>"><%- err('lastName') %></label>
+        </div>
+        <label>Email <input type="email" name="email" autocomplete="email" required value="<%= data.email || '' %>"><small class="muted">Qui riceverai l’accesso ai corsi. Il tuo account viene creato in automatico.</small><%- err('email') %></label>
+
+        <% if (cart.total > 0) { %>
+        <h2>2. Metodo di pagamento</h2>
+        <div class="pay-methods" role="radiogroup">
+          <label class="pay-method"><input type="radio" name="method" value="card" <%= data.method !== 'paypal' && data.method !== 'rate' ? 'checked' : '' %>><span><%- include('../partials/icon', { name: 'card' }) %> Carta di credito o debito</span></label>
+          <label class="pay-method"><input type="radio" name="method" value="rate" <%= data.method === 'rate' ? 'checked' : '' %>><span><%- include('../partials/icon', { name: 'calendar' }) %> A rate con carta</span></label>
+          <label class="pay-method"><input type="radio" name="method" value="paypal" <%= data.method === 'paypal' ? 'checked' : '' %>><span><%- include('../partials/icon', { name: 'wallet' }) %> PayPal</span></label>
+        </div>
+        <div class="card-fields" data-card-fields>
+          <label>Numero carta <input name="cardNumber" inputmode="numeric" autocomplete="off" placeholder="4242 4242 4242 4242" maxlength="23"><%- err('cardNumber') %></label>
+          <div class="form__row">
+            <label>Scadenza <input name="cardExpiry" inputmode="numeric" autocomplete="off" placeholder="MM/AA" maxlength="5"><%- err('cardExpiry') %></label>
+            <label>CVC <input name="cardCvc" inputmode="numeric" autocomplete="off" placeholder="123" maxlength="4"><%- err('cardCvc') %></label>
+          </div>
+          <p class="muted" data-rate-note hidden>Pagherai in 3 rate mensili da circa <strong><%= fmt(cart.total / 3) %></strong>. L’eventuale piccolo sovrapprezzo viene indicato prima della conferma.</p>
+        </div>
+        <p class="muted" data-paypal-note hidden>Verrai indirizzato a PayPal per completare il pagamento (simulato nella demo).</p>
+        <% } %>
+
+        <label class="check"><input type="checkbox" name="terms" <%= data.terms ? 'checked' : '' %>> <span>Ho letto e accetto le <a href="/condizioni" target="_blank">condizioni generali</a> e la <a href="<%= site.legal.privacy %>" target="_blank" rel="noopener">privacy policy</a>.</span></label>
+        <%- err('terms') %>
+        <button class="btn btn--primary btn--lg btn--block"><%- include('../partials/icon', { name: 'shield' }) %> <%= cart.total > 0 ? 'Paga ' + cart.totalLabel : 'Conferma iscrizione gratuita' %></button>
+      </form>
+
+      <aside class="card summary">
+        <h2>Il tuo ordine</h2>
+        <% cart.items.forEach(function (p) { %>
+          <div class="summary__item"><img src="<%= p.image %>" alt="" width="64" height="40"><span><%= p.name %></span><strong><%= p.price || 'Gratis' %></strong></div>
+        <% }) %>
+        <div class="summary__row summary__total"><span>Totale</span><span><%= cart.totalLabel %></span></div>
+        <a class="muted" href="/carrello">Modifica il carrello</a>
+      </aside>
+    </div>
+  </div>
+</section>
+<%- include('../partials/footer') %>

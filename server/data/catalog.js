@@ -2,13 +2,11 @@
 
 /**
  * Catalogo prodotti Giurello.
- * I dati grezzi arrivano da Thinkific (scripts/sync-catalog.js → catalog.json);
+ * I dati grezzi stanno in catalog.json (importati con scripts/sync-catalog.js);
  * qui vengono arricchiti con tipologia e aree di formazione, usate per la navigazione del sito.
  */
 
 const raw = require('./catalog.json');
-
-const STORE = raw.store;
 
 // Aree di formazione, come nella home di giurello.it ("Scegli la tua area di formazione").
 const areas = [
@@ -108,8 +106,7 @@ const products = raw.products.map((p, i) => {
     kind: p.kind,
     price: p.price,
     priceValue: Number(String(p.price).replace(/[^\d,]/g, '').replace(',', '.')) || 0,
-    image: p.image && !/default|placeholder\.png/i.test(p.image) ? p.image : '',
-    url: STORE + p.path,
+    image: p.image || '',
     collections: p.collections,
     type,
     typeLabel: types[type].single,
@@ -163,7 +160,6 @@ function related(product, n) {
 
 module.exports = {
   related,
-  STORE,
   syncedAt: raw.syncedAt,
   areas,
   types,

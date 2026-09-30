@@ -1,0 +1,50 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<section class="section section--cream shop">
+  <div class="container">
+    <h1 class="shop__title">Il tuo carrello</h1>
+    <% if (added) { %><p class="notice notice--ok"><%- include('../partials/icon', { name: 'check' }) %> «<%= added.name %>» è stato aggiunto al carrello.</p><% } %>
+    <% if (!cart.items.length) { %>
+      <div class="card empty-cart">
+        <span class="icon-tile"><%- include('../partials/icon', { name: 'cart' }) %></span>
+        <h2>Il carrello è vuoto</h2>
+        <p class="muted">Scegli il simulatore, la dispensa o il corso che fa per te.</p>
+        <a class="btn btn--primary btn--lg" href="/concorsi">Vai ai corsi</a>
+      </div>
+    <% } else { %>
+      <div class="shop__grid">
+        <div class="card cart">
+          <% cart.items.forEach(function (p) { %>
+            <div class="cart__row">
+              <img src="<%= p.image %>" alt="" width="120" height="75" loading="lazy">
+              <div class="cart__info">
+                <span class="tag"><%= p.typeLabel %></span>
+                <a href="/prodotto/<%= p.slug %>"><%= p.name %></a>
+                <% if (cart.owned.has(p.slug)) { %><small class="muted">Hai già acquistato questo prodotto.</small><% } %>
+              </div>
+              <strong class="cart__price"><%= p.price || 'Gratis' %></strong>
+              <form method="post" action="/carrello/rimuovi"><input type="hidden" name="slug" value="<%= p.slug %>"><button class="icon-btn" aria-label="Rimuovi <%= p.name %>"><%- include('../partials/icon', { name: 'x' }) %></button></form>
+            </div>
+          <% }) %>
+        </div>
+        <aside class="card summary">
+          <h2>Riepilogo</h2>
+          <div class="summary__row"><span>Prodotti (<%= cart.count %>)</span><span><%= cart.totalLabel %></span></div>
+          <div class="summary__row summary__total"><span>Totale</span><span><%= cart.totalLabel %></span></div>
+          <p class="muted">IVA inclusa. Puoi pagare anche a rate.</p>
+          <a class="btn btn--primary btn--lg btn--block" href="/checkout">Vai al pagamento</a>
+          <a class="btn btn--ghost btn--block" href="/concorsi">Continua gli acquisti</a>
+          <ul class="summary__list">
+            <li><%- include('../partials/icon', { name: 'shield' }) %> Pagamento sicuro</li>
+            <li><%- include('../partials/icon', { name: 'check' }) %> Reso fino al 15% di utilizzo</li>
+          </ul>
+        </aside>
+      </div>
+      <% if (suggestions.length) { %>
+        <div class="section__head shop__more"><span class="eyebrow">Completa la preparazione</span><h2>Potrebbero interessarti anche</h2></div>
+        <div class="grid"><% suggestions.forEach(function (p) { %><%- include('../partials/product-card', { p: p }) %><% }) %></div>
+      <% } %>
+    <% } %>
+  </div>
+</section>
+<%- include('../partials/footer') %>

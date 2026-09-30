@@ -1,0 +1,21 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<section class="section section--cream shop">
+  <div class="container narrow">
+    <div class="card order">
+      <img src="/img/logo-cerchio.webp" alt="" width="96" height="96" class="order__logo">
+      <span class="eyebrow">Ordine <%= order.id %></span>
+      <h1>Grazie, è tutto pronto!</h1>
+      <p class="lead">Il pagamento di <strong><%= order.totalLabel %></strong> è andato a buon fine (simulato). Trovi i tuoi corsi nell’area studenti.</p>
+      <div class="order__items">
+        <% order.items.forEach(function (p) { %><div class="summary__item"><img src="<%= p.image %>" alt="" width="64" height="40"><span><%= p.name %></span><strong><%= p.price || 'Gratis' %></strong></div><% }) %>
+      </div>
+      <div class="hero__actions">
+        <a class="btn btn--primary btn--lg" href="/area-studenti">Inizia a studiare <%- include('../partials/icon', { name: 'arrow' }) %></a>
+        <a class="btn btn--ghost btn--lg" href="/concorsi">Continua gli acquisti</a>
+      </div>
+      <p class="muted">Data: <%= order.date %> · Metodo: <%= { card: 'carta', rate: 'rate con carta', paypal: 'PayPal' }[order.m] || 'gratuito' %> · Rif. <%= order.r %></p>
+    </div>
+  </div>
+</section>
+<%- include('../partials/footer') %>

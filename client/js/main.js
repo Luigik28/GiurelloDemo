@@ -389,6 +389,36 @@ function initContact() {
   });
 }
 
+/* Checkout (pagamento simulato) ------------------------------------------ */
+function initCheckout() {
+  const form = $('[data-checkout]');
+  if (!form) return;
+  const fields = $('[data-card-fields]', form);
+  const rateNote = $('[data-rate-note]', form);
+  const paypalNote = $('[data-paypal-note]', form);
+  const sync = () => {
+    const m = form.elements.method?.value;
+    if (fields) fields.hidden = m === 'paypal';
+    if (rateNote) rateNote.hidden = m !== 'rate';
+    if (paypalNote) paypalNote.hidden = m !== 'paypal';
+  };
+  form.addEventListener('change', sync);
+  sync();
+  const num = form.elements.cardNumber;
+  num?.addEventListener('input', () => {
+    num.value = num.value.replace(/\D/g, '').slice(0, 19).replace(/(.{4})/g, '$1 ').trim();
+  });
+  const exp = form.elements.cardExpiry;
+  exp?.addEventListener('input', () => {
+    const d = exp.value.replace(/\D/g, '').slice(0, 4);
+    exp.value = d.length > 2 ? `${d.slice(0, 2)}/${d.slice(2)}` : d;
+  });
+  form.addEventListener('submit', () => {
+    const btn = $('button:last-of-type', form);
+    if (btn) { btn.disabled = true; btn.textContent = 'Pagamento in corso…'; }
+  });
+}
+
 /* Cookie ------------------------------------------------------------------- */
 function initCookie() {
   const bar = $('[data-cookie]');
@@ -412,5 +442,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initQuiz();
   initGalletto();
   initContact();
+  initCheckout();
   initCookie();
 });

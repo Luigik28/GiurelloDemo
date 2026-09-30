@@ -4,25 +4,38 @@ Demo del nuovo sito di [giurello.it](https://giurello.it), con uno stile moderno
 
 ## Cosa contiene
 
-Contenuti, testi, logo, colori e catalogo sono ripresi dal sito attuale ([giurello.it](https://www.giurello.it)) e dal negozio [giurello.thinkific.com](https://giurello.thinkific.com). La struttura e la navigazione sono le stesse, con una grafica più moderna.
+Contenuti, testi, logo, colori e catalogo sono ripresi dal sito attuale di Giurello. La struttura e la navigazione sono le stesse, con una grafica più moderna. **Il sito è autonomo**: carrello, pagamento, area studenti, condizioni generali e immagini dei prodotti sono tutti interni, senza collegamenti a Thinkific.
 
 | Pagina | Contenuto |
 |---|---|
 | `/` | Hero con claim, promo del simulatore in evidenza, "I nostri corsi più amati", aree di formazione con ricerca, "Che cosa troverai su Giurello" (simulatori, dispense, podcast), ultimi concorsi, riassunti dei manuali, "Tutti i nostri corsi comprendono", recensioni reali, newsletter "Rimani aggiornato", FAQ |
 | `/concorsi`, `/concorsi/:area` | Catalogo completo (163 prodotti Thinkific) con aree, filtri per tipologia, ricerca e paginazione, tutto lato server |
-| `/prodotto/:slug` | Scheda prodotto: descrizione, prezzo, acquisto su Thinkific. Per i simulatori anche "Perché scegliere il nostro simulatore" e le FAQ originali; in fondo i prodotti correlati |
+| `/prodotto/:slug` | Scheda prodotto: descrizione, prezzo, "Acquista ora" e "Aggiungi al carrello". Per i simulatori anche "Perché scegliere il nostro simulatore" e le FAQ originali; in fondo i prodotti correlati |
 | `/dispense`, `/universita`, `/podcast-e-altro`, `/avvocato` | Pagine di sezione con i testi originali e i prodotti collegati |
 | `/galletto` | Galletto AI: presentazione, piani di abbonamento, chat demo e generatore del piano di studio |
 | `/chi-siamo`, `/help` | Team, community e modulo "Hai domande?" (nome, cognome, email, telefono, messaggio) |
 | `/prova-simulatore` | Quiz demo con correzione lato server |
+| `/carrello`, `/checkout`, `/ordine/:id` | Carrello e checkout interni con **pagamento simulato** (carta, rate, PayPal) |
+| `/accedi`, `/area-studenti` | Accesso demo (qualsiasi email e una password di almeno 6 caratteri) e libreria "I miei corsi" con lo storico ordini |
+| `/condizioni` | Condizioni generali del servizio (testo attuale da far verificare al legale) |
+
+### Pagamenti nella demo
+
+Il pagamento è **simulato** (`server/services/shopService.js` → `pay()`): nessun addebito e nessun dato di carta salvato.
+
+- Carta accettata: `4242 4242 4242 4242`, scadenza futura, CVC qualsiasi.
+- Carta rifiutata: `4000 0000 0000 0002`, per vedere il caso di errore.
+- PayPal e rate sono solo simulati.
+
+Carrello, account e ordini stanno in cookie firmati (HMAC): nessun database. Per il prodotto finale basta sostituire `pay()` con un gateway reale (Stripe, PayPal, Satispay…) e salvare utenti e ordini su Firestore, mantenendo le stesse funzioni.
 
 ### Aggiornare il catalogo
 
 ```bash
-npm run sync-catalog   # scarica prodotti, prezzi, immagini e categorie da Thinkific
+npm run sync-catalog   # importa prodotti, prezzi, immagini e categorie dal vecchio negozio
 ```
 
-Lo script rigenera `server/data/catalog.json`. Tipologie (simulatore, dispensa, podcast…) e aree (giuridica, economica, enti locali…) vengono calcolate in `server/data/catalog.js`. Dopo il commit, il deploy su Cloud Run pubblica il catalogo aggiornato.
+Lo script rigenera `server/data/catalog.json` e salva le immagini, ridimensionate in WebP, in `client/static/prodotti/`: il sito le serve dal proprio dominio. Quando il vecchio negozio verrà dismesso, il catalogo si gestirà direttamente in `catalog.json` (o in un CMS/Firestore). Tipologie (simulatore, dispensa, podcast…) e aree (giuridica, economica, enti locali…) vengono calcolate in `server/data/catalog.js`. Dopo il commit, il deploy su Cloud Run pubblica il catalogo aggiornato.
 
 ## Protezione del codice: cosa si ottiene e cosa no
 
@@ -88,5 +101,7 @@ Lo script `gcp-build` esegue minificazione e offuscamento direttamente sui serve
 - [ ] Verificare con il cliente l'assegnazione automatica di aree e tipologie (regole in `server/data/catalog.js`).
 - [ ] Galletto: collegare il servizio reale (o un modello linguistico, per esempio Vertex AI) dietro a `gallettoService.reply()`, mantenendo la stessa API.
 - [ ] Modulo "Hai domande?" e newsletter: salvare su Firestore o CRM e inviare una notifica email (oggi finiscono in Cloud Logging).
-- [ ] Sincronizzazione automatica del catalogo (per esempio con Cloud Scheduler).
+- [ ] Pagamenti reali: gateway di pagamento, fatturazione e email di conferma ordine.
+- [ ] Account reali (Firebase Authentication) e ordini su Firestore.
+- [ ] Erogazione dei contenuti acquistati (simulatori, PDF, videolezioni) nell'area studenti.
 - [ ] Il consenso cookie (iubenda) va aggiunto se si inseriscono strumenti di analisi.

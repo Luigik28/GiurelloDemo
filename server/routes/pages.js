@@ -138,6 +138,10 @@ router.get('/help', (req, res) => {
   res.render('pages/help', { title: 'Help e contatti | Giurello', metaDescription: 'Hai domande? Contattaci: ti rispondiamo entro 48 ore.' });
 });
 
+router.get('/condizioni', (req, res) => {
+  res.render('pages/condizioni', { title: 'Condizioni generali del servizio | Giurello', metaDescription: 'Condizioni generali di contratto per i corsi e i prodotti Giurello.', terms: require('../data/terms.json') });
+});
+
 router.get('/prova-simulatore', (req, res) => {
   res.render('pages/simulatore', {
     title: 'Prova gratis il simulatore | Giurello',
@@ -163,7 +167,7 @@ router.get('/robots.txt', (req, res) => {
 
 router.get('/sitemap.xml', (req, res) => {
   const paths = [
-    '/', '/concorsi', '/dispense', '/universita', '/podcast-e-altro', '/galletto', '/avvocato', '/chi-siamo', '/help', '/prova-simulatore',
+    '/', '/concorsi', '/condizioni', '/dispense', '/universita', '/podcast-e-altro', '/galletto', '/avvocato', '/chi-siamo', '/help', '/prova-simulatore',
     ...catalog.areas.map((a) => `/concorsi/${a.id}`),
     ...catalog.products.map((p) => `/prodotto/${p.slug}`)
   ];

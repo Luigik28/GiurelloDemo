@@ -1,8 +1,9 @@
 'use strict';
 
 /**
- * Sincronizza il catalogo dal negozio Thinkific di Giurello (giurello.thinkific.com)
- * e lo salva in server/data/catalog.json. Il sito legge solo quel file.
+ * Importa il catalogo dal vecchio negozio Thinkific di Giurello e lo salva in
+ * server/data/catalog.json. Le immagini vengono scaricate, ridimensionate e
+ * convertite in WebP in client/static/prodotti/: il sito non dipende più da Thinkific.
  *
  * Uso: npm run sync-catalog
  */
@@ -12,6 +13,8 @@ const path = require('path');
 
 const STORE = 'https://giurello.thinkific.com';
 const OUT = path.join(__dirname, '..', 'server', 'data', 'catalog.json');
+const IMG_DIR = path.join(__dirname, '..', 'client', 'static', 'prodotti');
+const crypto = require('crypto');
 
 const decode = (s) =>
   String(s || '')
@@ -71,6 +74,39 @@ async function listCollection(slug) {
   return items;
 }
 
+async function localizeImages(products) {
+  const sharp = require('sharp');
+  fs.mkdirSync(IMG_DIR, { recursive: true });
+  let done = 0;
+  for (const p of products) {
+    const src = p.image;
+    p.image = '';
+    if (!src) continue;
+    const file = `${crypto.createHash('sha1').update(p.path).digest('hex').slice(0, 12)}.webp`;
+    const dest = path.join(IMG_DIR, file);
+    try {
+      if (!fs.existsSync(dest)) {
+        let buf = null;
+        for (let i = 0; i < 3 && !buf; i++) {
+          try {
+            const res = await fetch(src);
+            if (res.ok) buf = Buffer.from(await res.arrayBuffer());
+          } catch {
+            await new Promise((r) => setTimeout(r, 1000));
+          }
+        }
+        if (!buf) throw new Error('download fallito');
+        await sharp(buf).resize({ width: 800, height: 500, fit: 'cover' }).webp({ quality: 78 }).toFile(dest);
+      }
+      p.image = `/prodotti/${file}`;
+      done++;
+    } catch (e) {
+      console.warn(`  immagine non disponibile per «${p.name}»: ${e.message}`);
+    }
+  }
+  console.log(`  immagini: ${done}/${products.length}`);
+}
+
 async function main() {
   const home = await get(`${STORE}/collections`);
   const collections = [...home.matchAll(/<a href="\/collections\/([a-z0-9-]+)"[^>]*id="category-name">\s*([^<]+?)\s*<\/a>/g)].map((m) => ({
@@ -92,7 +128,8 @@ async function main() {
   }
 
   const products = [...byPath.values()];
-  fs.writeFileSync(OUT, JSON.stringify({ syncedAt: new Date().toISOString(), store: STORE, collections, products }, null, 1));
+  await localizeImages(products);
+  fs.writeFileSync(OUT, JSON.stringify({ syncedAt: new Date().toISOString(), source: STORE, collections, products }, null, 1));
   console.log(`catalogo sincronizzato: ${products.length} prodotti → ${path.relative(process.cwd(), OUT)}`);
 }
 

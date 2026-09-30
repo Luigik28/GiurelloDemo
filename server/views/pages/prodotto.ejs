@@ -19,7 +19,16 @@
       <span class="muted"><%= product.kind %></span>
       <div class="buy__price"><%= product.type === 'gratis' ? 'Gratis' : product.price %></div>
       <% if (product.type === 'simulatore') { %><p class="muted">Prezzo di lancio €129 nelle prime 24 ore, poi €150. Acquistabile anche a rate.</p><% } else { %><p class="muted">Acquistabile anche a rate.</p><% } %>
-      <a class="btn btn--primary btn--lg btn--block" href="<%= product.url %>" target="_blank" rel="noopener">Acquista ora</a>
+      <% const owned = account && account.owned.includes(product.slug); %>
+      <% if (owned) { %>
+        <a class="btn btn--primary btn--lg btn--block" href="/area-studenti">Già tuo: vai all’area studenti</a>
+      <% } else { %>
+        <form method="post" action="/carrello/aggiungi" class="buy__forms">
+          <input type="hidden" name="slug" value="<%= product.slug %>">
+          <button class="btn btn--primary btn--lg btn--block" name="buyNow" value="1"><%= product.type === 'gratis' ? 'Ottienilo gratis' : 'Acquista ora' %></button>
+          <button class="btn btn--yellow btn--block"><%- include('../partials/icon', { name: 'cart' }) %> Aggiungi al carrello</button>
+        </form>
+      <% } %>
       <% if (product.type === 'simulatore') { %><a class="btn btn--ghost btn--block" href="/galletto?corso=<%= product.slug %>#piano">Crea il piano con Galletto</a><% } %>
       <ul>
         <% if (product.type === 'simulatore') { %>

@@ -1,0 +1,17 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<section class="section section--cream shop">
+  <div class="container narrow">
+    <form class="card form login" method="post" action="/accedi" novalidate>
+      <img src="/img/logo-cerchio.webp" alt="" width="80" height="80" class="order__logo">
+      <h1>Accedi all’area studenti</h1>
+      <p class="muted">Demo: puoi entrare con qualsiasi email e una password di almeno 6 caratteri. Se è la prima volta, l’account viene creato in automatico.</p>
+      <input type="hidden" name="back" value="<%= back %>">
+      <label>Email <input type="email" name="email" autocomplete="email" required value="<%= email %>"><% if (errors.email) { %><small class="form__err"><%= errors.email %></small><% } %></label>
+      <label>Password <input type="password" name="password" autocomplete="current-password" required minlength="6"><% if (errors.password) { %><small class="form__err"><%= errors.password %></small><% } %></label>
+      <button class="btn btn--primary btn--lg btn--block">Accedi</button>
+      <p class="muted center">Hai problemi ad accedere? <a href="/help#contatti">Scrivici</a></p>
+    </form>
+  </div>
+</section>
+<%- include('../partials/footer') %>

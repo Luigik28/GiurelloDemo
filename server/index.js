@@ -8,6 +8,8 @@ const compression = require('compression');
 const { minify } = require('html-minifier-terser');
 const config = require('./config');
 const site = require('./data/site');
+const shop = require('./services/shopService');
+const cookies = require('./lib/cookies');
 
 const DIST = path.join(__dirname, '..', 'dist');
 const manifestPath = path.join(DIST, 'manifest.json');
@@ -31,7 +33,7 @@ app.use(
         scriptSrc: ["'self'"],
         styleSrc: ["'self'", 'https://fonts.googleapis.com'],
         fontSrc: ["'self'", 'https://fonts.gstatic.com'],
-        imgSrc: ["'self'", 'data:', 'https://import.cdn.thinkific.com', 'https://files.cdn.thinkific.com'],
+        imgSrc: ["'self'", 'data:'],
         connectSrc: ["'self'"],
         frameAncestors: ["'none'"],
         formAction: ["'self'"],
@@ -59,6 +61,8 @@ app.use((req, res, next) => {
   res.locals.year = new Date().getFullYear();
   res.locals.metaDescription = site.description;
   res.locals.canonical = site.baseUrl + (req.path === '/' ? '' : req.path);
+  res.locals.cartCount = shop.getCart(req).count;
+  res.locals.account = shop.getAccount(req);
   next();
 });
 
@@ -72,8 +76,10 @@ const minifyOptions = {
   useShortDoctype: true
 };
 app.use((req, res, next) => {
-  const key = req.method === 'GET' && Object.keys(req.query).length === 0 ? req.path : null;
-  if (config.isProd && key && htmlCache.has(key)) {
+  // Le pagine con carrello o utente sono personali: niente cache condivisa.
+  const personal = Boolean(cookies.parse(req).g_cart || cookies.parse(req).g_acct);
+  const key = !personal && req.method === 'GET' && Object.keys(req.query).length === 0 ? req.path : null;
+  if (config.isProd && key && htmlCache.has(key) && !res.locals.noCache) {
     res.type('html').set('Cache-Control', 'public, max-age=300');
     return res.send(htmlCache.get(key));
   }
@@ -87,8 +93,8 @@ app.use((req, res, next) => {
       } catch {
         /* in caso di errore inviamo l'HTML non minificato */
       }
-      if (config.isProd && key && res.statusCode === 200 && htmlCache.size < 200) htmlCache.set(key, out);
-      if (res.statusCode === 200) res.set('Cache-Control', 'public, max-age=300');
+      if (config.isProd && key && !res.locals.noCache && res.statusCode === 200 && htmlCache.size < 200) htmlCache.set(key, out);
+      if (res.statusCode === 200) res.set('Cache-Control', personal || res.locals.noCache ? 'private, no-store' : 'public, max-age=300');
       res.type('html').send(out);
     });
   next();
@@ -96,6 +102,7 @@ app.use((req, res, next) => {
 
 app.get('/healthz', (req, res) => res.type('text/plain').send('ok'));
 app.use('/api', require('./routes/api'));
+app.use('/', require('./routes/shop'));
 app.use('/', require('./routes/pages'));
 
 app.use((req, res) => {

@@ -22,8 +22,8 @@
     </nav>
     <div class="nav__tools">
       <button class="icon-btn" type="button" data-theme-toggle aria-label="Cambia tema"><%- include('icon', { name: 'moon', cls: 'i-moon' }) %><%- include('icon', { name: 'sun', cls: 'i-sun' }) %></button>
-      <a class="icon-btn" href="<%= site.loginUrl %>" aria-label="Accedi all'area studenti" title="Area studenti"><%- include('icon', { name: 'user' }) %></a>
-      <a class="icon-btn" href="<%= site.cartUrl %>" aria-label="Carrello" title="Carrello"><%- include('icon', { name: 'cart' }) %></a>
+      <a class="icon-btn <%= account ? 'is-logged' : '' %>" href="<%= account ? site.accountUrl : site.loginUrl %>" aria-label="<%= account ? 'Area studenti' : 'Accedi' %>" title="<%= account ? 'Area studenti: ' + account.email : 'Accedi' %>"><%- include('icon', { name: 'user' }) %></a>
+      <a class="icon-btn cart-btn" href="<%= site.cartUrl %>" aria-label="Carrello<%= cartCount ? ', ' + cartCount + ' prodotti' : '' %>" title="Carrello"><%- include('icon', { name: 'cart' }) %><% if (cartCount) { %><span class="cart-btn__n"><%= cartCount %></span><% } %></a>
       <button class="icon-btn nav__burger" type="button" data-menu-toggle aria-controls="menu" aria-expanded="false" aria-label="Apri menu"><%- include('icon', { name: 'menu' }) %></button>
     </div>
   </div>

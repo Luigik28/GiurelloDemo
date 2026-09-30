@@ -1,0 +1,10 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<%- include('../partials/page-hero', { eyebrow: 'Informazioni legali', heading: 'Condizioni generali <span class="hl">del servizio</span>', lead: 'Condizioni generali di contratto per i corsi e i prodotti di Giurello S.r.l.' }) %>
+<section class="section">
+  <div class="container prose">
+    <p class="notice"><%- include('../partials/icon', { name: 'doc' }) %> <span>Testo ripreso dalle condizioni attualmente in vigore, con i riferimenti alla vecchia piattaforma sostituiti da giurello.it. Da far verificare al consulente legale prima della pubblicazione.</span></p>
+    <% terms.forEach(function (b) { %><% if (b.h) { %><h2><%= b.h %></h2><% } else { %><p><%= b.p %></p><% } %><% }) %>
+  </div>
+</section>
+<%- include('../partials/footer') %>

@@ -1,0 +1,54 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<section class="page-hero">
+  <div class="container account-hero">
+    <div>
+      <span class="eyebrow">Area studenti</span>
+      <h1>Ciao <span class="hl"><%= lib.name %></span>!</h1>
+      <p class="lead">Qui trovi i tuoi corsi e i tuoi ordini. Ricorda: poco, ma ogni giorno.</p>
+    </div>
+    <form method="post" action="/esci"><button class="btn btn--white">Esci</button></form>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section__head section__head--row"><div><span class="eyebrow">La mia libreria</span><h2>I miei corsi</h2></div><a class="btn btn--ghost" href="/concorsi">Scopri altri corsi</a></div>
+    <% if (!lib.products.length) { %>
+      <div class="card empty-cart"><span class="icon-tile"><%- include('../partials/icon', { name: 'book' }) %></span><h3>Non hai ancora corsi</h3><p class="muted">Quando acquisti un prodotto lo trovi qui.</p><a class="btn btn--primary" href="/concorsi">Vai ai corsi</a></div>
+    <% } else { %>
+      <div class="grid">
+        <% lib.products.forEach(function (p) { %>
+          <article class="pcard">
+            <div class="pcard__img"><img src="<%= p.image %>" alt="" loading="lazy"></div>
+            <div class="pcard__body">
+              <span class="tag"><%= p.typeLabel %></span>
+              <h3><%= p.name %></h3>
+              <div class="bar"><i class="w-0"></i></div>
+              <p class="muted">Avanzamento 0% · appena acquistato</p>
+              <div class="pcard__foot">
+                <% if (p.type === 'simulatore') { %><a class="btn btn--primary btn--sm" href="/prova-simulatore">Inizia il simulatore</a><a class="link-arrow" href="/galletto?corso=<%= p.slug %>#piano">Piano</a>
+                <% } else if (/dispensa|schemi|ebook|eserciziario/.test(p.type)) { %><span class="btn btn--primary btn--sm" aria-disabled="true" title="Download disponibile nel prodotto completo">Scarica PDF (demo)</span>
+                <% } else { %><span class="btn btn--primary btn--sm" aria-disabled="true" title="Lezioni disponibili nel prodotto completo">Apri il corso (demo)</span><% } %>
+              </div>
+            </div>
+          </article>
+        <% }) %>
+      </div>
+    <% } %>
+  </div>
+</section>
+
+<% if (lib.orders.length) { %>
+<section class="section section--cream">
+  <div class="container">
+    <div class="section__head"><span class="eyebrow">Storico</span><h2>I miei ordini</h2></div>
+    <div class="card orders">
+      <% lib.orders.forEach(function (o) { %>
+        <a class="orders__row" href="/ordine/<%= o.id %>"><strong><%= o.id %></strong><span><%= o.date %></span><span><%= o.items.length %> <%= o.items.length === 1 ? 'prodotto' : 'prodotti' %></span><strong><%= o.totalLabel %></strong></a>
+      <% }) %>
+    </div>
+  </div>
+</section>
+<% } %>
+<%- include('../partials/footer') %>

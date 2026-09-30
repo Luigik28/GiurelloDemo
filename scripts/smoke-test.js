@@ -14,7 +14,7 @@ const server = app.listen(0, async () => {
     try { await fn(); console.log(`  ok  ${name}`); } catch (e) { failures++; console.log(`  FAIL ${name}: ${e.message}`); }
   };
 
-  const pages = ['/', '/concorsi', '/concorsi?tipo=dispensa&pagina=2', '/concorsi?q=inps', '/dispense', '/universita', '/podcast-e-altro', '/galletto', '/avvocato', '/chi-siamo', '/help', '/prova-simulatore', '/robots.txt', '/sitemap.xml', '/healthz', ...catalog.areas.map((a) => `/concorsi/${a.id}`), ...catalog.products.map((p) => `/prodotto/${p.slug}`)];
+  const pages = ['/', '/concorsi', '/concorsi?tipo=dispensa&pagina=2', '/concorsi?q=inps', '/dispense', '/universita', '/podcast-e-altro', '/galletto', '/avvocato', '/chi-siamo', '/help', '/prova-simulatore', '/condizioni', '/carrello', '/accedi', '/robots.txt', '/sitemap.xml', '/healthz', ...catalog.areas.map((a) => `/concorsi/${a.id}`), ...catalog.products.map((p) => `/prodotto/${p.slug}`)];
   for (const p of pages) await check(`GET ${p}`, async () => assert.strictEqual((await get(p)).status, 200));
   await check('404', async () => assert.strictEqual((await get('/non-esiste')).status, 404));
   await check('CSP header', async () => assert.match((await get('/')).headers.get('content-security-policy'), /script-src 'self'/));
@@ -56,6 +56,46 @@ const server = app.listen(0, async () => {
   await check('contatti: validazione', async () => {
     const r = await post('/api/contact', { name: 'x', email: 'no' });
     assert.strictEqual(r.status, 422);
+  });
+
+  await check('nessun link a Thinkific nelle pagine', async () => {
+    for (const p of ['/', '/concorsi', `/prodotto/${catalog.products[0].slug}`, '/help', '/chi-siamo']) {
+      const html = await (await get(p)).text();
+      assert.ok(!/thinkific/i.test(html), `thinkific in ${p}`);
+    }
+  });
+
+  await check('acquisto demo: carrello → checkout → ordine → area studenti', async () => {
+    const jar = {};
+    const form = (o) => new URLSearchParams(o).toString();
+    const req = async (path, opts = {}) => {
+      const r = await fetch(base + path, {
+        redirect: 'manual',
+        ...opts,
+        headers: { ...(opts.headers || {}), cookie: Object.entries(jar).map(([k, v]) => `${k}=${v}`).join('; ') }
+      });
+      for (const c of r.headers.getSetCookie()) {
+        const [kv] = c.split(';');
+        const [k, v] = kv.split('=');
+        if (v) jar[k] = v; else delete jar[k];
+      }
+      return r;
+    };
+    const postForm = (path, o) => req(path, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: form(o) });
+    const sim = catalog.products.find((p) => p.type === 'simulatore');
+    let r = await postForm('/carrello/aggiungi', { slug: sim.slug });
+    assert.strictEqual(r.status, 303);
+    assert.match(await (await req('/carrello')).text(), new RegExp(sim.name.slice(0, 20).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+    r = await postForm('/checkout', { firstName: 'Mario', lastName: 'Rossi', email: 'mario@example.com', method: 'card', cardNumber: '4000 0000 0000 0002', cardExpiry: '12/39', cardCvc: '123', terms: 'on' });
+    assert.strictEqual(r.status, 422, 'la carta di rifiuto deve fallire');
+    r = await postForm('/checkout', { firstName: 'Mario', lastName: 'Rossi', email: 'mario@example.com', method: 'card', cardNumber: '4242 4242 4242 4242', cardExpiry: '12/39', cardCvc: '123', terms: 'on' });
+    assert.strictEqual(r.status, 303);
+    const orderUrl = r.headers.get('location');
+    assert.match(orderUrl, /^\/ordine\/G/);
+    assert.match(await (await req(orderUrl)).text(), /Grazie/);
+    const area = await (await req('/area-studenti')).text();
+    assert.ok(area.includes('Ciao') && area.includes(orderUrl.split('/').pop()));
+    assert.ok(!(await (await req('/carrello')).text()).includes('cart__row'), 'carrello svuotato');
   });
 
   server.close();
