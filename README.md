@@ -8,8 +8,10 @@ Contenuti, testi, logo, colori e catalogo sono ripresi dal sito attuale di Giure
 
 | Pagina | Contenuto |
 |---|---|
-| `/` | Hero con claim, promo del simulatore in evidenza, "I nostri corsi più amati", aree di formazione con ricerca, "Che cosa troverai su Giurello" (simulatori, dispense, podcast), ultimi concorsi, riassunti dei manuali, "Tutti i nostri corsi comprendono", recensioni reali, newsletter "Rimani aggiornato", FAQ |
-| `/concorsi`, `/concorsi/:area` | Catalogo completo (163 prodotti Thinkific) con aree, filtri per tipologia, ricerca e paginazione, tutto lato server |
+| `/` | Hero con ricerca e "più cercati", "Riprendi da dove eri", schede "Cosa stai preparando?" (concorso, università, avvocato), invito al percorso guidato, aree, offerta, novità, metodo, recensioni, FAQ, newsletter |
+| `/percorso`, `/percorso/risultato` | **Percorso guidato**: tre domande (obiettivo, area o bisogno, tempo) e un piano in quattro mosse con i prodotti consigliati |
+| `/concorsi`, `/concorsi/:area` | Catalogo completo (163 prodotti) con aree, tipologie, ricerca, ordinamento, filtri attivi rimovibili e paginazione, tutto lato server |
+| `/preferiti` | Prodotti salvati con il cuore |
 | `/prodotto/:slug` | Scheda prodotto: descrizione, prezzo, "Acquista ora" e "Aggiungi al carrello". Per i simulatori anche "Perché scegliere il nostro simulatore" e le FAQ originali; in fondo i prodotti correlati |
 | `/dispense`, `/universita`, `/podcast-e-altro`, `/avvocato` | Pagine di sezione con i testi originali e i prodotti collegati |
 | `/galletto` | Galletto AI: presentazione, piani di abbonamento, chat demo e generatore del piano di studio |
@@ -18,6 +20,18 @@ Contenuti, testi, logo, colori e catalogo sono ripresi dal sito attuale di Giure
 | `/carrello`, `/checkout`, `/ordine/:id` | Carrello e checkout interni con **pagamento simulato** (carta, rate, PayPal) |
 | `/accedi`, `/area-studenti` | Accesso demo (qualsiasi email e una password di almeno 6 caratteri) e libreria "I miei corsi" con lo storico ordini |
 | `/condizioni` | Condizioni generali del servizio (testo attuale da far verificare al legale) |
+
+### Navigazione ed esperienza utente
+
+- **Ricerca istantanea** (`Ctrl+K`, `/` o l'icona della lente): risultati mentre scrivi, parole trovate evidenziate, tolleranza ai refusi, navigazione da tastiera. La ricerca gira sul server (`/api/search`).
+- **Menu "Concorsi" allargato** con aree, tipologie e simulatore in evidenza; menu **Risorse**.
+- **Su mobile**: menu laterale e barra in basso (Home, Cerca, Percorso, Preferiti, Profilo).
+- **Mini carrello laterale**: "Aggiungi" funziona senza cambiare pagina.
+- **Preferiti** con il cuore e **"Riprendi da dove eri"** con i prodotti visti di recente.
+- **Scheda prodotto**: barra d'acquisto fissa quando il pulsante esce dallo schermo, "Salva" e "Condividi".
+- **Rifiniture**: transizioni tra le pagine, barra di avanzamento della lettura, pulsante "torna su", notifiche.
+- **Dati strutturati per Google**: organizzazione, FAQ, prodotti e percorso di navigazione.
+- Tutte le funzioni funzionano anche **senza JavaScript**, con normali form e link.
 
 ### Pagamenti nella demo
 

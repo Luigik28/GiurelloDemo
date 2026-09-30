@@ -1,11 +1,16 @@
+<% const isFav = typeof favs !== 'undefined' && favs.has(p.slug); %>
 <article class="pcard reveal">
   <div class="pcard__img">
     <% if (p.image) { %>
-      <img src="<%= p.image %>" alt="" loading="lazy" decoding="async">
+      <img src="<%= p.image %>" alt="" loading="lazy" decoding="async" width="800" height="500">
     <% } else { %>
-      <div class="pcard__ph pcard__ph--<%= p.type %>"><%- include('icon', { name: ({ dispensa: 'doc', schemi: 'doc', ebook: 'book', podcast: 'headphones', tutor: 'users', pacchetto: 'package', gratis: 'gift' })[p.type] || 'laptop' }) %></div>
+      <div class="pcard__ph pcard__ph--<%= p.type %>"><%- include('icon', { name: 'laptop' }) %></div>
     <% } %>
     <% if (p.isNew) { %><span class="badge">Nuovo</span><% } %>
+    <form class="fav" method="post" action="/preferiti/toggle" data-fav-form>
+      <input type="hidden" name="slug" value="<%= p.slug %>">
+      <button class="fav__btn <%= isFav ? 'is-on' : '' %>" aria-pressed="<%= isFav %>" aria-label="<%= isFav ? 'Rimuovi dai preferiti' : 'Salva nei preferiti' %>: <%= p.name %>"><%- include('icon', { name: 'heart', cls: 'i-off' }) %><%- include('icon', { name: 'heartfill', cls: 'i-on' }) %></button>
+    </form>
   </div>
   <div class="pcard__body">
     <span class="tag"><%= p.typeLabel %></span>
@@ -13,7 +18,10 @@
     <p><%= p.description %></p>
     <div class="pcard__foot">
       <% if (p.type === 'gratis') { %><span class="price price--free">Gratis</span><% } else { %><span class="price"><%= p.price %></span><% } %>
-      <span class="link-arrow">Scopri <%- include('icon', { name: 'arrow' }) %></span>
+      <form method="post" action="/carrello/aggiungi" data-add-form>
+        <input type="hidden" name="slug" value="<%= p.slug %>">
+        <button class="quick-add" aria-label="Aggiungi al carrello: <%= p.name %>"><%- include('icon', { name: 'cart' }) %><span>Aggiungi</span></button>
+      </form>
     </div>
   </div>
 </article>

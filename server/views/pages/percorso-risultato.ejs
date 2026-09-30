@@ -1,0 +1,40 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<section class="page-hero">
+  <div class="container">
+    <nav class="crumbs"><a href="/percorso">Trova il tuo percorso</a> / Il tuo piano</nav>
+    <span class="eyebrow">Il tuo percorso</span>
+    <h1><%= rec.goal.label %>: <span class="hl"><%= rec.need.label.toLowerCase() %></span></h1>
+    <p class="lead">Tempo a disposizione: <strong><%= rec.time.label.toLowerCase() %></strong>. Ecco cosa ti consigliamo per arrivare pronto, un passo alla volta.</p>
+    <div class="hero__actions"><a class="btn btn--white" href="/percorso?goal=<%= rec.goal.id %>">Modifica le risposte</a></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container path">
+    <div class="path__steps reveal">
+      <h2>Il piano in 4 mosse</h2>
+      <ol class="timeline">
+        <% rec.steps.forEach(function (s, i) { %><li><span><%= i + 1 %></span><p><%= s %></p></li><% }) %>
+      </ol>
+      <a class="btn btn--yellow" href="/galletto<%= rec.main[0] && rec.main[0].type === 'simulatore' ? '?corso=' + rec.main[0].slug : '' %>#piano"><%- include('../partials/icon', { name: 'spark' }) %> Fai calcolare il calendario a Galletto</a>
+    </div>
+    <div>
+      <span class="eyebrow">Consigliato per te</span>
+      <div class="grid grid--2">
+        <% rec.main.forEach(function (p) { %><%- include('../partials/product-card', { p: p }) %><% }) %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<% if (rec.extra.length) { %>
+<section class="section section--cream">
+  <div class="container">
+    <div class="section__head reveal"><span class="eyebrow">Per andare più veloce</span><h2>Da affiancare</h2></div>
+    <div class="grid"><% rec.extra.forEach(function (p) { %><%- include('../partials/product-card', { p: p }) %><% }) %></div>
+  </div>
+</section>
+<% } %>
+<%- include('../partials/cta-tutor') %>
+<%- include('../partials/footer') %>

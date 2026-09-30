@@ -55,19 +55,20 @@ function initTheme() {
 /* Navigazione -------------------------------------------------------------- */
 function initNav() {
   const nav = $('[data-nav]');
-  const menu = $('#menu');
-  const toggle = $('[data-menu-toggle]');
   if (!nav) return;
-  const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 8);
+  const bar = $('[data-progress]');
+  const top = $('[data-to-top]');
+  const onScroll = () => {
+    const y = window.scrollY;
+    nav.classList.toggle('is-scrolled', y > 8);
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    if (bar) bar.style.width = `${max > 0 ? (y / max) * 100 : 0}%`;
+    if (top) top.hidden = y < 900;
+  };
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
-  toggle?.addEventListener('click', () => {
-    const open = menu.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', String(open));
-  });
-  menu?.addEventListener('click', (e) => {
-    if (e.target.closest('a')) menu.classList.remove('is-open');
-  });
+  top?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
   $$('[data-drop]').forEach((drop) => {
     const btn = $('button', drop);
     btn.addEventListener('click', () => {
@@ -80,7 +81,350 @@ function initNav() {
         btn.setAttribute('aria-expanded', 'false');
       }
     });
+    drop.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        drop.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.focus();
+      }
+    });
   });
+}
+
+/* Pannelli laterali (menu mobile e mini carrello) -------------------------- */
+const drawers = {
+  open(name, opener) {
+    const d = $(`[data-drawer="${name}"]`);
+    if (!d) return;
+    d.hidden = false;
+    d._opener = opener || document.activeElement;
+    document.body.classList.add('is-locked');
+    requestAnimationFrame(() => d.classList.add('is-open'));
+    setTimeout(() => $('[data-drawer-close]', d)?.focus(), 50);
+  },
+  close(d) {
+    if (!d || d.hidden) return;
+    d.classList.remove('is-open');
+    document.body.classList.remove('is-locked');
+    setTimeout(() => {
+      d.hidden = true;
+      d._opener?.focus?.();
+    }, 280);
+  }
+};
+
+function trapFocus(container, e) {
+  const items = $$('a[href], button:not([disabled]), input, select, textarea, [tabindex="0"]', container).filter((x) => x.offsetParent !== null);
+  if (!items.length) return;
+  const first = items[0];
+  const last = items[items.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+}
+
+function initDrawers() {
+  $$('[data-drawer-open]').forEach((b) => b.addEventListener('click', () => drawers.open(b.dataset.drawerOpen, b)));
+  $$('[data-drawer]').forEach((d) => {
+    d.addEventListener('click', (e) => {
+      if (e.target === d || e.target.closest('[data-drawer-close]')) drawers.close(d);
+    });
+    d.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') drawers.close(d);
+      if (e.key === 'Tab') trapFocus(d, e);
+    });
+  });
+}
+
+/* Notifiche ----------------------------------------------------------------- */
+function toast(message, { image, link, icon = true } = {}) {
+  const box = $('[data-toasts]');
+  if (!box) return;
+  const t = el('div', { class: 'toast', role: 'status' });
+  if (image) t.append(el('img', { src: image, alt: '' }));
+  else if (icon) t.insertAdjacentHTML('beforeend', '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>');
+  t.append(el('span', { text: message }));
+  if (link) t.append(el('a', { href: link.href, text: link.label }));
+  box.append(t);
+  setTimeout(() => {
+    t.classList.add('is-out');
+    setTimeout(() => t.remove(), 300);
+  }, 3600);
+}
+
+/* Carrello senza ricaricare la pagina ------------------------------------- */
+function setBadge(sel, n) {
+  $$(sel).forEach((b) => {
+    b.textContent = n;
+    b.hidden = !n;
+  });
+}
+
+function renderMiniCart(data, highlight) {
+  const box = $('[data-minicart]');
+  if (!box) return;
+  setBadge('[data-cart-count]', data.count);
+  if (!data.count) {
+    box.replaceChildren(el('div', { class: 'minicart__empty' }, [el('strong', { text: 'Il carrello è vuoto' }), el('span', { text: 'Scegli un simulatore, una dispensa o un corso.' }), el('a', { class: 'btn btn--primary', href: '/concorsi', text: 'Vai ai corsi' })]));
+    return;
+  }
+  const items = el('div', { class: 'minicart__items' }, data.items.map((it) => {
+    const rm = el('button', { type: 'button', 'aria-label': `Rimuovi ${it.name}` });
+    rm.innerHTML = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+    rm.addEventListener('click', async () => {
+      const r = await api('/cart/remove', { slug: it.slug });
+      if (!r.error) renderMiniCart(r);
+    });
+    return el('div', { class: `minicart__item${it.slug === highlight ? ' is-new' : ''}` }, [
+      el('img', { src: it.image, alt: '' }),
+      el('span', {}, [el('a', { href: `/prodotto/${it.slug}`, text: it.name }), el('small', { text: it.price })]),
+      rm
+    ]);
+  }));
+  box.replaceChildren(
+    items,
+    el('div', { class: 'minicart__total' }, [el('span', { text: 'Totale' }), el('span', { text: data.total })]),
+    el('div', { class: 'minicart__actions' }, [el('a', { class: 'btn btn--primary btn--lg btn--block', href: '/checkout', text: 'Vai al pagamento' }), el('a', { class: 'btn btn--ghost btn--block', href: '/carrello', text: 'Vedi il carrello' })])
+  );
+}
+
+function initCart() {
+  // Icona carrello: apre il pannello laterale invece di cambiare pagina.
+  $$('[data-cart-open]').forEach((a) =>
+    a.addEventListener('click', async (e) => {
+      if (e.metaKey || e.ctrlKey || location.pathname === '/carrello' || location.pathname === '/checkout') return;
+      e.preventDefault();
+      renderMiniCart(await api('/cart'));
+      drawers.open('cart', a);
+    })
+  );
+  document.addEventListener('submit', async (e) => {
+    const form = e.target.closest('[data-add-form]');
+    if (!form) return;
+    if (e.submitter?.name === 'buyNow') return; // "Acquista ora" va direttamente al checkout
+    e.preventDefault();
+    const btn = e.submitter || $('button', form);
+    btn.disabled = true;
+    const slug = form.elements.slug.value;
+    const r = await api('/cart/add', { slug });
+    btn.disabled = false;
+    if (r.error) return toast(r.error, { icon: false });
+    btn.classList.add('is-done');
+    setTimeout(() => btn.classList.remove('is-done'), 1500);
+    renderMiniCart(r, slug);
+    drawers.open('cart', btn);
+  });
+}
+
+/* Preferiti ------------------------------------------------------------------ */
+function initFavorites() {
+  document.addEventListener('submit', async (e) => {
+    const form = e.target.closest('[data-fav-form]');
+    if (!form) return;
+    e.preventDefault();
+    const slug = form.elements.slug.value;
+    const r = await api('/favorites/toggle', { slug });
+    if (r.error) return;
+    $$(`[data-fav-form] input[value="${CSS.escape(slug)}"]`).forEach((inp) => {
+      const b = $('button', inp.form);
+      b.classList.toggle('is-on', r.on);
+      b.setAttribute('aria-pressed', String(r.on));
+      b.classList.remove('pop');
+      void b.offsetWidth;
+      b.classList.add('pop');
+      const label = $('[data-fav-label]', inp.form);
+      if (label) label.textContent = r.on ? 'Salvato' : 'Salva';
+    });
+    setBadge('[data-fav-count]', r.count);
+    toast(r.on ? 'Salvato nei preferiti' : 'Rimosso dai preferiti', r.on ? { link: { href: '/preferiti', label: 'Vedi' } } : {});
+  });
+}
+
+/* Ricerca istantanea (Ctrl+K o "/") --------------------------------------- */
+function initPalette() {
+  const pal = $('[data-palette]');
+  if (!pal) return;
+  const input = $('[data-palette-input]', pal);
+  const list = $('[data-palette-list]', pal);
+  let opener = null;
+  let active = -1;
+  let timer = null;
+  let seq = 0;
+
+  const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const highlight = (text, q) => {
+    const span = el('strong');
+    const terms = q.trim().split(/\s+/).filter((t) => t.length > 1).map(esc);
+    if (!terms.length) { span.textContent = text; return span; }
+    const re = new RegExp(`(${terms.join('|')})`, 'ig');
+    text.split(re).forEach((part, i) => span.append(i % 2 ? el('mark', { text: part }) : part));
+    return span;
+  };
+  const items = () => $$('[role="option"]', list);
+  const select = (i) => {
+    const all = items();
+    if (!all.length) return;
+    active = (i + all.length) % all.length;
+    all.forEach((x, j) => x.setAttribute('aria-selected', String(j === active)));
+    all[active].scrollIntoView({ block: 'nearest' });
+  };
+
+  async function run() {
+    const q = input.value;
+    const my = ++seq;
+    const r = await api(`/search?q=${encodeURIComponent(q)}`);
+    if (my !== seq) return; // risposta superata da una digitazione più recente
+    const nodes = [];
+    if (r.results?.length) {
+      nodes.push(el('div', { class: 'palette__group', text: 'Corsi e prodotti' }));
+      r.results.forEach((p) => {
+        const a = el('a', { class: 'palette__item', href: `/prodotto/${p.slug}`, role: 'option' }, [
+          el('img', { src: p.image, alt: '' }),
+          el('span', {}, [highlight(p.name, q), el('small', { text: p.type + (p.isNew ? ' · Nuovo' : '') })]),
+          el('em', { text: p.price })
+        ]);
+        nodes.push(a);
+      });
+    }
+    if (r.pages?.length) {
+      nodes.push(el('div', { class: 'palette__group', text: q ? 'Pagine' : 'Vai a' }));
+      r.pages.forEach((p) => {
+        const ico = el('span', { class: 'mega__ico' });
+        ico.innerHTML = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+        nodes.push(el('a', { class: 'palette__item palette__item--page', href: p.href, role: 'option' }, [ico, el('span', {}, [el('strong', { text: p.label })])]));
+      });
+    }
+    if (q && r.total > r.results.length) nodes.push(el('a', { class: 'palette__all', href: `/concorsi?q=${encodeURIComponent(q)}`, role: 'option', text: `Vedi tutti i ${r.total} risultati` }));
+    if (q && !r.results?.length) nodes.unshift(el('div', { class: 'palette__empty', text: `Nessun corso per «${q}». Prova con il nome dell’ente o della materia.` }));
+    list.replaceChildren(...nodes);
+    active = -1;
+    if (q) select(0);
+  }
+
+  const open = (seed = '') => {
+    opener = document.activeElement;
+    pal.hidden = false;
+    document.body.classList.add('is-locked');
+    requestAnimationFrame(() => pal.classList.add('is-open'));
+    input.value = seed;
+    input.focus();
+    run();
+  };
+  const close = () => {
+    pal.classList.remove('is-open');
+    document.body.classList.remove('is-locked');
+    setTimeout(() => { pal.hidden = true; opener?.focus?.(); }, 200);
+  };
+
+  $$('[data-search-open]').forEach((b) => b.addEventListener('click', () => { $$('[data-drawer]').forEach((d) => drawers.close(d)); open(); }));
+  // La ricerca della home apre la ricerca istantanea mentre si scrive.
+  const hero = $('[data-hero-search] input');
+  hero?.addEventListener('input', () => { const v = hero.value; hero.value = ''; open(v); });
+
+  document.addEventListener('keydown', (e) => {
+    const typing = /INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName) || document.activeElement?.isContentEditable;
+    if ((e.key === 'k' && (e.ctrlKey || e.metaKey)) || (e.key === '/' && !typing)) {
+      e.preventDefault();
+      pal.hidden ? open() : close();
+    }
+  });
+  input.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(run, 120); });
+  pal.addEventListener('click', (e) => { if (e.target === pal) close(); });
+  pal.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { e.preventDefault(); close(); }
+    else if (e.key === 'ArrowDown') { e.preventDefault(); select(active + 1); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); select(active - 1); }
+    else if (e.key === 'Enter' && active >= 0 && items()[active]) { e.preventDefault(); location.href = items()[active].href; }
+  });
+}
+
+/* Schede "Cosa stai preparando?" ------------------------------------------- */
+function initTabs() {
+  $$('[data-tabs]').forEach((root) => {
+    const tabs = $$('[role="tab"]', root);
+    const show = (tab) => {
+      tabs.forEach((t) => {
+        const on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        $(`#${t.getAttribute('aria-controls')}`).hidden = !on;
+      });
+      $$('.reveal', $(`#${tab.getAttribute('aria-controls')}`)).forEach((r) => r.classList.add('is-in'));
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => show(t));
+      t.addEventListener('keydown', (e) => {
+        const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (!d) return;
+        const next = tabs[(i + d + tabs.length) % tabs.length];
+        next.focus();
+        show(next);
+      });
+    });
+  });
+}
+
+/* Percorso guidato ------------------------------------------------------------ */
+function initWizard() {
+  const form = $('[data-wizard]');
+  if (!form) return;
+  const steps = $$('[data-step]', form);
+  const back = $('[data-wizard-back]', form);
+  const submit = $('[data-wizard-submit]', form);
+  const bar = $('[data-wizard-bar]', form);
+  const count = $('[data-wizard-count]', form);
+  let current = 0;
+
+  const syncNeeds = () => {
+    const goal = form.elements.goal.value;
+    $$('[data-for-goal]', form).forEach((g) => {
+      const on = g.dataset.forGoal === goal;
+      g.hidden = !on;
+      $$('input', g).forEach((i) => { i.disabled = !on; if (!on) i.checked = false; });
+    });
+    const titles = { concorso: 'In quale area è il tuo concorso?', universita: 'Di cosa hai bisogno?', avvocato: 'Come vuoi prepararti?' };
+    $('[data-need-title]', form).textContent = titles[goal] || 'Di cosa hai bisogno?';
+  };
+  const go = (i) => {
+    current = Math.max(0, Math.min(i, steps.length - 1));
+    steps.forEach((s, j) => s.classList.toggle('is-current', j === current));
+    bar.style.width = `${((current + 1) / steps.length) * 100}%`;
+    count.textContent = `Domanda ${current + 1} di ${steps.length}`;
+    back.hidden = current === 0;
+    submit.hidden = current < steps.length - 1;
+    $('input:checked, input:not([disabled])', steps[current])?.focus({ preventScroll: true });
+  };
+  form.addEventListener('change', (e) => {
+    if (e.target.name === 'goal') syncNeeds();
+    // Avanza da solo appena si sceglie una risposta.
+    if (current < steps.length - 1) setTimeout(() => go(current + 1), 220);
+  });
+  back.addEventListener('click', () => go(current - 1));
+  form.addEventListener('submit', (e) => {
+    if (!form.elements.goal.value) { e.preventDefault(); go(0); }
+  });
+  syncNeeds();
+  go(form.elements.goal.value ? 1 : 0);
+}
+
+/* Ordinamento del catalogo, barra d'acquisto, condivisione ----------------- */
+function initMisc() {
+  $$('[data-sort] select').forEach((s) => s.addEventListener('change', () => s.form.submit()));
+
+  const buybar = $('[data-buybar]');
+  const anchor = $('[data-buy-anchor]');
+  if (buybar && anchor && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([en]) => buybar.classList.toggle('is-visible', !en.isIntersecting && en.boundingClientRect.top < 0)).observe(anchor);
+  }
+
+  $$('[data-share]').forEach((b) =>
+    b.addEventListener('click', async () => {
+      const data = { title: b.dataset.title, url: location.href };
+      try {
+        if (navigator.share) await navigator.share(data);
+        else { await navigator.clipboard.writeText(location.href); toast('Link copiato negli appunti'); }
+      } catch { /* condivisione annullata */ }
+    })
+  );
 }
 
 /* Animazioni --------------------------------------------------------------- */
@@ -434,6 +778,13 @@ document.documentElement.classList.add('js');
 initTheme();
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
+  initDrawers();
+  initCart();
+  initFavorites();
+  initPalette();
+  initTabs();
+  initWizard();
+  initMisc();
   initReveal();
   initCounters();
   initRails();

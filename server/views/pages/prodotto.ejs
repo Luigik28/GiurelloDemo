@@ -9,6 +9,14 @@
       </div>
       <h1><%= product.name %></h1>
       <p class="product__desc"><%= product.description %></p>
+      <div class="product__tools">
+        <form method="post" action="/preferiti/toggle" data-fav-form>
+          <input type="hidden" name="slug" value="<%= product.slug %>">
+          <% const isFav = favs.has(product.slug); %>
+          <button class="btn btn--ghost btn--sm fav-inline <%= isFav ? 'is-on' : '' %>" aria-pressed="<%= isFav %>"><%- include('../partials/icon', { name: 'heart', cls: 'i-off' }) %><%- include('../partials/icon', { name: 'heartfill', cls: 'i-on' }) %> <span data-fav-label><%= isFav ? 'Salvato' : 'Salva' %></span></button>
+        </form>
+        <button class="btn btn--ghost btn--sm" type="button" data-share data-title="<%= product.name %>"><%- include('../partials/icon', { name: 'share' }) %> Condividi</button>
+      </div>
       <div class="tagrow">
         <span class="chip"><%= product.typeLabel %></span>
         <% product.areas.forEach(function (id) { const a = site.navAreas.concat([]).find(function (x) { return x.id === id; }); if (a) { %><a class="chip" href="/concorsi/<%= a.id %>"><%= a.label %></a><% } }) %>
@@ -23,7 +31,7 @@
       <% if (owned) { %>
         <a class="btn btn--primary btn--lg btn--block" href="/area-studenti">Già tuo: vai all’area studenti</a>
       <% } else { %>
-        <form method="post" action="/carrello/aggiungi" class="buy__forms">
+        <form method="post" action="/carrello/aggiungi" class="buy__forms" data-add-form data-buy-anchor>
           <input type="hidden" name="slug" value="<%= product.slug %>">
           <button class="btn btn--primary btn--lg btn--block" name="buyNow" value="1"><%= product.type === 'gratis' ? 'Ottienilo gratis' : 'Acquista ora' %></button>
           <button class="btn btn--yellow btn--block"><%- include('../partials/icon', { name: 'cart' }) %> Aggiungi al carrello</button>
@@ -46,6 +54,17 @@
     </aside>
   </div>
 </section>
+
+<div class="buybar" data-buybar>
+  <div class="container buybar__inner">
+    <div class="buybar__info"><strong><%= product.name %></strong><span><%= product.type === 'gratis' ? 'Gratis' : product.price %></span></div>
+    <% if (account && account.owned.includes(product.slug)) { %>
+      <a class="btn btn--primary" href="/area-studenti">Vai al corso</a>
+    <% } else { %>
+      <form method="post" action="/carrello/aggiungi" data-add-form><input type="hidden" name="slug" value="<%= product.slug %>"><button class="btn btn--primary"><%- include('../partials/icon', { name: 'cart' }) %> Aggiungi</button></form>
+    <% } %>
+  </div>
+</div>
 
 <% if (product.type === 'simulatore') { %>
 <section class="section">
@@ -96,4 +115,8 @@
 </section>
 <% } %>
 <%- include('../partials/cta-tutor') %>
+<script type="application/ld+json"><%- JSON.stringify({ '@context': 'https://schema.org', '@graph': [
+  { '@type': 'Product', name: product.name, description: product.description, image: site.baseUrl + product.image, brand: { '@type': 'Brand', name: 'Giurello' }, category: product.typeLabel, offers: { '@type': 'Offer', price: product.priceValue.toFixed(2), priceCurrency: 'EUR', availability: 'https://schema.org/InStock', url: site.baseUrl + '/prodotto/' + product.slug } },
+  { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Concorsi', item: site.baseUrl + '/concorsi' }].concat(area ? [{ '@type': 'ListItem', position: 2, name: area.label, item: site.baseUrl + '/concorsi/' + area.id }] : []).concat([{ '@type': 'ListItem', position: area ? 3 : 2, name: product.name }]) }
+] }).replace(/</g, '\u003c') %></script>
 <%- include('../partials/footer') %>

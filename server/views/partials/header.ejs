@@ -1,31 +1,100 @@
 <% if (site.announcement) { %>
-<div class="topbar"><%= site.announcement.text %><a href="<%= site.announcement.href %>"><%= site.announcement.cta %> →</a></div>
+<div class="topbar"><span class="topbar__long"><%= site.announcement.text %></span><span class="topbar__short"><%= site.announcement.short %></span><a href="<%= site.announcement.href %>"><%= site.announcement.cta %> →</a></div>
 <% } %>
 <header class="nav" data-nav>
   <div class="container nav__inner">
     <a class="brand" href="/" aria-label="Giurello – home"><img src="/img/logo.webp" alt="Giurello" width="104" height="44"></a>
-    <nav class="nav__links" id="menu" aria-label="Principale">
-      <a href="/" class="<%= currentPath === '/' ? 'is-active' : '' %>">Home</a>
-      <div class="nav__drop <%= currentPath.startsWith('/concorsi') ? 'is-active' : '' %>" data-drop>
+
+    <nav class="nav__links" aria-label="Principale">
+      <div class="nav__drop nav__drop--mega <%= currentPath.startsWith('/concorsi') ? 'is-active' : '' %>" data-drop>
         <button type="button" aria-expanded="false" aria-haspopup="true">Concorsi <%- include('icon', { name: 'chevron' }) %></button>
-        <div class="nav__menu">
-          <% site.navAreas.forEach(function (a) { %>
-            <a href="/concorsi/<%= a.id %>"><%- include('icon', { name: a.icon }) %> <%= a.label %></a>
-          <% }) %>
-          <hr>
-          <a href="/concorsi"><%- include('icon', { name: 'search' }) %> Tutti i concorsi</a>
+        <div class="mega">
+          <div class="mega__col">
+            <h3>Aree di formazione</h3>
+            <div class="mega__areas">
+              <% site.navAreas.forEach(function (a) { %>
+                <a href="/concorsi/<%= a.id %>"><span class="mega__ico"><%- include('icon', { name: a.icon }) %></span><span><strong><%= a.label %></strong><small><%= a.text %></small></span></a>
+              <% }) %>
+            </div>
+          </div>
+          <div class="mega__col mega__col--types">
+            <h3>Per tipologia</h3>
+            <a href="/concorsi?tipo=simulatore"><%- include('icon', { name: 'laptop' }) %> Simulatori</a>
+            <a href="/concorsi?tipo=dispensa"><%- include('icon', { name: 'doc' }) %> Dispense</a>
+            <a href="/concorsi?tipo=podcast"><%- include('icon', { name: 'headphones' }) %> Podcast</a>
+            <a href="/concorsi?tipo=pacchetto"><%- include('icon', { name: 'package' }) %> Pacchetti</a>
+            <a href="/concorsi?tipo=ebook"><%- include('icon', { name: 'book' }) %> Ebook normativi</a>
+            <a href="/concorsi?ordina=novita"><%- include('icon', { name: 'spark' }) %> Ultime novità</a>
+            <a class="mega__all" href="/concorsi">Tutto il catalogo →</a>
+          </div>
+          <% if (site.megaFeature) { const f = site.megaFeature; %>
+          <a class="mega__feature" href="/prodotto/<%= f.slug %>">
+            <img src="<%= f.image %>" alt="" loading="lazy" width="320" height="200">
+            <span class="badge">In evidenza</span>
+            <strong><%= f.name %></strong>
+            <small><%= f.price %> · scopri il simulatore →</small>
+          </a>
+          <% } %>
         </div>
       </div>
-      <% site.nav.forEach(function (item) { const on = currentPath === item.href || currentPath.startsWith(item.href + '/'); %>
-        <a href="<%= item.href %>" class="<%= on ? 'is-active' : '' %>" <%- on ? 'aria-current="page"' : '' %>><%= item.label %></a>
-      <% }) %>
+      <a href="/universita" class="<%= currentPath === '/universita' ? 'is-active' : '' %>">Università</a>
+      <a href="/avvocato" class="<%= currentPath === '/avvocato' ? 'is-active' : '' %>">Avvocato</a>
+      <div class="nav__drop <%= /^\/(dispense|podcast-e-altro|galletto|prova-simulatore)/.test(currentPath) ? 'is-active' : '' %>" data-drop>
+        <button type="button" aria-expanded="false" aria-haspopup="true">Risorse <%- include('icon', { name: 'chevron' }) %></button>
+        <div class="nav__menu">
+          <a href="/dispense"><%- include('icon', { name: 'doc' }) %><span><strong>Dispense</strong><small>Riassunti dei manuali, in PDF</small></span></a>
+          <a href="/podcast-e-altro"><%- include('icon', { name: 'headphones' }) %><span><strong>Podcast e altro</strong><small>Logica, inglese, tutor, schemi</small></span></a>
+          <a href="/galletto"><%- include('icon', { name: 'spark' }) %><span><strong>Galletto AI</strong><small>La tua IA per lo studio</small></span></a>
+          <a href="/prova-simulatore"><%- include('icon', { name: 'target' }) %><span><strong>Prova gratis</strong><small>5 quiz con correzione</small></span></a>
+        </div>
+      </div>
+      <a href="/chi-siamo" class="<%= currentPath === '/chi-siamo' ? 'is-active' : '' %>">Chi siamo</a>
+      <a href="/help" class="<%= currentPath === '/help' ? 'is-active' : '' %>">Help</a>
     </nav>
+
     <div class="nav__tools">
-      <button class="icon-btn" type="button" data-theme-toggle aria-label="Cambia tema"><%- include('icon', { name: 'moon', cls: 'i-moon' }) %><%- include('icon', { name: 'sun', cls: 'i-sun' }) %></button>
-      <a class="icon-btn <%= account ? 'is-logged' : '' %>" href="<%= account ? site.accountUrl : site.loginUrl %>" aria-label="<%= account ? 'Area studenti' : 'Accedi' %>" title="<%= account ? 'Area studenti: ' + account.email : 'Accedi' %>"><%- include('icon', { name: 'user' }) %></a>
-      <a class="icon-btn cart-btn" href="<%= site.cartUrl %>" aria-label="Carrello<%= cartCount ? ', ' + cartCount + ' prodotti' : '' %>" title="Carrello"><%- include('icon', { name: 'cart' }) %><% if (cartCount) { %><span class="cart-btn__n"><%= cartCount %></span><% } %></a>
-      <button class="icon-btn nav__burger" type="button" data-menu-toggle aria-controls="menu" aria-expanded="false" aria-label="Apri menu"><%- include('icon', { name: 'menu' }) %></button>
+      <button class="search-trigger" type="button" data-search-open aria-label="Cerca (Ctrl+K)">
+        <%- include('icon', { name: 'search' }) %><span>Cerca un concorso…</span><kbd>Ctrl K</kbd>
+      </button>
+      <button class="icon-btn hide-lg" type="button" data-search-open aria-label="Cerca"><%- include('icon', { name: 'search' }) %></button>
+      <button class="icon-btn hide-sm" type="button" data-theme-toggle aria-label="Cambia tema"><%- include('icon', { name: 'moon', cls: 'i-moon' }) %><%- include('icon', { name: 'sun', cls: 'i-sun' }) %></button>
+      <a class="icon-btn hide-sm fav-btn" href="/preferiti" aria-label="Preferiti" title="Preferiti"><%- include('icon', { name: 'heart' }) %><span class="cart-btn__n" data-fav-count <%= favs.size ? '' : 'hidden' %>><%= favs.size %></span></a>
+      <a class="icon-btn hide-sm <%= account ? 'is-logged' : '' %>" href="<%= account ? site.accountUrl : site.loginUrl %>" aria-label="<%= account ? 'Area studenti' : 'Accedi' %>" title="<%= account ? 'Area studenti: ' + account.email : 'Accedi' %>"><%- include('icon', { name: 'user' }) %></a>
+      <a class="icon-btn cart-btn" href="<%= site.cartUrl %>" data-cart-open aria-label="Carrello" title="Carrello"><%- include('icon', { name: 'cart' }) %><span class="cart-btn__n" data-cart-count <%= cartCount ? '' : 'hidden' %>><%= cartCount %></span></a>
+      <button class="icon-btn nav__burger" type="button" data-drawer-open="menu" aria-label="Apri menu"><%- include('icon', { name: 'menu' }) %></button>
     </div>
   </div>
+  <div class="nav__progress" data-progress aria-hidden="true"></div>
 </header>
+
+<%# Menu mobile a scomparsa %>
+<div class="drawer drawer--left" id="drawer-menu" data-drawer="menu" hidden>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="drawer__head">
+      <img src="/img/logo.webp" alt="Giurello" width="94" height="40">
+      <button class="icon-btn" type="button" data-drawer-close aria-label="Chiudi menu"><%- include('icon', { name: 'x' }) %></button>
+    </div>
+    <button class="search-trigger search-trigger--block" type="button" data-search-open><%- include('icon', { name: 'search' }) %><span>Cerca un concorso, una materia…</span></button>
+    <a class="drawer__cta" href="/percorso"><%- include('icon', { name: 'compass' }) %><span><strong>Non sai da dove iniziare?</strong><small>Trova il tuo percorso in 30 secondi</small></span></a>
+    <details class="drawer__group" open>
+      <summary>Concorsi</summary>
+      <% site.navAreas.forEach(function (a) { %><a href="/concorsi/<%= a.id %>"><%- include('icon', { name: a.icon }) %> <%= a.label %></a><% }) %>
+      <a href="/concorsi"><%- include('icon', { name: 'search' }) %> Tutto il catalogo</a>
+    </details>
+    <details class="drawer__group">
+      <summary>Risorse</summary>
+      <a href="/dispense"><%- include('icon', { name: 'doc' }) %> Dispense</a>
+      <a href="/podcast-e-altro"><%- include('icon', { name: 'headphones' }) %> Podcast e altro</a>
+      <a href="/galletto"><%- include('icon', { name: 'spark' }) %> Galletto AI</a>
+      <a href="/prova-simulatore"><%- include('icon', { name: 'target' }) %> Prova gratis</a>
+    </details>
+    <nav class="drawer__links">
+      <a href="/universita">Università</a><a href="/avvocato">Avvocato</a><a href="/chi-siamo">Chi siamo</a><a href="/help">Help</a>
+    </nav>
+    <div class="drawer__foot">
+      <a class="btn btn--primary btn--block" href="<%= account ? site.accountUrl : site.loginUrl %>"><%- include('icon', { name: 'user' }) %> <%= account ? 'Area studenti' : 'Accedi' %></a>
+      <button class="btn btn--ghost btn--block" type="button" data-theme-toggle><%- include('icon', { name: 'moon', cls: 'i-moon' }) %><%- include('icon', { name: 'sun', cls: 'i-sun' }) %> Cambia tema</button>
+    </div>
+  </div>
+</div>
 <main id="main">

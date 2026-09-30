@@ -158,8 +158,70 @@ function related(product, n) {
     .map((x) => x.p);
 }
 
+/* Ricerca istantanea -------------------------------------------------------- */
+const norm = (s) => String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+const SEARCH_STOP = new Set(['di', 'del', 'della', 'delle', 'dei', 'degli', 'per', 'il', 'la', 'le', 'lo', 'gli', 'un', 'una', 'e', 'a', 'al', 'in', 'con']);
+const index = products.map((p) => ({
+  p,
+  name: norm(p.name),
+  words: norm(p.name).split(/[^a-z0-9]+/).filter(Boolean),
+  text: norm(`${p.description} ${p.typeLabel} ${p.areas.join(' ')}`)
+}));
+
+// Distanza di modifica limitata (per tollerare un refuso nelle parole lunghe).
+function near(a, b) {
+  if (Math.abs(a.length - b.length) > 1) return false;
+  let i = 0;
+  let j = 0;
+  let edits = 0;
+  while (i < a.length && j < b.length) {
+    if (a[i] === b[j]) { i++; j++; continue; }
+    if (++edits > 1) return false;
+    if (a.length > b.length) i++;
+    else if (b.length > a.length) j++;
+    else { i++; j++; }
+  }
+  return edits + (a.length - i) + (b.length - j) <= 1;
+}
+
+/** Ricerca con punteggio: titolo > parole del titolo > descrizione; tollera accenti e un refuso. */
+function quickSearch(q, limit = 8) {
+  const terms = norm(q).split(/[^a-z0-9]+/).filter((t) => t && !SEARCH_STOP.has(t));
+  if (!terms.length) return [];
+  const full = norm(q).trim();
+  const scored = [];
+  for (const it of index) {
+    let score = 0;
+    let matched = 0;
+    for (const t of terms) {
+      let s = 0;
+      if (it.words.some((w) => w.startsWith(t))) s = 3;
+      else if (it.name.includes(t)) s = 2;
+      else if (t.length >= 5 && it.words.some((w) => near(w.slice(0, t.length + 1), t) || near(w, t))) s = 1.5;
+      else if (it.text.includes(t)) s = 0.8;
+      if (s) matched++;
+      score += s;
+    }
+    if (matched < terms.length) continue; // tutte le parole devono trovare riscontro
+    if (it.name.startsWith(full)) score += 3;
+    if (it.p.isNew) score += 0.3;
+    scored.push({ p: it.p, score });
+  }
+  return scored.sort((a, b) => b.score - a.score || a.p.order - b.p.order).slice(0, limit).map((x) => x.p);
+}
+
+const SORTS = {
+  consigliati: { label: 'Consigliati', fn: (a, b) => a.order - b.order },
+  novita: { label: 'Novità', fn: (a, b) => Number(b.isNew) - Number(a.isNew) || a.order - b.order },
+  'prezzo-asc': { label: 'Prezzo crescente', fn: (a, b) => a.priceValue - b.priceValue },
+  'prezzo-desc': { label: 'Prezzo decrescente', fn: (a, b) => b.priceValue - a.priceValue },
+  az: { label: 'A → Z', fn: (a, b) => a.name.localeCompare(b.name, 'it') }
+};
+
 module.exports = {
   related,
+  quickSearch,
+  SORTS,
   syncedAt: raw.syncedAt,
   areas,
   types,

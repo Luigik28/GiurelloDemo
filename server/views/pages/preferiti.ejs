@@ -1,0 +1,21 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<section class="section section--cream shop">
+  <div class="container">
+    <h1 class="shop__title">I miei preferiti</h1>
+    <% if (!items.length) { %>
+      <div class="card empty-cart">
+        <span class="icon-tile"><%- include('../partials/icon', { name: 'heart' }) %></span>
+        <h2>Nessun preferito, per ora</h2>
+        <p class="muted">Tocca il cuore su un corso per salvarlo qui e ritrovarlo quando vuoi.</p>
+        <a class="btn btn--primary btn--lg" href="/concorsi">Esplora i corsi</a>
+      </div>
+      <div class="section__head shop__more"><span class="eyebrow">Per iniziare</span><h2>Le ultime novità</h2></div>
+      <div class="grid"><% suggestions.forEach(function (p) { %><%- include('../partials/product-card', { p: p }) %><% }) %></div>
+    <% } else { %>
+      <p class="muted"><%= items.length %> <%= items.length === 1 ? 'prodotto salvato' : 'prodotti salvati' %></p>
+      <div class="grid"><% items.forEach(function (p) { %><%- include('../partials/product-card', { p: p }) %><% }) %></div>
+    <% } %>
+  </div>
+</section>
+<%- include('../partials/footer') %>

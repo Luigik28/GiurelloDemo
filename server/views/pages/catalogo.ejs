@@ -22,8 +22,24 @@
           <h2><%= heading %></h2>
           <p><%= area ? area.text + ' · ' : '' %><%= total %> <%= total === 1 ? 'prodotto' : 'prodotti' %></p>
         </div>
-        <% if (q) { %><a class="chip" href="<%= base %><%= qs({ q: '', pagina: 1 }) %>">Rimuovi ricerca ✕</a><% } %>
+        <form class="sort" method="get" action="<%= base %>" data-sort>
+          <% if (q) { %><input type="hidden" name="q" value="<%= q %>"><% } %>
+          <% if (type) { %><input type="hidden" name="tipo" value="<%= type %>"><% } %>
+          <label for="ordina">Ordina per</label>
+          <select id="ordina" name="ordina">
+            <% Object.keys(sorts).forEach(function (k) { %><option value="<%= k %>" <%= sort === k ? 'selected' : '' %>><%= sorts[k].label %></option><% }) %>
+          </select>
+          <noscript><button class="btn btn--sm btn--ghost">Applica</button></noscript>
+        </form>
       </div>
+      <% if (q || type || area) { %>
+        <div class="active-filters" aria-label="Filtri attivi">
+          <% if (area) { %><a class="chip chip--active" href="/concorsi<%= qs({ pagina: 1 }) %>"><%= area.label %> ✕</a><% } %>
+          <% if (type) { %><a class="chip chip--active" href="<%= base %><%= qs({ tipo: '', pagina: 1 }) %>"><%= types[type].label %> ✕</a><% } %>
+          <% if (q) { %><a class="chip chip--active" href="<%= base %><%= qs({ q: '', pagina: 1 }) %>">«<%= q %>» ✕</a><% } %>
+          <a class="link-reset" href="/concorsi">Azzera tutto</a>
+        </div>
+      <% } %>
       <div class="chips-row catalog__types" aria-label="Filtra per tipologia">
         <a class="chip <%= !type ? 'is-on' : '' %>" href="<%= base %><%= qs({ tipo: '', pagina: 1 }) %>">Tutto</a>
         <% Object.keys(types).forEach(function (t) { if (!typeCounts[t]) return; %>

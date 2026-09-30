@@ -12,6 +12,8 @@ const catalog = require('../data/catalog');
 const cookies = require('../lib/cookies');
 
 const CART = 'g_cart';
+const FAV = 'g_fav';
+const SEEN = 'g_seen';
 const ACCOUNT = 'g_acct';
 const MAX_ITEMS = 20;
 const MAX_OWNED = 40;
@@ -44,11 +46,13 @@ function addToCart(req, res, slug) {
   const slugs = cartSlugs(req);
   if (!slugs.includes(p.slug)) slugs.push(p.slug);
   saveCart(res, slugs);
-  return true;
+  return slugs;
 }
 
 function removeFromCart(req, res, slug) {
-  saveCart(res, cartSlugs(req).filter((s) => s !== slug));
+  const slugs = cartSlugs(req).filter((s) => s !== slug);
+  saveCart(res, slugs);
+  return slugs;
 }
 
 /* Account ----------------------------------------------------------------- */
@@ -165,4 +169,42 @@ function findOrder(req, id) {
   return lib ? lib.orders.find((o) => o.id === id) || null : null;
 }
 
-module.exports = { getCart, addToCart, removeFromCart, getAccount, login, logout, library, checkout, findOrder, fmt };
+/* Preferiti e visti di recente --------------------------------------------- */
+const slugList = (req, name) => {
+  const c = cookies.getSigned(req, name);
+  return Array.isArray(c?.i) ? c.i.filter((s) => catalog.get(s)) : [];
+};
+
+function favorites(req) {
+  return slugList(req, FAV);
+}
+
+function toggleFavorite(req, res, slug) {
+  const p = catalog.get(slug);
+  if (!p) return null;
+  const list = favorites(req);
+  const on = !list.includes(p.slug);
+  const next = on ? [p.slug, ...list].slice(0, 30) : list.filter((s) => s !== p.slug);
+  if (next.length) cookies.setSigned(res, FAV, { i: next }, 180);
+  else cookies.clear(res, FAV);
+  return { on, count: next.length };
+}
+
+function recentlyViewed(req) {
+  return slugList(req, SEEN);
+}
+
+function markViewed(req, res, slug) {
+  const next = [slug, ...recentlyViewed(req).filter((s) => s !== slug)].slice(0, 8);
+  cookies.setSigned(res, SEEN, { i: next }, 60);
+}
+
+/** Riepilogo carrello per le chiamate API (mini carrello laterale). */
+function cartSummary(req, extraSlugs) {
+  const slugs = extraSlugs || cartSlugs(req);
+  const items = slugs.map((sl) => catalog.get(sl)).filter(Boolean);
+  const total = items.reduce((sum, p) => sum + p.priceValue, 0);
+  return { count: items.length, total: fmt(total), items: items.map((p) => ({ slug: p.slug, name: p.name, price: p.price || 'Gratis', image: p.image, type: p.typeLabel })) };
+}
+
+module.exports = { favorites, toggleFavorite, recentlyViewed, markViewed, cartSummary, cartSlugs, getCart, addToCart, removeFromCart, getAccount, login, logout, library, checkout, findOrder, fmt };

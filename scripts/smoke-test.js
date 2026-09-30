@@ -14,7 +14,7 @@ const server = app.listen(0, async () => {
     try { await fn(); console.log(`  ok  ${name}`); } catch (e) { failures++; console.log(`  FAIL ${name}: ${e.message}`); }
   };
 
-  const pages = ['/', '/concorsi', '/concorsi?tipo=dispensa&pagina=2', '/concorsi?q=inps', '/dispense', '/universita', '/podcast-e-altro', '/galletto', '/avvocato', '/chi-siamo', '/help', '/prova-simulatore', '/condizioni', '/carrello', '/accedi', '/robots.txt', '/sitemap.xml', '/healthz', ...catalog.areas.map((a) => `/concorsi/${a.id}`), ...catalog.products.map((p) => `/prodotto/${p.slug}`)];
+  const pages = ['/', '/concorsi', '/concorsi?tipo=dispensa&pagina=2', '/concorsi?q=inps', '/dispense', '/universita', '/podcast-e-altro', '/galletto', '/avvocato', '/chi-siamo', '/help', '/prova-simulatore', '/condizioni', '/carrello', '/accedi', '/percorso', '/percorso?goal=avvocato', '/percorso/risultato?goal=concorso&need=area-giuridica&time=medio', '/percorso/risultato?goal=universita&need=tesi&time=breve', '/percorso/risultato?goal=avvocato&need=tracce&time=lungo', '/preferiti', '/concorsi?ordina=prezzo-asc', '/concorsi/area-economica?tipo=dispensa&ordina=az', '/robots.txt', '/sitemap.xml', '/healthz', ...catalog.areas.map((a) => `/concorsi/${a.id}`), ...catalog.products.map((p) => `/prodotto/${p.slug}`)];
   for (const p of pages) await check(`GET ${p}`, async () => assert.strictEqual((await get(p)).status, 200));
   await check('404', async () => assert.strictEqual((await get('/non-esiste')).status, 404));
   await check('CSP header', async () => assert.match((await get('/')).headers.get('content-security-policy'), /script-src 'self'/));
@@ -56,6 +56,29 @@ const server = app.listen(0, async () => {
   await check('contatti: validazione', async () => {
     const r = await post('/api/contact', { name: 'x', email: 'no' });
     assert.strictEqual(r.status, 422);
+  });
+
+  await check('ricerca istantanea (anche con refusi)', async () => {
+    const r = await (await get('/api/search?q=' + encodeURIComponent('diritto amministativo'))).json();
+    assert.ok(r.results.length > 0 && /amministrativ/i.test(r.results[0].name));
+    const e = await (await get('/api/search?q=')).json();
+    assert.ok(e.pages.length > 0);
+  });
+
+  await check('ordinamento per prezzo', async () => {
+    const html = await (await get('/concorsi?ordina=prezzo-desc')).text();
+    const prices = [...html.matchAll(/class="price">€([\d,]+)/g)].map((m) => Number(m[1].replace(',', '.')));
+    assert.ok(prices.length > 3 && prices.every((p, i) => i === 0 || prices[i - 1] >= p));
+  });
+
+  await check('api carrello e preferiti', async () => {
+    const slug = catalog.products[2].slug;
+    const r = await post('/api/cart/add', { slug });
+    const j = await r.json();
+    assert.strictEqual(j.count, 1);
+    assert.ok(r.headers.get('set-cookie').includes('g_cart='));
+    const f = await (await post('/api/favorites/toggle', { slug })).json();
+    assert.strictEqual(f.on, true);
   });
 
   await check('nessun link a Thinkific nelle pagine', async () => {

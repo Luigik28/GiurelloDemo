@@ -5,6 +5,8 @@ const site = require('../data/site');
 const catalog = require('../data/catalog');
 const quiz = require('../services/quizService');
 const galletto = require('../services/gallettoService');
+const shop = require('../services/shopService');
+const paths = require('../services/pathService');
 
 const router = express.Router();
 const PAGE_SIZE = 12;
@@ -18,7 +20,13 @@ router.get('/', (req, res) => {
     latest: catalog.products.filter((p) => p.isNew).slice(0, 8),
     manuals: pick(['Dispensa di Diritto degli Enti Locali', 'Dispensa di diritto degli appalti pubblici', "Dispensa di diritto dell'Unione Europea", 'Dispensa di diritto Amministrativo']),
     areas: catalog.areas.filter((a) => a.id !== 'area-umanistica'),
-    areaCounts: catalog.countBy(catalog.products, 'areas')
+    areaCounts: catalog.countBy(catalog.products, 'areas'),
+    audiences: [
+      { id: 'concorsi', label: 'Preparo un concorso', icon: 'target', title: 'Simulatori con il piano di studio già integrato', text: '150 quiz al giorno, spiegazioni per ogni risposta e statistiche: tu devi solo esercitarti.', href: '/concorsi?tipo=simulatore', cta: 'Tutti i simulatori', items: catalog.search({ type: 'simulatore' }).slice(0, 8) },
+      { id: 'universita', label: 'Studio Giurisprudenza', icon: 'cap', title: 'Metodo, dispense e corsi per ogni esame', text: 'Dal primo esame alla tesi: materiali brevi, chiari e basati sui manuali più usati.', href: '/universita', cta: "Vai all'area universitaria", items: catalog.search({ area: 'area-universitaria' }).slice(0, 8) },
+      { id: 'avvocato', label: 'Diventerò avvocato', icon: 'gavel', title: "Tutto per l'esame d'avvocato", text: 'Tracce con correzione, dispense, podcast di ripasso e un percorso completo online.', href: '/avvocato', cta: "Scopri il percorso", items: catalog.search({ area: 'esame-avvocato' }).slice(0, 8) }
+    ],
+    seen: shop.recentlyViewed(req).map((s) => catalog.get(s)).filter(Boolean)
   });
 });
 
@@ -30,13 +38,14 @@ function renderCatalog(req, res, next) {
   const q = String(req.query.q || '').slice(0, 80);
 
   const inArea = catalog.search({ area: areaId || undefined, q });
-  const results = type ? inArea.filter((p) => p.type === type) : inArea;
+  const sort = catalog.SORTS[req.query.ordina] ? req.query.ordina : 'consigliati';
+  const results = (type ? inArea.filter((p) => p.type === type) : inArea).slice().sort(catalog.SORTS[sort].fn);
   const pages = Math.max(1, Math.ceil(results.length / PAGE_SIZE));
   const page = Math.min(Math.max(parseInt(req.query.pagina, 10) || 1, 1), pages);
 
   const qs = (over) => {
     const params = new URLSearchParams();
-    const v = { tipo: type, q, ...over };
+    const v = { tipo: type, q, ordina: sort === 'consigliati' ? '' : sort, ...over };
     for (const [k, val] of Object.entries(v)) if (val && !(k === 'pagina' && val === 1)) params.set(k, val);
     const s = params.toString();
     return s ? `?${s}` : '';
@@ -61,6 +70,8 @@ function renderCatalog(req, res, next) {
     page,
     pages,
     base: area ? `/concorsi/${area.id}` : '/concorsi',
+    sort,
+    sorts: catalog.SORTS,
     qs
   });
 }
@@ -72,6 +83,8 @@ router.get('/prodotto/:slug', (req, res, next) => {
   const product = catalog.get(req.params.slug);
   if (!product) return next();
   const related = catalog.related(product, 3);
+  shop.markViewed(req, res, product.slug);
+  res.locals.noCache = true;
   res.render('pages/prodotto', {
     title: `${product.name} | Giurello`,
     metaDescription: product.description.slice(0, 160),
@@ -138,6 +151,33 @@ router.get('/help', (req, res) => {
   res.render('pages/help', { title: 'Help e contatti | Giurello', metaDescription: 'Hai domande? Contattaci: ti rispondiamo entro 48 ore.' });
 });
 
+router.get('/percorso', (req, res) => {
+  res.render('pages/percorso', {
+    title: 'Trova il tuo percorso | Giurello',
+    metaDescription: 'Rispondi a tre domande e scopri il percorso di preparazione più adatto a te.',
+    goals: paths.GOALS,
+    needs: paths.NEEDS,
+    times: paths.TIMES,
+    preset: { goal: String(req.query.goal || '') }
+  });
+});
+
+router.get('/percorso/risultato', (req, res) => {
+  const rec = paths.recommend(req.query);
+  if (!rec) return res.redirect(303, '/percorso');
+  res.locals.noCache = true;
+  res.render('pages/percorso-risultato', { title: 'Il tuo percorso | Giurello', metaDescription: 'Il percorso di preparazione consigliato da Giurello.', rec });
+});
+
+router.get('/preferiti', (req, res) => {
+  res.locals.noCache = true;
+  res.render('pages/preferiti', {
+    title: 'I miei preferiti | Giurello',
+    items: shop.favorites(req).map((s) => catalog.get(s)).filter(Boolean),
+    suggestions: catalog.products.filter((p) => p.isNew).slice(0, 3)
+  });
+});
+
 router.get('/condizioni', (req, res) => {
   res.render('pages/condizioni', { title: 'Condizioni generali del servizio | Giurello', metaDescription: 'Condizioni generali di contratto per i corsi e i prodotti Giurello.', terms: require('../data/terms.json') });
 });
@@ -167,7 +207,7 @@ router.get('/robots.txt', (req, res) => {
 
 router.get('/sitemap.xml', (req, res) => {
   const paths = [
-    '/', '/concorsi', '/condizioni', '/dispense', '/universita', '/podcast-e-altro', '/galletto', '/avvocato', '/chi-siamo', '/help', '/prova-simulatore',
+    '/', '/concorsi', '/percorso', '/condizioni', '/dispense', '/universita', '/podcast-e-altro', '/galletto', '/avvocato', '/chi-siamo', '/help', '/prova-simulatore',
     ...catalog.areas.map((a) => `/concorsi/${a.id}`),
     ...catalog.products.map((p) => `/prodotto/${p.slug}`)
   ];

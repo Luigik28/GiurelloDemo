@@ -8,7 +8,7 @@ const shop = require('../services/shopService');
 const router = express.Router();
 
 // Pagine personali: mai in cache.
-router.use(['/carrello', '/checkout', '/ordine', '/accedi', '/esci', '/area-studenti'], (req, res, next) => {
+router.use(['/carrello', '/preferiti', '/checkout', '/ordine', '/accedi', '/esci', '/area-studenti'], (req, res, next) => {
   res.locals.noCache = true;
   res.set('Cache-Control', 'private, no-store');
   next();
@@ -40,6 +40,12 @@ router.post('/carrello/aggiungi', (req, res) => {
 router.post('/carrello/rimuovi', (req, res) => {
   shop.removeFromCart(req, res, String(req.body.slug || ''));
   res.redirect(303, '/carrello');
+});
+
+router.post('/preferiti/toggle', (req, res) => {
+  shop.toggleFavorite(req, res, String(req.body.slug || ''));
+  const back = safeBack((req.get('referer') || '').replace(/^https?:\/\/[^/]+/, ''), '/preferiti');
+  res.redirect(303, back);
 });
 
 /* Checkout ---------------------------------------------------------------- */

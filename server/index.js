@@ -63,6 +63,7 @@ app.use((req, res, next) => {
   res.locals.canonical = site.baseUrl + (req.path === '/' ? '' : req.path);
   res.locals.cartCount = shop.getCart(req).count;
   res.locals.account = shop.getAccount(req);
+  res.locals.favs = new Set(shop.favorites(req));
   next();
 });
 
@@ -77,7 +78,8 @@ const minifyOptions = {
 };
 app.use((req, res, next) => {
   // Le pagine con carrello o utente sono personali: niente cache condivisa.
-  const personal = Boolean(cookies.parse(req).g_cart || cookies.parse(req).g_acct);
+  const c = cookies.parse(req);
+  const personal = Boolean(c.g_cart || c.g_acct || c.g_fav || c.g_seen);
   const key = !personal && req.method === 'GET' && Object.keys(req.query).length === 0 ? req.path : null;
   if (config.isProd && key && htmlCache.has(key) && !res.locals.noCache) {
     res.type('html').set('Cache-Control', 'public, max-age=300');

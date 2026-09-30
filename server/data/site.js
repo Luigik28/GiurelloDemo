@@ -42,9 +42,12 @@ module.exports = {
   ],
   announcement: {
     text: 'Nuovo: preparati al concorso INPS per Funzionari PECS con il nostro simulatore!',
+    short: 'Nuovo simulatore INPS PECS',
     cta: 'Scopri di più',
     href: productHref('Corso completo Funzionari INPS')
   },
+  // Card "in evidenza" nel menu Concorsi: il simulatore più recente
+  megaFeature: require('./catalog').products.find((p) => p.isNew && p.type === 'simulatore') || null,
   navAreas: areas.filter((a) => a.id !== 'area-umanistica'),
   nav: [
     { label: 'Dispense', href: '/dispense' },
@@ -90,7 +93,8 @@ module.exports = {
       bullets: ['Podcast e videolezioni', 'Schemi Salva Estate', 'Corso di inglese per concorsisti', 'Puoi ascoltarlo dove e quando vuoi', 'Corso di logica per concorso', 'Corsi situazionali per concorsi'],
       price: '€15 - €150',
       note: 'Gli strumenti con cui possiamo aiutarti sono vari e per tutte le tasche: dai uno sguardo alla nostra libreria.',
-      cta: 'Scopri di più',
+      short: 'Nuovo simulatore INPS PECS',
+    cta: 'Scopri di più',
       href: '/podcast-e-altro'
     }
   ],

@@ -1,0 +1,33 @@
+<%# Ricerca istantanea (Ctrl+K) %>
+<div class="palette" data-palette hidden>
+  <div class="palette__box" role="dialog" aria-modal="true" aria-label="Cerca">
+    <form class="palette__bar" action="/concorsi" method="get" role="search">
+      <%- include('icon', { name: 'search' }) %>
+      <label class="sr-only" for="palette-q">Cerca</label>
+      <input id="palette-q" name="q" type="search" autocomplete="off" placeholder="Cerca un concorso, una materia, un ente…" data-palette-input aria-controls="palette-list" aria-autocomplete="list">
+      <kbd>Esc</kbd>
+    </form>
+    <div class="palette__body" id="palette-list" data-palette-list role="listbox" aria-label="Risultati"></div>
+    <div class="palette__foot"><span><kbd>↑</kbd><kbd>↓</kbd> per muoverti</span><span><kbd>↵</kbd> per aprire</span><span><kbd>/</kbd> per cercare ovunque</span></div>
+  </div>
+</div>
+
+<%# Mini carrello laterale %>
+<div class="drawer drawer--right" data-drawer="cart" hidden>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Carrello">
+    <div class="drawer__head"><h2>Il tuo carrello</h2><button class="icon-btn" type="button" data-drawer-close aria-label="Chiudi carrello"><%- include('icon', { name: 'x' }) %></button></div>
+    <div class="minicart" data-minicart></div>
+  </div>
+</div>
+
+<%# Barra di navigazione mobile %>
+<nav class="tabbar" aria-label="Navigazione rapida">
+  <a href="/" class="<%= currentPath === '/' ? 'is-on' : '' %>"><%- include('icon', { name: 'home' }) %><span>Home</span></a>
+  <button type="button" data-search-open><%- include('icon', { name: 'search' }) %><span>Cerca</span></button>
+  <a href="/percorso" class="<%= currentPath.startsWith('/percorso') ? 'is-on' : '' %>"><%- include('icon', { name: 'compass' }) %><span>Percorso</span></a>
+  <a href="/preferiti" class="<%= currentPath === '/preferiti' ? 'is-on' : '' %>"><%- include('icon', { name: 'heart' }) %><span>Preferiti</span></a>
+  <a href="<%= account ? site.accountUrl : site.loginUrl %>" class="<%= /^\/(area-studenti|accedi)/.test(currentPath) ? 'is-on' : '' %>"><%- include('icon', { name: 'user' }) %><span><%= account ? 'Profilo' : 'Accedi' %></span></a>
+</nav>
+
+<div class="toasts" data-toasts aria-live="polite"></div>
+<button class="to-top" type="button" data-to-top aria-label="Torna su" hidden><%- include('icon', { name: 'arrow' }) %></button>

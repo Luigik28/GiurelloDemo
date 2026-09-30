@@ -1,0 +1,49 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<section class="section section--cream wizard-wrap">
+  <div class="container narrow">
+    <form class="card wizard" action="/percorso/risultato" method="get" data-wizard>
+      <div class="wizard__top">
+        <span class="eyebrow">Trova il tuo percorso</span>
+        <div class="wizard__progress" aria-hidden="true"><i data-wizard-bar></i></div>
+        <span class="muted" data-wizard-count>Domanda 1 di 3</span>
+      </div>
+
+      <fieldset class="wizard__step" data-step="1">
+        <legend><h1>Cosa stai preparando?</h1></legend>
+        <div class="choices">
+          <% goals.forEach(function (g) { %>
+            <label class="choice"><input type="radio" name="goal" value="<%= g.id %>" required <%= preset.goal === g.id ? 'checked' : '' %>><span><span class="icon-tile"><%- include('../partials/icon', { name: g.icon }) %></span><strong><%= g.label %></strong><small><%= g.text %></small></span></label>
+          <% }) %>
+        </div>
+      </fieldset>
+
+      <fieldset class="wizard__step" data-step="2">
+        <legend><h2 data-need-title>Di cosa hai bisogno?</h2></legend>
+        <% Object.keys(needs).forEach(function (goal) { %>
+          <div class="choices choices--compact" data-for-goal="<%= goal %>">
+            <% needs[goal].forEach(function (n) { %>
+              <label class="choice"><input type="radio" name="need" value="<%= n.id %>"><span><span class="icon-tile"><%- include('../partials/icon', { name: n.icon }) %></span><strong><%= n.label %></strong><small><%= n.text %></small></span></label>
+            <% }) %>
+          </div>
+        <% }) %>
+      </fieldset>
+
+      <fieldset class="wizard__step" data-step="3">
+        <legend><h2>Quanto tempo hai?</h2></legend>
+        <div class="choices">
+          <% times.forEach(function (t) { %>
+            <label class="choice"><input type="radio" name="time" value="<%= t.id %>"><span><span class="icon-tile"><%- include('../partials/icon', { name: t.icon }) %></span><strong><%= t.label %></strong><small><%= t.text %></small></span></label>
+          <% }) %>
+        </div>
+      </fieldset>
+
+      <div class="wizard__nav">
+        <button type="button" class="btn btn--ghost" data-wizard-back hidden>← Indietro</button>
+        <button class="btn btn--primary btn--lg" data-wizard-submit>Scopri il tuo percorso <%- include('../partials/icon', { name: 'arrow' }) %></button>
+      </div>
+    </form>
+    <p class="muted center wizard__note">Nessuna registrazione: le risposte servono solo a consigliarti i materiali giusti.</p>
+  </div>
+</section>
+<%- include('../partials/footer') %>
