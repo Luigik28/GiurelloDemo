@@ -1,0 +1,7 @@
+<section class="trust">
+  <div class="container trust__grid">
+    <% site.trust.forEach(function (t) { %>
+      <div class="trust__item reveal"><span class="icon-tile"><%- include('icon', { name: t.icon }) %></span><span><%= t.text %></span></div>
+    <% }) %>
+  </div>
+</section>

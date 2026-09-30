@@ -1,0 +1,90 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<section class="section section--cream">
+  <div class="container product">
+    <div>
+      <nav class="crumbs" aria-label="Percorso"><a href="/concorsi">Concorsi</a><% if (area) { %> / <a href="/concorsi/<%= area.id %>"><%= area.label %></a><% } %> / <a href="/concorsi<%= area ? '/' + area.id : '' %>?tipo=<%= product.type %>"><%= product.typeLabel %></a></nav>
+      <div class="product__img reveal">
+        <% if (product.image) { %><img src="<%= product.image %>" alt="<%= product.name %>"><% } else { %><div class="pcard__ph pcard__ph--<%= product.type %>"><%- include('../partials/icon', { name: 'laptop' }) %></div><% } %>
+      </div>
+      <h1><%= product.name %></h1>
+      <p class="product__desc"><%= product.description %></p>
+      <div class="tagrow">
+        <span class="chip"><%= product.typeLabel %></span>
+        <% product.areas.forEach(function (id) { const a = site.navAreas.concat([]).find(function (x) { return x.id === id; }); if (a) { %><a class="chip" href="/concorsi/<%= a.id %>"><%= a.label %></a><% } }) %>
+      </div>
+    </div>
+    <aside class="card buy">
+      <% if (product.isNew) { %><span class="badge">Nuovo</span><% } %>
+      <span class="muted"><%= product.kind %></span>
+      <div class="buy__price"><%= product.type === 'gratis' ? 'Gratis' : product.price %></div>
+      <% if (product.type === 'simulatore') { %><p class="muted">Prezzo di lancio €129 nelle prime 24 ore, poi €150. Acquistabile anche a rate.</p><% } else { %><p class="muted">Acquistabile anche a rate.</p><% } %>
+      <a class="btn btn--primary btn--lg btn--block" href="<%= product.url %>" target="_blank" rel="noopener">Acquista ora</a>
+      <% if (product.type === 'simulatore') { %><a class="btn btn--ghost btn--block" href="/galletto?corso=<%= product.slug %>#piano">Crea il piano con Galletto</a><% } %>
+      <ul>
+        <% if (product.type === 'simulatore') { %>
+          <li><%- include('../partials/icon', { name: 'check' }) %> 150 quiz al giorno con spiegazione</li>
+          <li><%- include('../partials/icon', { name: 'calendar' }) %> Piano di studio integrato</li>
+          <li><%- include('../partials/icon', { name: 'chart' }) %> Statistiche e monitoraggio progressi</li>
+        <% } else if (/dispensa|schemi|ebook|eserciziario/.test(product.type)) { %>
+          <li><%- include('../partials/icon', { name: 'doc' }) %> PDF stampabile</li>
+          <li><%- include('../partials/icon', { name: 'book' }) %> Basata sui manuali più usati in Italia</li>
+        <% } %>
+        <li><%- include('../partials/icon', { name: 'laptop' }) %> Accesso da qualsiasi dispositivo</li>
+        <li><%- include('../partials/icon', { name: 'shield' }) %> Reso fino al 15% di utilizzo</li>
+        <li><%- include('../partials/icon', { name: 'mail' }) %> Supporto via email entro 48 ore</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<% if (product.type === 'simulatore') { %>
+<section class="section">
+  <div class="container split">
+    <div class="reveal">
+      <span class="eyebrow">Perché il nostro simulatore</span>
+      <h2><%= site.simulator.hook %></h2>
+      <% site.simulator.story.forEach(function (t) { %><p class="lead"><%= t %></p><% }) %>
+      <a href="/prova-simulatore" class="btn btn--yellow">Prova come funziona</a>
+    </div>
+    <div class="card reveal">
+      <h3>Perché scegliere il nostro simulatore?</h3>
+      <ul class="checklist"><% site.simulator.why.forEach(function (w) { %><li><%- include('../partials/icon', { name: 'check' }) %><%= w %></li><% }) %></ul>
+      <h3>È pensato per te se:</h3>
+      <ul class="checklist"><% site.simulator.forYou.forEach(function (w) { %><li><%- include('../partials/icon', { name: 'check' }) %><%= w %></li><% }) %></ul>
+    </div>
+  </div>
+</section>
+<section class="section section--cream">
+  <div class="container">
+    <div class="section__head center reveal"><span class="eyebrow">Domande frequenti</span><h2>Tutto quello che vuoi sapere</h2></div>
+    <div class="faq"><% site.simulator.faq.forEach(function (f) { %><details class="reveal"><summary><%= f.q %></summary><div><p><%= f.a %></p></div></details><% }) %></div>
+  </div>
+</section>
+<% } %>
+
+<section class="section">
+  <div class="container">
+    <div class="section__head reveal"><span class="eyebrow">Recensioni</span><h2>Cosa dicono di noi</h2></div>
+    <div class="grid">
+      <% site.reviews.slice(0, 3).forEach(function (r) { %>
+        <figure class="card review reveal">
+          <div class="stars" aria-label="5 stelle su 5"><% for (let i = 0; i < 5; i++) { %><%- include('../partials/icon', { name: 'star' }) %><% } %></div>
+          <h3><%= r.title %></h3><blockquote><%= r.text %></blockquote>
+          <figcaption><span class="avatar"><%= r.author.split(' ').map(function (w) { return w[0]; }).join('').slice(0, 2) %></span><%= r.author %></figcaption>
+        </figure>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<% if (related.length) { %>
+<section class="section section--cream">
+  <div class="container">
+    <div class="section__head reveal"><span class="eyebrow">Potrebbero interessarti anche…</span><h2>Completa la tua preparazione</h2></div>
+    <div class="grid"><% related.forEach(function (p) { %><%- include('../partials/product-card', { p: p }) %><% }) %></div>
+  </div>
+</section>
+<% } %>
+<%- include('../partials/cta-tutor') %>
+<%- include('../partials/footer') %>

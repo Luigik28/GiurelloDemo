@@ -1,13 +1,20 @@
 <%- include('../partials/head') %>
 <%- include('../partials/header') %>
-<%- include('../partials/page-hero', { eyebrow: 'Galletto AI', heading: 'Il tutor che ti dice <em>cosa fare oggi</em>.', lead: 'Galletto pianifica lo studio, ti interroga con domande d’esame, analizza le tue risposte e ti guida nel ripasso. Provalo qui sotto: questa è una demo.' }) %>
+<%- include('../partials/page-hero', { eyebrow: 'Galletto · la tua IA personale per lo studio', heading: 'Basta studiare <span class="hl">nel buio!</span>', lead: 'Preparati come se fossi già all’esame, con una guida che ti allena e ti corregge. Migliora ogni giorno, supera ogni ostacolo.' }) %>
 
-<section class="section section--flush">
-  <div class="container galletto">
-    <div class="card chat" data-chat>
+<section class="section">
+  <div class="container split">
+    <div class="reveal">
+      <span class="eyebrow">Scopri Galletto</span>
+      <h2>Supera il tuo esame con metodo e sicurezza</h2>
+      <p class="lead"><%= site.galletto.intro %></p>
+      <ul class="checklist"><% site.galletto.features.forEach(function (f) { %><li><%- include('../partials/icon', { name: 'check' }) %><%= f.text %></li><% }) %></ul>
+      <p class="muted"><%= site.galletto.about %></p>
+    </div>
+    <div class="card chat reveal" data-chat>
       <div class="chat__head">
-        <span class="mock__avatar"><%- include('../partials/logo', { uid: 'c' }) %></span>
-        <div><strong>Galletto</strong><small><span class="dot"></span> online</small></div>
+        <img src="/img/logo-cerchio.webp" alt="" width="44" height="44">
+        <div><strong>Galletto</strong><small><span class="dot"></span> online · demo</small></div>
       </div>
       <div class="chat__log" data-chat-log aria-live="polite">
         <div class="bubble bubble--bot">Chicchirichì! Sono Galletto. Dimmi per quale concorso o esame ti prepari, oppure chiedimi un consiglio sul metodo di studio.</div>
@@ -15,7 +22,7 @@
       <div class="chat__suggest" data-chat-suggest>
         <button type="button" class="chip">Come mi organizzo?</button>
         <button type="button" class="chip">Concorso Agenzia delle Entrate</button>
-        <button type="button" class="chip">Voglio fare dei quiz</button>
+        <button type="button" class="chip">Concorso INPS</button>
         <button type="button" class="chip">Aiuto con la tesi</button>
       </div>
       <form class="chat__form" data-chat-form>
@@ -24,39 +31,48 @@
         <button class="btn btn--primary btn--icon" aria-label="Invia"><%- include('../partials/icon', { name: 'send' }) %></button>
       </form>
     </div>
+  </div>
+</section>
 
-    <div class="card planner" id="piano">
+<section class="section section--cream" id="piano">
+  <div class="container split split--top">
+    <div class="reveal">
       <span class="eyebrow">Piano di studio</span>
-      <h2>Il tuo piano, in 10 secondi.</h2>
-      <form class="form" data-plan-form>
-        <label>Concorso
-          <select name="course" required>
-            <% courseOptions.forEach(function (c) { %><option value="<%= c.slug %>" <%= selected === c.slug ? 'selected' : '' %>><%= c.title %></option><% }) %>
-          </select>
-        </label>
-        <label>Data della prova <input type="date" name="examDate" required data-min-today></label>
-        <div class="form__row">
-          <label>Ore al giorno <input type="number" name="hoursPerDay" min="0.5" max="10" step="0.5" value="1.5"></label>
-          <label>Giorni a settimana <input type="number" name="daysPerWeek" min="1" max="7" value="5"></label>
-        </div>
-        <button class="btn btn--primary btn--block">Genera il piano</button>
-        <p class="form__error" data-plan-error hidden></p>
-      </form>
+      <h2>Il tuo piano, <span class="hl">in 10 secondi</span></h2>
+      <p class="lead">Scegli il concorso e la data della prova: Galletto calcola le batterie di quiz settimana per settimana, con ripasso e simulazioni finali, come nei simulatori Giurello.</p>
     </div>
+    <form class="card form reveal" data-plan-form>
+      <label>Concorso
+        <select name="course" required>
+          <% courseOptions.forEach(function (c) { %><option value="<%= c.slug %>" <%= selected === c.slug ? 'selected' : '' %>><%= c.title %></option><% }) %>
+        </select>
+      </label>
+      <div class="form__row">
+        <label>Data della prova <input type="date" name="examDate" required data-min-today></label>
+        <label>Giorni di studio a settimana <input type="number" name="daysPerWeek" min="1" max="7" value="5"></label>
+      </div>
+      <button class="btn btn--primary btn--block">Genera il piano</button>
+      <p class="form__err" data-plan-error hidden></p>
+    </form>
   </div>
-  <div class="container">
-    <div class="plan-out" data-plan-out hidden></div>
-  </div>
+  <div class="container"><div class="plan-out" data-plan-out hidden></div></div>
 </section>
 
 <section class="section">
   <div class="container">
-    <div class="bento bento--even">
-      <article class="card bento__item reveal"><span class="icon-tile"><%- include('../partials/icon', { name: 'calendar' }) %></span><h3>Pianifica</h3><p>Ti dice cosa fare e quanto farne ogni giorno, settimana e mese.</p></article>
-      <article class="card bento__item reveal"><span class="icon-tile"><%- include('../partials/icon', { name: 'chat' }) %></span><h3>Interroga</h3><p>Ti mette alla prova con domande d’esame sulle materie giuridiche.</p></article>
-      <article class="card bento__item reveal"><span class="icon-tile"><%- include('../partials/icon', { name: 'target' }) %></span><h3>Analizza</h3><p>Esamina le tue risposte e ti indica dove migliorare.</p></article>
-      <article class="card bento__item reveal"><span class="icon-tile"><%- include('../partials/icon', { name: 'spark' }) %></span><h3>Consolida</h3><p>Ti aiuta nel ripasso dei concetti chiave prima della prova.</p></article>
+    <div class="section__head center reveal"><span class="eyebrow">Piani di abbonamento</span><h2>Scegli il tuo piano</h2></div>
+    <div class="offers">
+      <% site.galletto.plans.forEach(function (pl) { %>
+        <article class="offer reveal <%= pl.featured ? 'offer--featured' : '' %>">
+          <h3><%= pl.name %></h3>
+          <div class="offer__price"><%= pl.price %></div>
+          <p class="offer__note"><%= pl.period %></p>
+          <ul><% pl.items.forEach(function (it) { %><li class="<%= it[1] ? '' : 'is-off' %>"><%- include('../partials/icon', { name: it[1] ? 'check' : 'x' }) %><%= it[0] %></li><% }) %></ul>
+          <a href="/help#contatti" class="btn <%= pl.featured ? 'btn--yellow' : 'btn--primary' %>"><%= pl.cta %></a>
+        </article>
+      <% }) %>
     </div>
   </div>
 </section>
+<%- include('../partials/cta-tutor') %>
 <%- include('../partials/footer') %>

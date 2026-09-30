@@ -76,9 +76,7 @@ async function main() {
   fs.writeFileSync(path.join(ASSETS, jsName), obfuscated);
   fs.writeFileSync(path.join(ASSETS, cssName), cssText);
 
-  for (const f of fs.readdirSync(path.join(ROOT, 'client/static'))) {
-    fs.copyFileSync(path.join(ROOT, 'client/static', f), path.join(STATIC, f));
-  }
+  fs.cpSync(path.join(ROOT, 'client/static'), STATIC, { recursive: true });
 
   fs.writeFileSync(path.join(OUT, 'manifest.json'), JSON.stringify({ js: jsName, css: cssName }, null, 2));
   const kb = (s) => `${(Buffer.byteLength(s) / 1024).toFixed(1)} kB`;

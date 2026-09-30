@@ -1,19 +1,19 @@
 <%- include('../partials/head') %>
 <%- include('../partials/header') %>
-<%- include('../partials/page-hero', { eyebrow: 'Simulatore demo', heading: 'Mettiti alla prova <em>adesso</em>.', lead: 'Cinque quiz a risposta multipla, correzione immediata e spiegazione con il riferimento normativo. Come nei simulatori completi.' }) %>
+<%- include('../partials/page-hero', { eyebrow: 'Prova gratis', heading: 'Prova come funziona <span class="hl">un simulatore</span>', lead: 'Cinque quiz a risposta multipla con correzione immediata e riferimento normativo, come nei simulatori completi: articolo, comma e fonte per ogni risposta.' }) %>
 
-<section class="section section--flush">
-  <div class="container quiz-wrap">
+<section class="section">
+  <div class="container">
     <div class="card quiz" data-quiz>
-      <div class="quiz__start" data-quiz-start>
+      <div data-quiz-start>
         <h2>Scegli la materia</h2>
         <div class="chips-row" data-quiz-subjects>
-          <button type="button" class="chip chip--lg is-on" data-subject="">Tutte</button>
-          <% subjects.forEach(function (s) { %><button type="button" class="chip chip--lg" data-subject="<%= s %>"><%= s %></button><% }) %>
+          <button type="button" class="chip is-on" data-subject="">Tutte</button>
+          <% subjects.forEach(function (s) { %><button type="button" class="chip" data-subject="<%= s %>"><%= s %></button><% }) %>
         </div>
-        <button type="button" class="btn btn--primary btn--lg" data-quiz-go>Inizia il quiz <%- include('../partials/icon', { name: 'arrow' }) %></button>
+        <div class="hero__actions"><button type="button" class="btn btn--primary btn--lg" data-quiz-go>Inizia il quiz <%- include('../partials/icon', { name: 'arrow' }) %></button></div>
       </div>
-      <div class="quiz__run" data-quiz-run hidden>
+      <div data-quiz-run hidden>
         <div class="quiz__meta"><span data-quiz-subject></span><span data-quiz-count></span></div>
         <div class="bar"><i data-quiz-bar></i></div>
         <h2 class="quiz__q" data-quiz-q></h2>
@@ -26,14 +26,21 @@
         <p class="lead" data-quiz-msg></p>
         <div class="hero__actions">
           <button type="button" class="btn btn--ghost" data-quiz-again>Rifai il quiz</button>
-          <a href="/concorsi" class="btn btn--primary">Scegli il tuo simulatore</a>
+          <a href="/concorsi?tipo=simulatore" class="btn btn--primary">Scegli il simulatore</a>
         </div>
       </div>
     </div>
-    <aside class="quiz-side">
-      <div class="card info"><span class="icon-tile"><%- include('../partials/icon', { name: 'shield' }) %></span><h3>Correzione sul server</h3><p>Le risposte corrette non vengono mai inviate al browser: la verifica avviene sui nostri server.</p></div>
-      <div class="card info"><span class="icon-tile"><%- include('../partials/icon', { name: 'book' }) %></span><h3>Spiegazioni</h3><p>Ogni risposta è accompagnata dal riferimento normativo per fissare il concetto.</p></div>
-    </aside>
   </div>
 </section>
+
+<section class="section section--cream">
+  <div class="container">
+    <div class="features">
+      <div class="card feature reveal"><span class="icon-tile"><%- include('../partials/icon', { name: 'target' }) %></span><h3>80% per andare avanti</h3><p>Nei simulatori completi non passi alla batteria successiva se non rispondi correttamente almeno all’80% dei quiz.</p></div>
+      <div class="card feature reveal"><span class="icon-tile"><%- include('../partials/icon', { name: 'calendar' }) %></span><h3>150 quiz al giorno</h3><p>Il piano di studio è già integrato: sai esattamente cosa fare ogni giorno fino alla prova.</p></div>
+      <div class="card feature reveal"><span class="icon-tile"><%- include('../partials/icon', { name: 'shield' }) %></span><h3>Validati dalla community</h3><p>Ogni quiz è controllato dai beta tester prima della pubblicazione.</p></div>
+    </div>
+  </div>
+</section>
+<%- include('../partials/cta-tutor') %>
 <%- include('../partials/footer') %>

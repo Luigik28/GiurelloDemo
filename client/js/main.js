@@ -68,6 +68,19 @@ function initNav() {
   menu?.addEventListener('click', (e) => {
     if (e.target.closest('a')) menu.classList.remove('is-open');
   });
+  $$('[data-drop]').forEach((drop) => {
+    const btn = $('button', drop);
+    btn.addEventListener('click', () => {
+      const open = drop.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', (e) => {
+      if (!drop.contains(e.target)) {
+        drop.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
 }
 
 /* Animazioni --------------------------------------------------------------- */
@@ -103,7 +116,7 @@ function initCounters() {
       const t0 = performance.now();
       const tick = (t) => {
         const p = Math.min((t - t0) / 1200, 1);
-        node.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))) + suffix;
+        node.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))).toLocaleString('it-IT') + suffix;
         if (p < 1) requestAnimationFrame(tick);
       };
       requestAnimationFrame(tick);
@@ -112,40 +125,47 @@ function initCounters() {
   nums.forEach((n) => io.observe(n));
 }
 
-/* Catalogo concorsi -------------------------------------------------------- */
-function initCatalog() {
-  const grid = $('[data-catalog]');
-  if (!grid) return;
-  const cards = $$('.course-card', grid);
-  const empty = $('[data-empty]');
-  const input = $('[data-search-input]');
-  const buttons = $$('[data-filter]');
-  let active = grid.dataset.active || 'tutti';
-
-  const apply = () => {
-    const q = (input?.value || '').trim().toLowerCase();
-    let shown = 0;
-    cards.forEach((c) => {
-      const ok = (active === 'tutti' || c.dataset.category === active) && (!q || c.dataset.search.includes(q));
-      c.classList.toggle('is-hidden', !ok);
-      if (ok) { shown++; c.classList.add('is-in'); }
+/* Caroselli ---------------------------------------------------------------- */
+function initRails() {
+  $$('[data-rail-nav]').forEach((nav) => {
+    const track = $(`[data-rail="${nav.dataset.railNav}"]`);
+    if (!track) return;
+    const [prev, next] = $$('button', nav);
+    const step = () => (track.firstElementChild?.getBoundingClientRect().width || 300) + 20;
+    prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next.addEventListener('click', () => {
+      const end = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+      track.scrollTo({ left: end ? 0 : track.scrollLeft + step(), behavior: 'smooth' });
     });
-    empty.hidden = shown > 0;
-  };
+  });
+}
 
-  buttons.forEach((b) =>
-    b.addEventListener('click', () => {
-      active = b.dataset.filter;
-      buttons.forEach((x) => x.classList.toggle('is-on', x === b));
-      const url = new URL(location.href);
-      if (active === 'tutti') url.searchParams.delete('categoria');
-      else url.searchParams.set('categoria', active);
-      history.replaceState(null, '', url);
-      apply();
-    })
-  );
-  input?.addEventListener('input', apply);
-  apply();
+/* Immagini prodotto: se il CDN non risponde mostriamo il segnaposto grafico */
+function initImages() {
+  const fallback = (img) => {
+    const box = img.parentElement;
+    img.remove();
+    if (!box.querySelector('.pcard__ph')) box.prepend(el('div', { class: 'pcard__ph' }));
+  };
+  $$('.pcard__img img, .product__img img').forEach((img) => {
+    if (img.complete && img.naturalWidth === 0) fallback(img);
+    else img.addEventListener('error', () => fallback(img), { once: true });
+  });
+}
+
+/* Newsletter ---------------------------------------------------------------- */
+function initNewsletter() {
+  const form = $('[data-newsletter]');
+  if (!form) return;
+  const msg = $('[data-newsletter-msg]', form);
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form));
+    data.consent = form.elements.consent.checked;
+    const res = await api('/newsletter', data);
+    msg.textContent = res.ok ? 'Grazie! Ti terremo aggiornato.' : Object.values(res.errors || { e: res.error })[0];
+    if (res.ok) form.reset();
+  });
 }
 
 /* Simulatore quiz ---------------------------------------------------------- */
@@ -328,7 +348,7 @@ function initGalletto() {
         stat(res.totalQuiz.toLocaleString('it-IT'), 'quiz in totale')
       ]),
       el('div', { class: 'plan-weeks' }, res.schedule.map((w, idx) => {
-        const card = el('article', { class: `card week${w.phase === 'Studio e quiz' ? '' : ' week--review'}` }, [
+        const card = el('article', { class: `card week${w.phase === 'Batterie di quiz' ? '' : ' week--review'}` }, [
           el('header', {}, [el('strong', { text: `Settimana ${w.week}` }), el('span', { class: 'chip', text: w.phase })]),
           el('ul', {}, w.focus.map((f) => el('li', { text: f }))),
           el('p', { class: 'q', text: `${w.quiz} quiz` }),
@@ -386,7 +406,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initReveal();
   initCounters();
-  initCatalog();
+  initRails();
+  initImages();
+  initNewsletter();
   initQuiz();
   initGalletto();
   initContact();

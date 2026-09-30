@@ -1,0 +1,44 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<%- include('../partials/page-hero', { eyebrow: 'Podcast e altro', heading: 'Corsi e <span class="hl">strumenti</span> di studio', lead: 'Tutte le risorse e i servizi pensati per accompagnarti durante il tuo percorso nel mondo dei concorsi.' }) %>
+<%- include('../partials/trust') %>
+
+<section class="section">
+  <div class="container">
+    <div class="tiles">
+      <% site.tools.forEach(function (t) { %>
+        <a class="card tile reveal" href="<%= t.href %>"><span class="icon-tile"><%- include('../partials/icon', { name: t.icon }) %></span><h3><%= t.title %></h3><p><%= t.text %></p><span class="link-arrow">Scopri <%- include('../partials/icon', { name: 'arrow' }) %></span></a>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section section--cream">
+  <div class="container">
+    <div class="section__head section__head--row reveal"><div><span class="eyebrow">Ascolta dove e quando vuoi</span><h2>I nostri podcast</h2></div><a class="btn btn--ghost" href="/concorsi?tipo=podcast">Tutti i podcast</a></div>
+    <div class="grid"><% podcasts.slice(0, 6).forEach(function (p) { %><%- include('../partials/product-card', { p: p }) %><% }) %></div>
+  </div>
+</section>
+
+<section class="section section--purple">
+  <div class="container split">
+    <div class="reveal">
+      <span class="eyebrow">Novità · Galletto AI</span>
+      <h2>Supera il tuo esame con metodo e sicurezza: scopri Galletto!</h2>
+      <p><%= site.galletto.intro %></p>
+      <a href="/galletto" class="btn btn--yellow btn--lg">Scopri Galletto <%- include('../partials/icon', { name: 'arrow' }) %></a>
+    </div>
+    <div class="features features--1">
+      <% site.galletto.features.forEach(function (f) { %><div class="card feature reveal"><span class="icon-tile"><%- include('../partials/icon', { name: f.icon }) %></span><p><%= f.text %></p></div><% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section__head reveal"><span class="eyebrow">I nostri corsi</span><h2>Logica, inglese, metodo e molto altro</h2></div>
+    <div class="grid"><% courses.forEach(function (p) { %><%- include('../partials/product-card', { p: p }) %><% }) %></div>
+  </div>
+</section>
+<%- include('../partials/cta-tutor') %>
+<%- include('../partials/footer') %>

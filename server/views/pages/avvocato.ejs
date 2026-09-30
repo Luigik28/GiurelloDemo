@@ -1,0 +1,23 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<%- include('../partials/page-hero', { eyebrow: "Esame d'avvocato", heading: 'Diventa Avvocato <span class="hl">con Giurello</span>', lead: site.lawyer.intro }) %>
+<%- include('../partials/trust') %>
+
+<section class="section">
+  <div class="container">
+    <div class="tiles">
+      <% site.lawyer.services.forEach(function (t) { %>
+        <a class="card tile reveal" href="<%= t.href %>"><span class="icon-tile"><%- include('../partials/icon', { name: t.icon }) %></span><h3><%= t.title %></h3><p><%= t.text %></p><span class="link-arrow">Scopri <%- include('../partials/icon', { name: 'arrow' }) %></span></a>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section section--cream">
+  <div class="container">
+    <div class="section__head reveal"><span class="eyebrow">Avvocato</span><h2>Tracce, correzioni e percorso completo</h2></div>
+    <div class="grid"><% products.forEach(function (p) { %><%- include('../partials/product-card', { p: p }) %><% }) %></div>
+  </div>
+</section>
+<%- include('../partials/cta-tutor') %>
+<%- include('../partials/footer') %>

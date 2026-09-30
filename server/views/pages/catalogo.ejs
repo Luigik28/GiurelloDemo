@@ -1,0 +1,55 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<%- include('../partials/page-hero', { eyebrow: 'Concorsi e corsi', heading: 'Trova il corso <span class="hl">giusto per te</span>', lead: 'Esplora tutte le nostre aree di preparazione e scegli il percorso più adatto ai tuoi obiettivi.', search: true, q: q }) %>
+
+<section class="section section--flush">
+  <div class="container catalog">
+    <aside class="side">
+      <div>
+        <h2>Aree</h2>
+        <nav aria-label="Aree di formazione">
+          <a href="/concorsi<%= qs({ tipo: '', pagina: 1 }) %>" class="<%= !areaId ? 'is-on' : '' %>">Tutti i concorsi <span><%= totalAll %></span></a>
+          <% areas.forEach(function (a) { %>
+            <a href="/concorsi/<%= a.id %><%= qs({ tipo: '', pagina: 1 }) %>" class="<%= areaId === a.id ? 'is-on' : '' %>"><%= a.label %> <span><%= areaCounts[a.id] || 0 %></span></a>
+          <% }) %>
+        </nav>
+      </div>
+    </aside>
+
+    <div>
+      <div class="catalog__head">
+        <div>
+          <h2><%= heading %></h2>
+          <p><%= area ? area.text + ' · ' : '' %><%= total %> <%= total === 1 ? 'prodotto' : 'prodotti' %></p>
+        </div>
+        <% if (q) { %><a class="chip" href="<%= base %><%= qs({ q: '', pagina: 1 }) %>">Rimuovi ricerca ✕</a><% } %>
+      </div>
+      <div class="chips-row catalog__types" aria-label="Filtra per tipologia">
+        <a class="chip <%= !type ? 'is-on' : '' %>" href="<%= base %><%= qs({ tipo: '', pagina: 1 }) %>">Tutto</a>
+        <% Object.keys(types).forEach(function (t) { if (!typeCounts[t]) return; %>
+          <a class="chip <%= type === t ? 'is-on' : '' %>" href="<%= base %><%= qs({ tipo: t, pagina: 1 }) %>"><%= types[t].label %> <small><%= typeCounts[t] %></small></a>
+        <% }) %>
+      </div>
+
+      <% if (items.length) { %>
+        <div class="grid">
+          <% items.forEach(function (p) { %><%- include('../partials/product-card', { p: p }) %><% }) %>
+        </div>
+      <% } else { %>
+        <p class="empty">Nessun risultato. <a href="/help#contatti">Segnalaci il tuo concorso</a>: potremmo prepararlo noi.</p>
+      <% } %>
+
+      <% if (pages > 1) { %>
+        <nav class="pager" aria-label="Pagine">
+          <% if (page > 1) { %><a href="<%= base %><%= qs({ pagina: page - 1 }) %>" aria-label="Pagina precedente">‹</a><% } %>
+          <% for (let i = 1; i <= pages; i++) { if (i === 1 || i === pages || Math.abs(i - page) <= 1) { %>
+            <% if (i === page) { %><span class="is-on" aria-current="page"><%= i %></span><% } else { %><a href="<%= base %><%= qs({ pagina: i }) %>"><%= i %></a><% } %>
+          <% } else if (Math.abs(i - page) === 2) { %><span>…</span><% } } %>
+          <% if (page < pages) { %><a href="<%= base %><%= qs({ pagina: page + 1 }) %>" aria-label="Pagina successiva">›</a><% } %>
+        </nav>
+      <% } %>
+    </div>
+  </div>
+</section>
+<%- include('../partials/cta-tutor') %>
+<%- include('../partials/footer') %>

@@ -1,11 +1,5 @@
 <%- include('../partials/head') %>
 <%- include('../partials/header') %>
-<section class="page-hero page-hero--404">
-  <div class="container">
-    <span class="eyebrow">Errore 404</span>
-    <h1>Questa pagina <em>non è a verbale</em>.</h1>
-    <p class="lead">La pagina che cerchi non esiste o è stata spostata.</p>
-    <div class="hero__actions"><a href="/" class="btn btn--primary">Torna alla home</a><a href="/concorsi" class="btn btn--ghost">Vedi i concorsi</a></div>
-  </div>
-</section>
+<%- include('../partials/page-hero', { eyebrow: 'Errore 404', heading: 'Questa pagina <span class="hl">non è a verbale</span>', lead: 'La pagina che cerchi non esiste o è stata spostata. Prova a cercare il tuo concorso:', search: true }) %>
+<%- include('../partials/cta-tutor') %>
 <%- include('../partials/footer') %>

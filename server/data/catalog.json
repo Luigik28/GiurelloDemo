@@ -1,0 +1,1886 @@
+{
+ "syncedAt": "2026-09-30T13:56:12.789Z",
+ "store": "https://giurello.thinkific.com",
+ "collections": [
+  {
+   "slug": "concorsi",
+   "name": "Concorsi"
+  },
+  {
+   "slug": "materie",
+   "name": "Corsi per materia"
+  },
+  {
+   "slug": "ae4c3a",
+   "name": "Ebook della normativa"
+  },
+  {
+   "slug": "epso",
+   "name": "EPSO"
+  },
+  {
+   "slug": "abilitazioni",
+   "name": "Esame Avvocato"
+  },
+  {
+   "slug": "4c5b20",
+   "name": "Forum"
+  },
+  {
+   "slug": "inglese-per-concorsi",
+   "name": "Inglese per concorsi"
+  },
+  {
+   "slug": "materieconomiche",
+   "name": "Materie Economiche"
+  },
+  {
+   "slug": "organizzazione",
+   "name": "Metodo di studio, tesi e post laurea"
+  },
+  {
+   "slug": "pacchettisconto",
+   "name": "Pacchetti"
+  },
+  {
+   "slug": "podcast-video-corsi",
+   "name": "Podcast - video corsi"
+  },
+  {
+   "slug": "prodotti-gratuiti",
+   "name": "Prodotti gratuiti"
+  },
+  {
+   "slug": "dispense-concorsi",
+   "name": "Riassunti per concorsi"
+  },
+  {
+   "slug": "18c6e8",
+   "name": "Ripam"
+  },
+  {
+   "slug": "40ad5a",
+   "name": "Schemi di ripasso"
+  },
+  {
+   "slug": "4dfbff",
+   "name": "Sicilia"
+  },
+  {
+   "slug": "64b5db",
+   "name": "Tutor e percorsi personalizzati"
+  },
+  {
+   "slug": "tutteledispense",
+   "name": "Tutte le dispense - Riassunti"
+  },
+  {
+   "slug": "products",
+   "name": "Tutti i corsi"
+  },
+  {
+   "slug": "cfd847",
+   "name": "Ultimi Concorsi"
+  }
+ ],
+ "products": [
+  {
+   "path": "/courses/ai-placeholder-64",
+   "name": "Referendari Amministrativi del Segretariato generale della Presidenza della Repubblica 2026: 6 posti",
+   "kind": "Corso",
+   "description": "Preparati alla prova preselettiva del concorso per Referendari amministrativi del Segretariato generale della Presidenza della Repubblica con il simulatore Giurello. Trovi quiz di esercitazione pensati su misura per questo concorso.",
+   "price": "€129",
+   "image": "https://import.cdn.thinkific.com/902376/dMwFog8zRMC8CvKX3dic_ChatGPT%20Image%2025%20set%202026_%2011_20_35.png",
+   "collections": [
+    "Concorsi"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-28",
+   "name": "Concorso ASMEL 2026",
+   "kind": "Corso",
+   "description": "Acquista il nostro simulatore e fai centro al concorso ASMEL 2026! 🎯\nPreparati con quiz mirati per i profili di Funzionario amministrativo e Funzionario avvocato.",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/KvIhPyawSuKfXTNHbRNT_ASMEL%20CON%20SCRITTA.png",
+   "collections": [
+    "Concorsi",
+    "Ultimi Concorsi"
+   ]
+  },
+  {
+   "path": "/courses/segreatiorparlamentar2026",
+   "name": "Segretario parlamentare Senato - 2026",
+   "kind": "Corso",
+   "description": "Preparati in modo mirato con il nostro corso esclusivo di soli quiz, progettato per aiutarti a superare la prova preselettiva del concorso Segretario Parlamentare del Senato.",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/atj3py0GSzi9tXU90uif_ChatGPT%20Image%2024%20ago%202026_%2013_50_39.png",
+   "collections": []
+  },
+  {
+   "path": "/courses/ai-placeholder-62",
+   "name": "Concorso MASE: 36 Funzionari Amm. (Codice GIUR/MASE)",
+   "kind": "Corso",
+   "description": "Preparati per il concorso MASE per funzionari amministrativi (Codice GIUR/MASE) con il simulatore firmato Giurello!",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/pmktW3PNQ4CL2yJka1OL_ChatGPT%20Image%2010%20ago%202026_%2011_30_37.png",
+   "collections": []
+  },
+  {
+   "path": "/courses/ai-placeholder-61",
+   "name": "Concorso Assistenti ADE",
+   "kind": "Corso",
+   "description": "Preparati al concorso per Assistenti dell’Agenzia delle Entrate con il nostro simulatore. Esercitati con quiz mirati, costruiti sul livello della prova, verifica subito gli errori e monitora i tuoi progressi.",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/jgPGGKeJS6KyLSpT5qAw_ChatGPT%20Image%201%20ago%202026_%2018_54_42.png",
+   "collections": [
+    "Concorsi"
+   ]
+  },
+  {
+   "path": "/courses/corsodilogica",
+   "name": "Corso di logica per concorsi",
+   "kind": "Corso",
+   "description": "Un corso pratico pensato per la preparazione ai concorsi pubblici, costruito sui quiz concorsuali Ripam per imparare a riconoscere i meccanismi della logica e risolverli con metodo, rapidità e sicurezza.",
+   "price": "€119",
+   "image": "https://import.cdn.thinkific.com/902376/YBZulVOJSKS9IRKBTt57_grafica%20social%20infondo.png",
+   "collections": []
+  },
+  {
+   "path": "/courses/ai-placeholder-59",
+   "name": "Concorso Funzionari presso l'Agenzia delle Entrate",
+   "kind": "Corso",
+   "description": "Preparati al concorso per funzionari dell’Agenzia delle Entrate con un simulatore completo e aggiornato sulle materie più importanti. Allenati con quiz mirati, individua subito le tue lacune e migliora velocità e precisione.",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/nFwPkqs5RPiD8KrmLlYq_ChatGPT%20Image%2029%20lug%202026_%2023_23_29.png",
+   "collections": [
+    "Concorsi"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-58",
+   "name": "Concorso Progressioni al Ministero della Giustizia",
+   "kind": "Corso",
+   "description": "Vuoi superare la selezione per la progressione al Ministero della Giustizia? Non affidarti a materiali frammentari raccolti qua e là: preparati con il nostro simulatore, pensato per uno studio mirato e completo.",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/rXwPPjHQdmLaCbbE5jcl_jGCLvBTsSCdI9m1Pn43H_ChatGPT%20Image%2029%20lug%202026_%2023_12_35.png",
+   "collections": [
+    "Concorsi",
+    "Ultimi Concorsi"
+   ]
+  },
+  {
+   "path": "/courses/new-course-1",
+   "name": "Concorso Agenzia delle Dogane-profilo assistenti",
+   "kind": "Corso",
+   "description": "Allenati con il simulatore per affrontare al meglio la preselettiva per Assistenti dell’Agenzia delle Dogane.\nMigliora velocità, precisione e preparazione prima della prova.",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/hDJjIM1XRDmnNUJwpZ0K_dogana.png",
+   "collections": [
+    "Concorsi"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/eserciziario-inps-n4",
+   "name": "Eserciziario n.4 per il concorso INPS",
+   "kind": "Digital download",
+   "description": "Con l'eserciziario n. 4 dominerai la materia!",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/Yf6KnVpCSemBMY9XmE2E_eserciziario.png",
+   "collections": []
+  },
+  {
+   "path": "/courses/ai-placeholder-57",
+   "name": "95 Funzionari MAECI Ripam - CODICE ACC (60 POSTI)",
+   "kind": "Corso",
+   "description": "Preparati al Concorso MAECI con il nostro simulatore: esercitati sulle materie d’esame, misura la tua preparazione e arriva alla prova con un metodo chiaro, concreto e mirato.",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/B9nQRlqBSmGn7NxrpmxZ_ChatGPT%20Image%2030%20giu%202026_%2016_42_57.png",
+   "collections": [
+    "Concorsi",
+    "Ultimi Concorsi"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/eserciziario-n-3",
+   "name": "Eserciziario n. 3 per il Concorso INPS - Allenamento avanzato",
+   "kind": "Digital download",
+   "description": "Con l’eserciziario n. 3 entri ormai nel vivo della materia.\nIl percorso si fa più intenso, gli argomenti vengono affrontati con maggiore profondità e i quiz situazionali diventano più difficili.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/UGxBRjjRlGbvzc8BXeYv_eserciziario.png",
+   "collections": []
+  },
+  {
+   "path": "/products/digital_downloads/eserciziario-n2-download",
+   "name": "Eserciziario n.2: Potenzia le Tue Competenze",
+   "kind": "Digital download",
+   "description": "Scopri esercizi pratici e stimolanti nel secondo Eserciziario firmato Giurello. Perfetto per chi desidera migliorare le proprie abilità in modo efficace e divertente!",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/9HJbR7S1RhK9ND81qlwb_eserciziario.png",
+   "collections": []
+  },
+  {
+   "path": "/products/digital_downloads/eserciziari-concorso-inps",
+   "name": "Eserciziario INPS n.1 : Preparati al Concorso",
+   "kind": "Digital download",
+   "description": "Scopri il nostro pacchetto di eserciziari progettati per aiutarti a superare il concorso INPS. Risorse complete per migliorare le tue competenze e massimizzare le possibilità di successo!",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/i6V238c6QQWK0379Jy79_1.png",
+   "collections": []
+  },
+  {
+   "path": "/courses/ai-placeholder-56",
+   "name": "Concorso per la Presidenza del Consiglio dei ministri – Dipartimento per la trasformazione digitale - Profilo B",
+   "kind": "Corso",
+   "description": "Inizia oggi a prepararti al Concorso per la Presidenza del Consiglio dei ministri – Dipartimento per la trasformazione digitale - Profilo B: allenati con il nostro simulatore, verifica il tuo livello e arriva alla prova con più sicurezza.",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/50zj8YX7QHygJF6Amq3N_ChatGPT%20Image%2024%20giu%202026_%2010_05_38.png",
+   "collections": [
+    "Concorsi",
+    "Ultimi Concorsi"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-55",
+   "name": "Corso breve - studiare e superare i quiz situazionali",
+   "kind": "Corso",
+   "description": "Rafforza le tue abilità di problem-solving e preparati per superare quiz situazionali con strategie pratiche e tecniche efficaci.",
+   "price": "€79",
+   "image": "https://import.cdn.thinkific.com/902376/OLhkRxK7SiuTzhaXvFKF_COPERTINA%20SCHEMI.png",
+   "collections": []
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-41",
+   "name": "Schemi di Diritto Amministrativo: Guida Pratica",
+   "kind": "Digital download",
+   "description": "Scopri la guida essenziale per orientarti nel diritto amministrativo. Progettata per studenti e professionisti, offre schemi chiari e pratici per un apprendimento efficace.",
+   "price": "€29",
+   "image": "https://import.cdn.thinkific.com/902376/UkfRaQ1TRYiaUPIbYQ4U_COPERTINA%20SCHEMI%20(2).png",
+   "collections": [
+    "Schemi di ripasso"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-40",
+   "name": "Dispensa di diritto civile - Focus \"I contratti\"",
+   "kind": "Digital download",
+   "description": "Scopri questa dispensa di diritto civile con focus sui contratti: uno strumento chiaro e sintetico per ripassare i contratti più importanti.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/yZp3x8YQiqky9OizzLAX_diritto_civile_copertina_solo_contratti.jpg",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-39",
+   "name": "Tracce Esame Avvocato: Guida Completa ad diritto civile e penale",
+   "kind": "Digital download",
+   "description": "Accedi a un pacchetto di tracce per l'esame da avvocato, pensato per studenti e professionisti. Preparati al meglio con risorse strategiche e facili da seguire!",
+   "price": "€39",
+   "image": "https://import.cdn.thinkific.com/902376/CJ7ENptbRzTLfpK1kbUI_aggiornamento%20copertina.png",
+   "collections": [
+    "Esame Avvocato"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-38",
+   "name": "E-book Normativo per il Concorso alla Corte dei Conti - 36 Funzionari Giuridici",
+   "kind": "Digital download",
+   "description": "Scopri il mio e-book essenziale per aspiranti funzionari giuridici. Troverai tutte le informazioni normative necessarie per affrontare il concorso con successo!",
+   "price": "€15",
+   "image": "https://import.cdn.thinkific.com/902376/bBleMkb1T4O9amppPcHw_COPERTINA%20CODICI%20-%20EBOOK.jpg",
+   "collections": []
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-37",
+   "name": "Schemi di Contabilità Pubblica: Guida Pratica",
+   "kind": "Digital download",
+   "description": "Scopri tutto sulla contabilità pubblica con la mia guida pratica. Perfetta per studenti e professionisti, ti aiuterà a comprendere i principi fondamentali e ad applicarli nel tuo lavoro.",
+   "price": "€29",
+   "image": "https://import.cdn.thinkific.com/902376/fbPJqaJzSauGm3q0Wmiv_COPERTINA_SCHEMI%20(1).png",
+   "collections": [
+    "Schemi di ripasso"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-36",
+   "name": "Aggiornamento di Diritto Commerciale - Leggi Capitali",
+   "kind": "Digital download",
+   "description": "Scopri le ultime novità in materia di diritto commerciale e le leggi fondamentali. Questo download digitale è pensato per professionisti e studenti, per un aggiornamento efficace e mirato.",
+   "price": "€39",
+   "image": "https://import.cdn.thinkific.com/902376/Uul5KtBRkO5W1Nlydqgt_aggiornamento_copertina.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/schemi-di-diritto-civile",
+   "name": "Schemi di Diritto Civile: Guida Pratica",
+   "kind": "Digital download",
+   "description": "Scopri i fondamentali del diritto civile con il mio schema dettagliato. Perfetto per studenti e professionisti, ti aiuterà a comprendere e applicare le norme in modo efficace.",
+   "price": "€29",
+   "image": "https://import.cdn.thinkific.com/902376/FTP2OnfvTa2got0qZrfb_COPERTINA_SCHEMI.png",
+   "collections": [
+    "Schemi di ripasso"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-53",
+   "name": "Corso completo Funzionari INPS PECS",
+   "kind": "Corso",
+   "description": "Inizia oggi a prepararti al futuro concorso per Funzionari Inps Pecs: allenati con il nostro simulatore, verifica il tuo livello e arriva alla prova con più sicurezza.",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/Nua3ZDYbQAm5YAxQqiou_ChatGPT%20Image%205%20giu%202026_%2014_49_28.png",
+   "collections": [
+    "Concorsi",
+    "Ultimi Concorsi"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-35",
+   "name": "Dispensa di geografia",
+   "kind": "Digital download",
+   "description": "Gli argomenti più ostici di geografia per il concorso Guida Turistica sono UNESCO, cartografia, geografia del turismo, parchi, fiumi e capoluoghi: tutti temi che trovi spiegati in modo chiaro nella nostra dispensa.",
+   "price": "€39",
+   "image": "https://import.cdn.thinkific.com/902376/C8VxX6MZSSu3hbvB2tvr_copertina_geografia.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/courses/copy-of-esame-avvocato-annuale-2025-2026",
+   "name": "SOLO TRACCE - Esame avvocato annuale 2026-2027",
+   "kind": "Corso",
+   "description": "Questo percorso è pensato per chi vuole esercitarsi concretamente sulle tracce dell’esame di avvocato, ricevendo una correzione tecnica e indicazioni operative per migliorare impostazione, ragionamento giuridico e stile redazionale.",
+   "price": "€199",
+   "image": "https://import.cdn.thinkific.com/902376/nuBrghITdmvGUz0PgAQa_ragazza_indecisa_tra_diritto_civile_o_penale.png",
+   "collections": [
+    "Esame Avvocato"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-52",
+   "name": "Podcast - Diritto civile",
+   "kind": "Corso",
+   "description": "Il podcast affronta i fondamenti del diritto civile, i principali istituti, le categorie giuridiche fondamentali e i rapporti tra i privati.\nUn supporto essenziale per studiare con metodo e prepararti ai concorsi pubblici.",
+   "price": "€189",
+   "image": "https://import.cdn.thinkific.com/902376/p2wN4UxtR56hwD3j2NHg_diritto_civile.png",
+   "collections": [
+    "Podcast - video corsi"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-51",
+   "name": "Guida Turistica 2026 - Simulatore per l'abilitazione all'esercizio della professione",
+   "kind": "Corso",
+   "description": "Preparati per diventare guida turistica nel 2026 con questo simulatore pratico. Rivedi le competenze, prepara il tuo esame con fiducia e centra l'obiettivo!",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/4RPfwO01RpKp0GUbyx8E_ChatGPT%20Image%201%20mag%202026_%2010_07_53.png",
+   "collections": []
+  },
+  {
+   "path": "/courses/ai-placeholder-50",
+   "name": "Concorso Corte dei Conti 2026 - 36 Posti per Funzionari Laureati (Prova preselettiva)",
+   "kind": "Corso",
+   "description": "Preparati per la prova preselettiva del Concorso alla Corte dei Conti 2026 con strategia e metodo.",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/omuadNKuQ4SiguPkTzr0_ChatGPT%20Image%2024%20apr%202026_%2023_14_54.png",
+   "collections": [
+    "Concorsi",
+    "Ultimi Concorsi"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-49",
+   "name": "220 posti Commissario di Polizia - Prova preselettiva",
+   "kind": "Corso",
+   "description": "Preparati alla prova preselettiva del Concorso 220 Commissari di Polizia con il simulatore firmato Giurello: qualità, praticità e preparazione mirata in un unico prodotto!",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/SAXrNoMDRHCQy0yJECir_ChatGPT%20Image%2030%20apr%202026_%2011_47_19.png",
+   "collections": [
+    "Concorsi",
+    "Ultimi Concorsi"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-48",
+   "name": "Programma di studio per l'esame d'avvocato",
+   "kind": "Corso",
+   "description": "Il corso Metodo Esame d’Avvocato è un percorso guidato che ti accompagna mese dopo mese nella preparazione, indicandoti esattamente cosa studiare, come esercitarti e su cosa concentrarti.",
+   "price": "€69",
+   "image": "https://import.cdn.thinkific.com/902376/q1TbExC8Q02yuYCHO8Nj_esame_avvocato_2.png",
+   "collections": [
+    "Esame Avvocato"
+   ]
+  },
+  {
+   "path": "/bundles/corso-esame-avvocato-completo",
+   "name": "Corso completo per l’ Esame Avvocato 2026-2027",
+   "kind": "Pacchetto",
+   "description": "Podcast di ripasso, dispense, tracce, simulazioni e metodo operativo in un unico percorso. Completamente online!",
+   "price": "€699",
+   "image": "https://files.cdn.thinkific.com/bundles/bundle_card_image_000/410/616/1777652075.original.png",
+   "collections": [
+    "Esame Avvocato"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-47",
+   "name": "Podcast - Diritto Processuale civile",
+   "kind": "Corso",
+   "description": "Il podcast affronta i fondamenti del diritto processuale civile, le fasi del giudizio, gli atti processuali e i principali mezzi di tutela.\nUn supporto essenziale per studiare con metodo e prepararti ai concorsi pubblici.",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/UWRyGg9SRi8XF0BS5zaW_7-1-.png",
+   "collections": [
+    "Podcast - video corsi"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-46",
+   "name": "Podcast - Diritto Processuale Penale",
+   "kind": "Corso",
+   "description": "Il podcast analizza principi, fasi e istituti chiave del diritto processuale penale: indagini, misure cautelari, riti speciali, dibattimento, impugnazioni ed esecuzione penale. Tutto quello che ti serve per superare i tuoi concorsi!",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/PBY1WGymS8anZFhZqC1S_procedura_penale.png",
+   "collections": [
+    "Podcast - video corsi"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-45",
+   "name": "Concorso ASL",
+   "kind": "Corso",
+   "description": "Preparati ai concorsi per personale amministrativo presso le ASL con un simulatore strutturato ad hoc!",
+   "price": "€129",
+   "image": "https://import.cdn.thinkific.com/902376/NADVJ9jbTPSDQMZpMgjC_Ingresso%20moderno%20dell-ASL%20in%20citta%CC%80.png",
+   "collections": [
+    "Concorsi",
+    "Ultimi Concorsi"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-44",
+   "name": "Podcast - Corso di diritto penale",
+   "kind": "Corso",
+   "description": "Il podcast affronta i fondamenti del diritto penale, i reati principali e il sistema sanzionatorio.\nUn supporto essenziale per studiare con metodo e prepararti ai concorsi pubblici.",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/7YqXPQ8KS0O0cMZQop6G_5-1-.png",
+   "collections": [
+    "Podcast - video corsi"
+   ]
+  },
+  {
+   "path": "/courses/podcastidirittoamm",
+   "name": "Podcast - Tutto il diritto amministrativo per i concorsi pubblici",
+   "kind": "Corso",
+   "description": "Il corso analizza principi, fonti e istituti fondamentali del diritto amministrativo, con approfondimento su procedimento, provvedimento, accesso, trasparenza, contratti pubblici, pubblico impiego.",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/EnQplQosRMWraPJqDwG5_4-2-.png",
+   "collections": [
+    "Podcast - video corsi"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-41",
+   "name": "Concorso RIPAM 1340 - Funzionario economico",
+   "kind": "Corso",
+   "description": "Preparati con il simulatore per la prova che può cambiare il tuo futuro lavorativo. Questa non è solo una prova: è la tua occasione!",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/niRczAPQSmyssZBpfgLR_pexels-tima-miroshnichenko-7567432.jpg",
+   "collections": [
+    "Concorsi",
+    "Ripam",
+    "Ultimi Concorsi"
+   ]
+  },
+  {
+   "path": "/courses/dirittotributario",
+   "name": "Podcast - Corso di diritto tributario",
+   "kind": "Corso",
+   "description": "Il corso analizza principi, fonti e imposte (IRPEF, IVA), l'accertamento, le sanzioni e la giustizia tributaria. Tutto quello che ti serve per superare i tuoi concorsi in Agenzia dell'entrate!",
+   "price": "€139",
+   "image": "https://import.cdn.thinkific.com/902376/apdHlRiETnGTGBxecmz9_1-1-.png",
+   "collections": [
+    "Podcast - video corsi"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-34",
+   "name": "Dispensa di economia e politica del Welfare",
+   "kind": "Digital download",
+   "description": "Scopri la nostra dispensa completa e pensata per farti capire davvero la materia, senza perderti tra nozioni confuse e manuali dispersivi.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/9bKmkxxhSuyNoXQkdbcQ_Diritto_(1).png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-42",
+   "name": "Stabilizzazione UPP - Concorso per 6.919 posti",
+   "kind": "Corso",
+   "description": "Preparati con il simulatore per la prova che può cambiare il tuo futuro lavorativo. Questa non è solo una prova: è la tua occasione!",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/GxKwBqeTUCOwEitqp75A_turek90-ai-generated-8679746_1920.jpg",
+   "collections": [
+    "Concorsi",
+    "Ultimi Concorsi"
+   ]
+  },
+  {
+   "path": "/courses/doganale",
+   "name": "Podcast - Corso di Diritto Doganale",
+   "kind": "Corso",
+   "description": "Comprendi le norme e le procedure del diritto doganale per gestire con successo le operazioni commerciali internazionali.",
+   "price": "€139",
+   "image": "https://import.cdn.thinkific.com/902376/lTmO3YgUTwy1GLvFeZKl_2-1-.png",
+   "collections": [
+    "Corsi per materia",
+    "Podcast - video corsi"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-33",
+   "name": "Dispensa di Contabilità pubblica - Giugno 2026",
+   "kind": "Digital download",
+   "description": "Scopri la nostra dispensa completa e pensata per farti capire davvero la contabilità pubblica, senza perderti tra nozioni confuse e manuali dispersivi.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/UcTKxoXQR7mmDjNqDKxf_contabilit_C3_A0_pubblica.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-32",
+   "name": "Dispensa di Management Pubblico",
+   "kind": "Digital download",
+   "description": "Impara il management pubblico in modo chiaro, pratico e mirato.\nCon la dispensa Giurello hai uno strumento completo per studiare meglio e fissare davvero i concetti essenziali.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/Q9dKYmAhSMzb6KuI92Aw_Diritto.jpg",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-38",
+   "name": "Podcast - Corso Base di Contabilità Pubblica",
+   "kind": "Corso",
+   "description": "Acquisisci competenze fondamentali nella contabilità pubblica e gestisci efficacemente le risorse finanziarie pubbliche.",
+   "price": "€139",
+   "image": "https://import.cdn.thinkific.com/902376/dTgWh8kuTZ68gdsDlr4g_3-1-.png",
+   "collections": [
+    "Corsi per materia",
+    "Podcast - video corsi"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-37",
+   "name": "Concorso 49 Dirigenti INPS - Prova preselettiva",
+   "kind": "Corso",
+   "description": "Preparati efficacemente per la prova preselettiva del Concorso Dirigenti INPS con strategie mirate, conoscenze essenziali ed esercizi pratici per massimizzare le tue possibilità di successo.",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/x1glLPKUScudl0KFwKiz_pexels-rdne-7647954.jpg",
+   "collections": [
+    "Concorsi"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-30",
+   "name": "Dispensa di diritto di famiglia",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sul diritto di famiglia. Basata sul manuale: “Manuale di diritto di famiglia” di Michele Sesta.",
+   "price": "€39",
+   "image": "https://import.cdn.thinkific.com/902376/dnJ8jR6tRjTNmA5ekbdX_famiglia%20copertina%20ebook.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-29",
+   "name": "Dispensa di informatica",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sull'informatica. Basata su un manuale di preparazione alla certificazione ECDL.",
+   "price": "€19",
+   "image": "https://import.cdn.thinkific.com/902376/05rNXSKQKq0efDOYfXvr_copertina%20informatica.jpg",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/bundles/pacchetto-banca-d-italia-expert-prova-scritta",
+   "name": "Pacchetto Banca d'Italia - Expert (Prova scritta e orale)",
+   "kind": "Pacchetto",
+   "description": "Dispense chiare e complete: il pacchetto che ti porta dritto alle competenze richieste per il la prova scritta e orale del concorso Banca d’Italia – profilo Expert.",
+   "price": "€275",
+   "image": "https://files.cdn.thinkific.com/bundles/bundle_card_image_000/349/535/1770569813.original.jpg",
+   "collections": [
+    "Pacchetti"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-36",
+   "name": "Concorso SNA - Prova preselettiva",
+   "kind": "Corso",
+   "description": "Raggiungi il successo nel Concorso SNA con strategie ad hoc, approfondimenti chiave e consigli pratici per migliorare la tua preparazione e aumentare la tua fiducia.",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/FSDAhe81TRuMK3nmDfrX_ChatGPT%20Image%2017%20giu%202026_%2013_03_28.png",
+   "collections": [
+    "Concorsi",
+    "Ultimi Concorsi"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-35",
+   "name": "Azienda Zero Veneto - Collaboratore amministrativo professionale AREA GIURIDICA",
+   "kind": "Corso",
+   "description": "Preparati alla prova per collaboratore amministrativo AREA GIURIDICA presso l' Azienda Zero Veneto con un simulatore completo e mirato.",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/mddCgE7TkagmHYbF21KR_IMG_6554.jpeg",
+   "collections": [
+    "Concorsi"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-28",
+   "name": "Piano di Studio",
+   "kind": "Digital download",
+   "description": "Il tracker semplice che ti fa studiare con costanza (anche se lavori) e arrivare pronto a esame o concorso se hai da studiare per un esame scritto o un orale (no quiz)",
+   "price": "€10",
+   "image": "https://import.cdn.thinkific.com/902376/GeWWUvV3Te2sgbgtbqrd_Diritto.png",
+   "collections": []
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-27",
+   "name": "E-book Normativa Concorso 3997 Assistenti presso le P.a. - profilo Assistenti amministrativi",
+   "kind": "Digital download",
+   "description": "Scopri tutto sulla normativa del concorso 3997 per assistenti nelle Pubbliche Amministrazioni. Questo e-book ti guida attraverso le regole e le procedure per prepararti con successo.",
+   "price": "€15",
+   "image": "https://import.cdn.thinkific.com/902376/ZVr6r6uIQP2nK25sTUFy_foto.jpeg",
+   "collections": [
+    "Ebook della normativa",
+    "Ripam"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ebook-1340-funzionari-ed-elevate-professionalita",
+   "name": "E-book della normativa sul concorso 1.340 Funzionari ed elevate professionalità - Profilo funzionari amministrativi",
+   "kind": "Digital download",
+   "description": "Scopri tutta la normativa del concorso 1340 Funzionari ed elevate professionalità - 697 Funzionari amministrativi in un unico documento firmato Giurello!",
+   "price": "€15",
+   "image": "https://import.cdn.thinkific.com/902376/Qx4ucYYhS2e1MHVJO8M6_COPERTINA_CODICI_-_EBOOK_(1).jpg",
+   "collections": [
+    "Ebook della normativa",
+    "Ripam"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-26",
+   "name": "Dispensa di Economia Aziendale",
+   "kind": "Digital download",
+   "description": "Per esami universitari o concorsi, preparati con la dispensa Giurello di diritto aziendale: sintetica, chiara, dritta al punto.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/zi5SJz3DQmGnL5fJ7eKw_cpertina_economia_aziendale.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-25",
+   "name": "Dispensa di Storia dell'Arte",
+   "kind": "Digital download",
+   "description": "Scopri la nostra dispensa di Storia dell'arte (moderna, contemporanea e museologia) utilissima se ti stai preparando al concorso per il Ministero della Cultura.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/VGq1E0rbT5GFJV0C0u7l_copertina%20storia%20arte.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-24",
+   "name": "Dispensa di Marketing e Comunicazione",
+   "kind": "Digital download",
+   "description": "Scopri la nostra dispensa di Marketing e Comunicazione...utilissima se ti stai preparando al concorso per il Ministero della Cultura.",
+   "price": "€39",
+   "image": "https://import.cdn.thinkific.com/902376/zrld2js8Q9ytj9gYYaLl_foto.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-23",
+   "name": "Dispensa di archeologia",
+   "kind": "Digital download",
+   "description": "Scopri la nostra dispensa di archeologia...utilissima se ti stai preparando al concorso per il Ministero della Cultura.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/72xoKrBdRue3NrYKiZd0_dispensa_archeologia.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-32",
+   "name": "150 posti Funzionario Giuridico - Legale (M.E.F.) - Prova preselettiva",
+   "kind": "Corso",
+   "description": "Preparati con i quiz di Giurello per il concorso Funzionario Giuridico-Legale al Ministero dell'economia e delle finanze (150 posti).",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/CRTFOnXSY29VK9PpMMLw_pexels-ekaterina-bolovtsova-6077861.jpg",
+   "collections": [
+    "Concorsi"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-31",
+   "name": "78 posti Funzionario Giuridico - Tributario (M.E.F.)",
+   "kind": "Corso",
+   "description": "Preparati al concorso da Funzionario Giuridico-Tributario con il nostro Simulatore Quiz: domande mirate (stile prova concorsuale) e progressi chiari. Acquistalo ora e inizia ad allenarti come se fossi già all’esame.",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/8xmB6l90R7ObdDeJtPw5_pexels-rdne-7821688.jpg",
+   "collections": [
+    "Concorsi"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-30",
+   "name": "69 posti Funzionario Amministrativo - Contabile (M.E.F.)",
+   "kind": "Corso",
+   "description": "Preparati al concorso da Funzionario Amministrativo-Contabile con il nostro Simulatore Quiz: domande mirate (stile prova concorsuale) e progressi chiari. Acquistalo ora e inizia ad allenarti come se fossi già all’esame.",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/qTe9itOARTGGCXSxLt7F_pexels-n-voitkevich-6863524.jpg",
+   "collections": [
+    "Concorsi"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-26",
+   "name": "Concorso 1.100 Assistenti Ministero della Difesa - CODICE AMM.",
+   "kind": "Corso",
+   "description": "Preparati con i quiz di Giurello per il concorso 1.100 Assistenti presso il Ministero della Difesa - Profilo 600 Assistenti Amministrativi.",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/YWuGDHCETgKWVPIoqrV3_pexels-fauxels-3184306.jpg",
+   "collections": [
+    "Concorsi",
+    "Ultimi Concorsi"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-22",
+   "name": "Dispensa sul Testo Unico delle Leggi di Pubblica Sicurezza (T.U.L.P.S.)",
+   "kind": "Digital download",
+   "description": "Scopri tutto ciò che devi sapere sul Testo Unico delle Leggi di Pubblica Sicurezza. Questa risorsa digitale è pensata per professionisti e studenti, per una comprensione approfondita e pratica.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/zFhYc07QdqKpSJmm35WR_Diritto_(10).png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/dispensa-atti-amministrativi",
+   "name": "Guida agli atti amministrativi negli enti locali",
+   "kind": "Digital download",
+   "description": "Scopri la nostra guida per scrivere gli atti amministrativi negli enti locali.\nTutte le tipologie e le tecniche di redazione a tua disposizione.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/NUhs9k4wQr2WpfoFzyhu_Diritto_(11).png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-21",
+   "name": "Dispensa di diritto dell'accesso",
+   "kind": "Digital download",
+   "description": "Scopri la nostra dispensa di diritto dell'accesso. Perfetta per professionisti e studenti che vogliono navigare facilmente nelle normative.",
+   "price": "€35",
+   "image": "https://import.cdn.thinkific.com/902376/BPXO1zCpTwuaxxW2cNXX_COPERTINA_CODICI_-_EBOOK.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-23",
+   "name": "Concorso Agenzia delle Dogane e dei Monopoli - profilo Funzionari (prova preselettiva)",
+   "kind": "Corso",
+   "description": "In attesa del bando ufficiale, preparati alla prova preselettiva del concorso per Funzionari Amministrativi Tributari dell’Agenzia delle Dogane e dei Monopoli con un simulatore basato su uno studio mirato e un programma strutturato.",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/ydJSpMOISNyUn0tXk2IR_EU-Customs-and-Clearance-Guide.jpg",
+   "collections": [
+    "Concorsi",
+    "Ultimi Concorsi"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-20",
+   "name": "E-book sulla normativa del concorso INPS/INAIL per Funzionari",
+   "kind": "Digital download",
+   "description": "Scopri tutta la normativa per affrontare al meglio il concorso INPS/INAIL.",
+   "price": "€15",
+   "image": "https://import.cdn.thinkific.com/902376/glIpdubYSwGvNFoU3fpy_COPERTINA_CODICI_-_EBOOK.png",
+   "collections": [
+    "Ebook della normativa"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-22",
+   "name": "Concorso Magistratura tributaria",
+   "kind": "Corso",
+   "description": "Preparati al concorso per diventare magistrato tributario con i quiz che noi di Giurello abbiamo pensato per te!",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/TLhnwXCRnaX7DeedcM9O_taxes-4326713_1280.jpg",
+   "collections": [
+    "Concorsi"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-19",
+   "name": "Concorso Aspal Sardegna",
+   "kind": "Corso",
+   "description": "Preparati con noi alla prova scritta del concorso ASPAL Sardegna. Il nostro corso offre un simulatore con i quiz di tutte le materie richieste dal bando di concorso.",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/hCosc7LKRJSZSU2oPRLD_pexels-bovistas-2157537713-34951696.jpg",
+   "collections": [
+    "Concorsi"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-19",
+   "name": "Dispensa di diritto bancario",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sul diritto bancario.",
+   "price": "€79",
+   "image": "https://import.cdn.thinkific.com/902376/QZfeS3MCRBqjNz3jCUu6_copertina_bancario.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/bundles/pacchetto-bankit-assistente",
+   "name": "Pacchetto Bankit - Assistente",
+   "kind": "Pacchetto",
+   "description": "Il nostro super pacchetto è progettato per fornirti tutto ciò di cui hai bisogno per superare il concorso in Banca d'Italia - profilo assistente.",
+   "price": "€299",
+   "image": "https://files.cdn.thinkific.com/bundles/bundle_card_image_000/310/794/1761573622.original.jpg",
+   "collections": []
+  },
+  {
+   "path": "/courses/ai-placeholder-17",
+   "name": "Concorso Assistenti Ministero della Cultura",
+   "kind": "Corso",
+   "description": "Preparati in modo efficace alla prova per il concorso presso il Ministero della Cultura (Codice 01 e 02). Il corso offre un simulatore con i quiz di tutte le materie richieste dal bando di concorso. Un solo simulatore per 2 profili concorsuali!",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/Okx313AAQhupXGvQ4q4T_pexels-pixabay-159862.jpg",
+   "collections": [
+    "Concorsi",
+    "Ultimi Concorsi"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-16",
+   "name": "Concorso Università",
+   "kind": "Corso",
+   "description": "Se vuoi lavorare in università, questo è il simulatore giusto per te: generico ma completo di tutte le materie più richieste per concorsi di questo tipo!",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/ccDyatLRXWObZVuryW5Y_pexels-pixabay-289737.jpg",
+   "collections": [
+    "Concorsi"
+   ]
+  },
+  {
+   "path": "/courses/corsoinglesescritto",
+   "name": "Corso di Inglese",
+   "kind": "Corso",
+   "description": "Un metodo quotidiano, concreto e guidato per scrivere e comprendere l’inglese come un C1. Finalmente l’inglese nei concorsi non sarà più il tuo punto debole.",
+   "price": "€119",
+   "image": "https://import.cdn.thinkific.com/902376/XwtSrL34TkiH9HlLouB3_pexels-marianna-15577-89432.jpg",
+   "collections": [
+    "Concorsi",
+    "Inglese per concorsi"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder-11",
+   "name": "Concorso Polizia Municipale/Locale",
+   "kind": "Corso",
+   "description": "Preparati con il nostro corso simulatore di soli quiz, progettato sulla base dei bandi di concorso già pubblicati: trovi già i quiz suddivisi in maniera tale imparare in 3 settimane la normativa che ti serve per diventare agente di polizia!",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/wZftASS5TjGlYY1lkHKH_pexels-ketchumcommunity-1464230.jpg",
+   "collections": [
+    "Concorsi"
+   ]
+  },
+  {
+   "path": "/bundles/pacchetto-diritto-penale-a-360-gradi",
+   "name": "Diritto penale sostanziale e procedurale- full dispense",
+   "kind": "Pacchetto",
+   "description": "Una raccolta essenziale di dispense sintetiche e complete, tratte dai principali manuali in commercio, per affrontare con metodo e chiarezza lo studio del diritto penale sostanziale e procedurale.",
+   "price": "€129",
+   "image": "https://files.cdn.thinkific.com/bundles/bundle_card_image_000/298/711/1758182836.original.jpg",
+   "collections": [
+    "Pacchetti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-16",
+   "name": "Dispensa di diritto penale II",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sul diritto penale II. Basata sul manuale di diritto penale II: “Diritto penale. Lineamenti di parte speciale” di R. Bartoli - M. Pelissero - S. Seminara.",
+   "price": "€49",
+   "image": "https://import.cdn.thinkific.com/902376/Ccqx6ThwTZG7peg0jEOl_diritto_penale_2.png",
+   "collections": []
+  },
+  {
+   "path": "/products/digital_downloads/epso-competitions-guide",
+   "name": "Guida completa ai concorsi EPSO",
+   "kind": "Digital download",
+   "description": "Scopri come affrontare con successo i concorsi EPSO con la mia guida pratica. Perfetta per chi desidera lavorare nelle istituzioni europee e raggiungere il suo obiettivo professionale.",
+   "price": "€79",
+   "image": "https://import.cdn.thinkific.com/902376/2BVlKdFYTq63CQHRZSVr_metodo_epso.png",
+   "collections": [
+    "EPSO"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/dispensa-servizi-cancelleria",
+   "name": "Dispensa sui servizi di cancelleria",
+   "kind": "Digital download",
+   "description": "Scopri come ottimizzare l'uso dei servizi di cancelleria con questa dispensa dettagliata. Ideale per professionisti e studenti, migliora la tua produttività e organizzazione!",
+   "price": "€39",
+   "image": "https://import.cdn.thinkific.com/902376/lWGjyuuSZGsHG3uKJFDQ_servizi_di_cancellerie.png",
+   "collections": []
+  },
+  {
+   "path": "/products/digital_downloads/statuto-di-cagliari-digital-download",
+   "name": "Commento allo statuto del Comune di Cagliari",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sullo Statuto del Comune di Cagliari.",
+   "price": "€39",
+   "image": "https://import.cdn.thinkific.com/902376/A880ybb4RACt3J4IbqKW_statuto_di_cagliari.png",
+   "collections": []
+  },
+  {
+   "path": "/bundles/epso-corso-mock-test-e-diritto-unione-europea",
+   "name": "Epso - Corso mock test e diritto unione europea",
+   "kind": "Pacchetto",
+   "description": "Preparati ai concorsi EPSO con il nostro bundle essenziale: simulazioni di quiz creati ad hoc + dispensa di diritto dell'Unione Europea. Allenati con oltre 90 quiz giornalieri, supera la soglia dell’80% e affronta la prova con sicurezza",
+   "price": "€189",
+   "image": "https://files.cdn.thinkific.com/bundles/bundle_card_image_000/294/940/1756326342.original.jpg",
+   "collections": [
+    "EPSO",
+    "Pacchetti"
+   ]
+  },
+  {
+   "path": "/courses/corsosimulatoreepso",
+   "name": "EPSO - Corso per lavorare in Unione Europea",
+   "kind": "Corso",
+   "description": "Hai deciso di partecipare a un concorso EPSO e non sai da dove cominciare? Questo corso ti guida passo passo nella preparazione delle prove più comuni: dal metodo di studio alle strategie per affrontare i test a tempo, fino agli esercizi pratici",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/6RBnFTrNSYc7B0durXUg_pexels-eberhardgross-1743364.jpg",
+   "collections": [
+    "Concorsi",
+    "EPSO"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-15",
+   "name": "Commentario al breve testo unico delle sanzioni tributarie",
+   "kind": "Digital download",
+   "description": "Scopri il nostro commentario dettagliato sul breve testo unico delle sanzioni tributarie. Ideale per professionisti e studenti, questo download ti guiderà a comprendere meglio le normative fiscali.",
+   "price": "€40",
+   "image": "https://import.cdn.thinkific.com/902376/C11p15a0SkO1xUowI5JK_Diritto_(8).png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-14",
+   "name": "Dispensa di diritto romano",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sul diritto romano. Basata sul manuale: “Istituzioni di diritto privato romano” di Matteo Marrone.",
+   "price": "€40",
+   "image": "https://import.cdn.thinkific.com/902376/3XQcChuvTqO0CtbrSYgG_Diritto_(2).jpg",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-13",
+   "name": "Dispensa di diritto sanitario e dei diritti sociali",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sul diritto sanitario.",
+   "price": "€39",
+   "image": "https://import.cdn.thinkific.com/902376/1vE0MzokTgugcPCN6tdI_Diritto_(3).jpg",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-12",
+   "name": "Dispensa di diritto della protezione internazionale dei diritti umani",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sui diritti umani e protezione internazionale.",
+   "price": "€40",
+   "image": "https://import.cdn.thinkific.com/902376/CjXiJUUnSWK592YTsiNu_Diritto_(4).jpg",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-11",
+   "name": "Dispensa di diritto pubblico dei trasporti",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sul diritto dei trasporti. Basata sul manuale di diritto dei trasporti: “Diritto pubblico dei trasporti” di Zunarelli - Romagnoli - Claroni.",
+   "price": "€40",
+   "image": "https://import.cdn.thinkific.com/902376/uw9nOCZ2TvmSkZs8sMup_Diritto%20(1).jpg",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-10",
+   "name": "Dispensa di diritto della navigazione",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sul diritto della navigazione. Basata sul manuale: “Manuale di diritto della navigazione” di D’Ovidio, Pescatore e Tullio.",
+   "price": "€40",
+   "image": "https://import.cdn.thinkific.com/902376/3CVrezlnQgWjs1KCAqa7_Diritto_(1).jpg",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-9",
+   "name": "Commento allo Statuto di Roma Capitale",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sullo Statuto di Roma Capitale.",
+   "price": "€30",
+   "image": "https://import.cdn.thinkific.com/902376/9vVJJg6ITZ6Mm1mgChFi_statuto_roma_capitale.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/deontologia-forense-digital-download",
+   "name": "Dispensa di deontologia forense",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sulla deontologia forense.",
+   "price": "€30",
+   "image": "https://import.cdn.thinkific.com/902376/heNXfjVmSayErcRWgEM1_deontologia_forense.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-8",
+   "name": "Dispensa di ordinamento giudiziario",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sull'ordinamento giudiziario.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/o0qconJTYCZavT7HrDHy_foto%20(2).png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-7",
+   "name": "Dispensa di diritto dei beni culturali e ambientali",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sul diritto dei beni culturali e ambientali.",
+   "price": "€40",
+   "image": "https://import.cdn.thinkific.com/902376/XygI4jZBQqiHKOvV5am1_foto%20(3).png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-6",
+   "name": "Dispensa di sistemi giuridici comparati",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sul diritto comparato. Basata sul manuale: “Sistemi giuridici comparati” di Gambaro-Sacco.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/ndiWveCTBC6zJcpdYqfQ_diritto_comparato.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-5",
+   "name": "Dispensa di diritto parlamentare",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sul diritto parlamentare. Basata sul manuale: “Corso di diritto parlamentare” di Gianniti-Lupo.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/WzHdkaHXT1WbFuybeLWp_foto.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-4",
+   "name": "Dispensa di diritto delle proprietà",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sul diritto della proprietà. Basata sul manuale: “Proprietà e possesso” di Cesare Salvi.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/7zab1TLQNms6T3UUl2Ow_diritto_prorpeit_C3_A0.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-3",
+   "name": "Dispensa di diritto delle successioni",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sul diritto delle successioni. Basata sul manuale: “Manuale di Diritto Ereditario e Successioni” di Bonilini - Utet.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/OR0fPyuaR2yocsRRrKLn_foto%20(1).png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/metodoconcorso",
+   "name": "Metodo di studio - Concorsi",
+   "kind": "Digital download",
+   "description": "Il sistema pratico per organizzare lo studio, scegliere i materiali giusti e affrontare la preparazione concorsuale con strategia.",
+   "price": "€25",
+   "image": "https://import.cdn.thinkific.com/902376/Z2ED5zp3SHi0jAfXnend_Diritto%20(7).png",
+   "collections": [
+    "Metodo di studio, tesi e post laurea",
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/checkconcorso",
+   "name": "CheckConcorso",
+   "kind": "Digital download",
+   "description": "CheckConcorso è il test gratuito che ti aiuta a capire se il tuo metodo di studio è davvero efficace per affrontare un concorso pubblico.\nIn meno di 5 minuti, valuti il tuo livello di organizzazione, pianificazione e strategia.\n🔍 Ricevi subito un pr",
+   "price": "",
+   "image": "https://import.cdn.thinkific.com/902376/enY0q1s7SePz3QBXm7sw_checkconcorso.png",
+   "collections": [
+    "Prodotti gratuiti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/new-digital-download-7",
+   "name": "Dispensa di diritto del turismo",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sul diritto del turismo. Basata sul manuale: “Diritto del turismo” di Santagata R.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/mRStOMLJToiCEg7f1HRT_diritto%20del%20turismo.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/bundles/diritto-amministrativo-full-dispense",
+   "name": "Diritto Amministrativo - full dispense",
+   "kind": "Pacchetto",
+   "description": "Una raccolta essenziale di dispense sintetiche e complete, tratte dai principali manuali in commercio, per affrontare con metodo e chiarezza lo studio del diritto amministrativo, del processo amministrativo e della disciplina degli appalti pubblici.",
+   "price": "€129",
+   "image": "https://files.cdn.thinkific.com/bundles/bundle_card_image_000/284/338/1752055055.original.png",
+   "collections": [
+    "Pacchetti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/new-digital-download-6",
+   "name": "Dispensa di diritto dell'ambiente",
+   "kind": "Digital download",
+   "description": "Questa dispensa, basata sul manuale \"Diritto dell’Ambiente\" di Giampaolo Rossi, offre una sintesi chiara e aggiornata dei principali istituti del diritto ambientale italiano ed europeo. Ideale per studenti universitari e candidati a concorsi pubblici",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/HQG3J0eDTMm1LvxQPLYD_diritto%20ambiente.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/provaprefettura",
+   "name": "Guida alla redazione della prova - Concorso Prefettura",
+   "kind": "Digital download",
+   "description": "Una guida chiara, aggiornata e operativa per imparare a scrivere la prova pratica del concorso per la carriera prefettizia. Attraverso l’analisi ragionata delle fonti normative e delle strategie organizzative, il testo ti accompagna nella scrittura",
+   "price": "€30",
+   "image": "https://import.cdn.thinkific.com/902376/msSw2NoIStesKWbE1p60_Diritto%20(2).png",
+   "collections": []
+  },
+  {
+   "path": "/products/digital_downloads/dirittoecclesiastico",
+   "name": "Dispensa di diritto ecclesiastico",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sulla storia contemporanea. Basata sul manuale di diritto ecclesiastico: \"Fondamenti e Sistemi di Relazione\" di Bettetini e Perego.",
+   "price": "€40",
+   "image": "https://import.cdn.thinkific.com/902376/0G7tF9EbQvi8kE4RAGxU_Diritto%20(1).png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/dispensapubblicaamministrazione",
+   "name": "Dispensa di storia della pubblica amministrazione",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sulla storia contemporanea. Basata sul manuale Capano Gualmini.",
+   "price": "€40",
+   "image": "https://import.cdn.thinkific.com/902376/XZRK4ahjS4i8UZjvFqSz_storia%20pa.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/bundles/pacchetto-concorso-carriera-prefettizia",
+   "name": "Pacchetto Concorso Carriera Prefettizia",
+   "kind": "Pacchetto",
+   "description": "Con questo pacchetto hai tutto ciò che ti serve per affrontare la prova scritta del concorso Carriera Prefettizia.",
+   "price": "€199",
+   "image": "https://files.cdn.thinkific.com/bundles/bundle_card_image_000/283/078/1751404621.original.jpg",
+   "collections": [
+    "Pacchetti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-1",
+   "name": "Dispensa di storia contemporanea",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sulla storia contemporanea. Basata sul manuale Caracciolo-Roccucci.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/9GiTvnlkS7uTUz41urh2_storia%20contemporanea.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/courses/carrieraprefettizia25",
+   "name": "Carriera prefettizia 2025 - concorso prefettura 2025",
+   "kind": "Corso",
+   "description": "Preparati in modo mirato con il nostro corso esclusivo di soli quiz, progettato per aiutarti a superare la prova preselettiva del concorso Prefettura - Carriera Prefettizia 2025.",
+   "price": "€169",
+   "image": "https://import.cdn.thinkific.com/902376/DyXU9sCtRQmE7FAHooda_pexels-earth-photart-2149767641-32750009.jpg",
+   "collections": [
+    "Concorsi"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/new-digital-download-5",
+   "name": "Dispensa di Diritto Costituzionale",
+   "kind": "Digital download",
+   "description": "Una dispensa sintetica e aggiornata di Diritto Costituzionale, basata sul manuale Bin-Pitruzzella. Ideale per ripassare in modo mirato e chiaro i concetti fondamentali in vista dell’esame.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/fzYsWqtSvK96vdVmye0r_diritto%20costituzionale%20copertina.jpg",
+   "collections": [
+    "Riassunti per concorsi",
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder",
+   "name": "Dispensa di diritto processuale amministrativo",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita del diritto processuale amministrativo. Basata sul G. Leone e Bordin.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/ayFUNBZVQ0yx0yjzAAmr_processo%20amministrativo.jpg",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/text-unico-degli-enti-locali",
+   "name": "Dispensa di Diritto degli Enti Locali",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita del Testo Unico degli Enti Locali (T.U.E.L.)",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/WOE9mJp4QCs1wgmpRMpW_diritto%20enti%20locali.jpg",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/corporatelawintegration",
+   "name": "Diritto commerciale - Società quotate focus",
+   "kind": "Digital download",
+   "description": "Una dispensa chiara e aggiornata sulle società quotate, basata sul manuale Campobasso. Perfetta per chi cerca un focus completo e affidabile in vista dell’esame di diritto commerciale.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/F5rIyNmdQJTp8bniwocA_societ%C3%A0%20quotate.jpg",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/civil-law-integrations",
+   "name": "Diritto civile - diritto dei consumatori",
+   "kind": "Digital download",
+   "description": "Scopri un approfondimento essenziale sul diritto civile, con focus su diritto dei consumatori e clausole claims made. Ideale per studenti e concorsisti, questo prodotto ti aiuterà a padroneggiare concetti chiave e migliorare le tue competenze.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/YbVtCINMR1OEZoVTjCFT_consumatori.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/english-news-writing-guide",
+   "name": "Guida su come scrivere un testo di attualità in inglese",
+   "kind": "Digital download",
+   "description": "Una guida pratica e sintetica per imparare a scrivere testi di attualità in inglese in modo chiaro, efficace e strutturato. Perfetta per esami e concorsi in cui la lingua inglese è fondamentale.",
+   "price": "€10",
+   "image": "https://import.cdn.thinkific.com/902376/DCkeNhh9TF8qDCFPk5w3_inglese%20per%20concorsi.png",
+   "collections": [
+    "Inglese per concorsi"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/ai-placeholder-2",
+   "name": "Guida al Metodo di Studio per il Concorso IVASS",
+   "kind": "Digital download",
+   "description": "Scopri strategie efficienti e risorse utili per prepararti al concorso IVASS. Ideale per candidati che desiderano massimizzare il loro rendimento nello studio.",
+   "price": "€10",
+   "image": "https://import.cdn.thinkific.com/902376/e7vEBjA4Q7e6r9kCz8es_metodo%20ivass.png",
+   "collections": [
+    "Metodo di studio, tesi e post laurea"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/insurance-law-digital-download",
+   "name": "Dispensa di diritto delle assicurazioni",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita del diritto delle assicurazioni. Basata sul manuale di DONATI ANTIGONO e PUTZOLU GIOVANNA.",
+   "price": "€70",
+   "image": "https://import.cdn.thinkific.com/902376/5jEgAGQfS5v322MFxRCc_diritto%20assicurativo.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/bundles/pacchetto-concorso-expert-ivass",
+   "name": "Pacchetto Concorso Expert IVASS",
+   "kind": "Pacchetto",
+   "description": "",
+   "price": "€350",
+   "image": "https://files.cdn.thinkific.com/bundles/bundle_card_image_000/269/401/1745314813.original.jpg",
+   "collections": [
+    "Concorsi",
+    "Pacchetti"
+   ]
+  },
+  {
+   "path": "/courses/viceispettori",
+   "name": "Vice Ispettori della Polizia di Stato",
+   "kind": "Corso",
+   "description": "Preparati al concorso per vice ispettori della Polizia di Stato: con questo corso-simulatore saprai cosa fare ogni giorno, concentrando le tue energie e avendo un chiaro programma di studio!",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/pATJZb2wSHuxLsXUsoGi_pexels-jacobmorch-572779.jpg",
+   "collections": [
+    "Concorsi"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/dispensa-di-diritto-della-previdenza-sociale",
+   "name": "Dispensa di diritto della previdenza sociale",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita del diritto della previdenza sociale. Basato sul manuale di diritto della previdenza sociale di V. Ferrante.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/5iXL4ajS3GZquNPLTbWr_previdenza%20sociale%202.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/courses/istruttorefunzionarioentilocali",
+   "name": "Istruttore/Funzionario amministrativo negli enti locali",
+   "kind": "Corso",
+   "description": "Se vuoi lavorare nella pubblica amministrazione ma non sai da dove cominciare, sei nel posto giusto.",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/oz3e9rxcTEmLQxveOugy_pexels-fauxels-3183197.jpg",
+   "collections": [
+    "Concorsi"
+   ]
+  },
+  {
+   "path": "/courses/ai-placeholder",
+   "name": "Quiz Situazionali",
+   "kind": "Corso",
+   "description": "490 Quiz Situazionali a tua disposizione da fare e rifare quando e dove vuoi!",
+   "price": "€70,97",
+   "image": "https://import.cdn.thinkific.com/902376/jFoYZKcUQJKa4j72msF9_pexels-leeloothefirst-5428830.jpg",
+   "collections": []
+  },
+  {
+   "path": "/bundles/mega-pacchetto-per-il-tuo-percorso-universitario-e-per-il-tuo-post-lauream",
+   "name": "Mega pacchetto per il tuo percorso universitario e per il tuo post-lauream",
+   "kind": "Pacchetto",
+   "description": "Il nostro bundle “Guida al metodo di studio universitario+ Masterclass in Smart Legal Studies+Masterclass tesi di laurea+LegalPath Masterclass” è progettato per fornirti una guida pratica per l'università e per il mondo del lavoro.",
+   "price": "€220",
+   "image": "https://files.cdn.thinkific.com/bundles/bundle_card_image_000/260/863/1741691958.original.jpg",
+   "collections": [
+    "Pacchetti"
+   ]
+  },
+  {
+   "path": "/bundles/DISPENSADIRITTOPENALEPROCEDURAPENALE",
+   "name": "Mega pacchetto Dispensa di diritto penale e diritto processuale penale",
+   "kind": "Pacchetto",
+   "description": "Il nostro bundle “Dispensa di diritto penale+Dispensa di diritto processuale penale” è progettato per fornirti una comprensione del diritto penale, sia sostanziale che processuale.",
+   "price": "€75",
+   "image": "https://files.cdn.thinkific.com/bundles/bundle_card_image_000/258/554/1741691087.original.jpg",
+   "collections": [
+    "Pacchetti"
+   ]
+  },
+  {
+   "path": "/bundles/acchetto-per-affrontare-un-concorso-pubblico-presso-la-p-a-o-presso-l-universita",
+   "name": "Pacchetto amministrativo, privacy e legislazione universitaria",
+   "kind": "Pacchetto",
+   "description": "Il nostro bundle “Dispensa di diritto amministrativo+Dispensa di diritto della privacy+Dispensa di legislazione universitaria” è progettato per fornirti una comprensione ampia e solida di queste tre materie.",
+   "price": "€125",
+   "image": "https://files.cdn.thinkific.com/bundles/bundle_card_image_000/258/192/1741378452.original.jpg",
+   "collections": [
+    "Pacchetti"
+   ]
+  },
+  {
+   "path": "/bundles/pacchetto-contabilita-pubblica-degli-enti-locali",
+   "name": "Pacchetto CONTABILITÀ PUBBLICA DEGLI ENTI LOCALI",
+   "kind": "Pacchetto",
+   "description": "Il nostro bundle “Glossario di contabilità degli enti locali+corso di contabilità pubblica degli enti locali comprensivo di dispensa” è progettato per fornirti una comprensione ampia e solida della contabilità pubblica.",
+   "price": "€154,99",
+   "image": "https://files.cdn.thinkific.com/bundles/bundle_card_image_000/258/191/1741377854.original.jpg",
+   "collections": [
+    "Pacchetti"
+   ]
+  },
+  {
+   "path": "/bundles/pacchetto-dispensa-amministrativo-e-tributario",
+   "name": "Pacchetto dispensa: amministrativo e tributario",
+   "kind": "Pacchetto",
+   "description": "Il nostro bundle “Dispensa di diritto amministrativo+Dispensa di diritto tributario” è progettato per fornirti una comprensione approfondita sia del diritto amministrativo che del diritto tributario. 217 pagine totali e superera il tuo concorso/esame",
+   "price": "€75",
+   "image": "https://files.cdn.thinkific.com/bundles/bundle_card_image_000/258/190/1741377635.original.jpg",
+   "collections": [
+    "Pacchetti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/new-digital-download-3",
+   "name": "Dispensa di diritto degli appalti pubblici",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sul Codice degli appalti. Tutto ciò che devi sapere in un'unica dispensa.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/br81MgjSTCK4qHDvMAhs_appalti%20pubblici%202.png",
+   "collections": [
+    "Riassunti per concorsi",
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/dirittodoganale",
+   "name": "Dispensa di diritto delle dogane",
+   "kind": "Digital download",
+   "description": "Una dispensa sul Diritto Doganale basata sul corso di Vismara F., arricchita da riferimenti alla dottrina e aggiornata alla recente riforma. Pensata per chi prepara i concorsi dell’Agenzia delle Dogane con un approccio chiaro e mirato.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/oXhLe0DRZaa0bSWWN9XW_doganale%202.png",
+   "collections": [
+    "Riassunti per concorsi",
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/bundles/pacchetto-segretario-comunale",
+   "name": "Pacchetto segretario comunale",
+   "kind": "Pacchetto",
+   "description": "Con questo pacchetto potrai allenarti con i quiz e acquisire la basi della contabilità degli enti locali con la nostra super dispensa!",
+   "price": "€187",
+   "image": "https://files.cdn.thinkific.com/bundles/bundle_card_image_000/232/780/1739259759.original.jpg",
+   "collections": [
+    "Pacchetti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/dirittopenitenziario",
+   "name": "Dispensa di diritto penitenziario",
+   "kind": "Digital download",
+   "description": "Una sintesi chiara e completa basata sul Manuale di Diritto Penitenziario di Alessandro Diddi. Perfetta per affrontare con sicurezza il diritto penitenziario, con focus su organizzazione, normative e servizi degli istituti penitenziari. 🚀✨",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/QQvgxGawR32IlHaXMMHR_penitenziario.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/dirittointernazionalepubblico",
+   "name": "Dispensa di diritto internazionale pubblico",
+   "kind": "Digital download",
+   "description": "Una sintesi chiara e completa basata sui manuali di Conforti e Carbone, ideale per studiare in modo efficace il diritto internazionale pubblico. Strutturata per facilitare la comprensione e il ripasso rapido. 🚀✨",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/AtErNqwSH6HPau6lyFqg_diritto%20internazionale.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/dirittoue",
+   "name": "Dispensa di diritto dell'Unione Europea",
+   "kind": "Digital download",
+   "description": "Questa dispensa è il compagno ideale per chi studia e vuole affrontare con successo l'esame di diritto UE. Approfitta di un contenuto strutturato, chiaro e completo e togliti il pensiero dell'esame!",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/MZaBBV7Q4y2BhNaVSrWh_diritto%20unione%20europea.png",
+   "collections": [
+    "Riassunti per concorsi",
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/diramministrativo",
+   "name": "Dispensa di diritto Amministrativo",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai le conoscenze necessarie sia riguardanti la legge 241/90 che la struttura organizzativa e funzionale della PA e le sue fonti.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/ciwuBbuJQzGv1TCWFlid_Diritto%20(3).png",
+   "collections": [
+    "Riassunti per concorsi",
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/Metododistudio",
+   "name": "Metodo di studio - università",
+   "kind": "Digital download",
+   "description": "Con questa guida saprai come affrontare al meglio il tuo percorso universitario. Provata dai nostri tutor e dai nostri studenti!",
+   "price": "€25",
+   "image": "https://import.cdn.thinkific.com/902376/DlBMTDoQTMGKTYVBk7P0_Diritto%20(6).png",
+   "collections": [
+    "Metodo di studio, tesi e post laurea"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/dispensatributario",
+   "name": "Dispensa di diritto tributario e del processo tributario",
+   "kind": "Digital download",
+   "description": "Cerchi del materiale che abbia TUTTO quello che ti serve sapere di diritto tributario? che non solo tratti la parte di accertamento e riscossione, ma anche il processo? Questa è la dispensa che ti serve.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/xu4BczGjTtWGtONTzZP1_diitto%20tribtuario.png",
+   "collections": [
+    "Riassunti per concorsi",
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/live_events/avvocato",
+   "name": "Avvocatura - tutoraggio",
+   "kind": "Coaching",
+   "description": "Stai preparando l'esame d'avvocato? Allenati e preparati con la nostra Beatrice!",
+   "price": "€62",
+   "image": "https://import.cdn.thinkific.com/902376/t5gwtqKnRAmj2T23BiVe_pexels-sora-shimazaki-5669619.jpg",
+   "collections": [
+    "Esame Avvocato",
+    "Tutor e percorsi personalizzati"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/new-digital-download-2",
+   "name": "Dispensa di diritto della crisi e dell'insolvenza",
+   "kind": "Digital download",
+   "description": "Ti abbiamo riassunto in 100 pagine ciò che ti serve sapere, senza giri di parole inutili. Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sul diritto della crisi e dell'insolvenza.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/aaQVc1ebRLq1Yymjtk8s_diritto%20della%20crisi%20insolvenza.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/legislazioneuniiversitaria",
+   "name": "Dispensa di legislazione universitaria",
+   "kind": "Digital download",
+   "description": "Con questa dispensa puoi preparare tutti i concorsi da collaboratore a funzionario per l'università - qualsiasi università d'Italia. Scritta da chi ha vinto il concorso.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/xTeHMuKISWmulemN8w4E_legislazione%20uinversitaria.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/bundles/quiz-allenamento",
+   "name": "All you can quiz!",
+   "kind": "Pacchetto",
+   "description": "Questo pacchetto è pensato per i concorsisti seriali che non vogliono perdere l’allenamento.",
+   "price": "€49",
+   "image": "https://files.cdn.thinkific.com/bundles/bundle_card_image_000/208/084/1742291460.original.jpg",
+   "collections": [
+    "Pacchetti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/Proceduracivile",
+   "name": "Dispensa di procedura Civile",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sul diritto processuale civile.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/0gT5kycTryp9afJAGXcg_procedura%20civile.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/procedurapenale",
+   "name": "Dispensa di procedura penale",
+   "kind": "Digital download",
+   "description": "Togliti il pensiero ed inizia a studiare ora. Con questa dispensa migliorerai il tuo studio e la tua salute mentale. Se pensi che non sarai un/una bravo/a Giurista perché non hai preso il manuale... spoiler: a nessuno importa dove hai studiato!",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/W3wDDtIhTFeIGXQKdoNz_procedura%20penale%201.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/diritto-della-privacy",
+   "name": "Dispensa di diritto della privacy",
+   "kind": "Digital download",
+   "description": "Con questa dispensa potrai facilmente acquisire le nozioni fondamentali e i dettagli della materia. Scritta da esperti e finalizzata a farti apprendere i concetti che ti servono veramente.",
+   "price": "€69,97",
+   "image": "https://import.cdn.thinkific.com/902376/KI2UK8mTQC6QsI53hzxX_privacy.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/diritto-delle-nuove-tecnologie",
+   "name": "Dispensa di diritto delle nuove tecnologie",
+   "kind": "Digital download",
+   "description": "Con questa dispensa imparerai il diritto del futuro: brevetti, copyright, cybersicurezza, informatica e crittografia. Vengono trattati i temi più importanti che un giurista del futuro deve assolutamente conoscere!",
+   "price": "€77,99",
+   "image": "https://import.cdn.thinkific.com/902376/x2L3h6t1RRCLvSyFjMZg_nuove%20tec.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/glossariocontabilitaenti",
+   "name": "Glossario di contabilità degli enti locali",
+   "kind": "Digital download",
+   "description": "Non capisci la terminologia tecnica utilizzata in certi scritti? ti aiutiamo noi con questo fantastico glossario: avrai una definizione e una spiegazione dei concetti chiave in ordine alfabetico.",
+   "price": "€9,99",
+   "image": "https://import.cdn.thinkific.com/902376/1TVg0MRCSYSqCm6XRwJP_glossario%20enti%20locali.png",
+   "collections": [
+    "Materie Economiche"
+   ]
+  },
+  {
+   "path": "/courses/corsofinanza",
+   "name": "Corso di finanza (economia) - la base",
+   "kind": "Corso",
+   "description": "Corso di finanza ( base) creato per chi desidera migliorare le proprie competenze finanziarie in modo rapido ed efficace.",
+   "price": "€130",
+   "image": "https://import.cdn.thinkific.com/902376/O7jiT7JxROOcidzp2XGL_corso%20finanza%20personale.jpg",
+   "collections": [
+    "Corsi per materia",
+    "Materie Economiche"
+   ]
+  },
+  {
+   "path": "/products/communities/giurellisti",
+   "name": "Forum - Concorsisti di Giurello",
+   "kind": "Comunità",
+   "description": "Benvenuto nel Forum di Giurello dedicato ai concorsi pubblici: uno spazio sicuro dove concorsisti e studenti possono fare domande, confrontarsi, condividere esperienze e ottenere supporto reale nella preparazione!",
+   "price": "",
+   "image": "https://import.cdn.thinkific.com/902376/hVRATcE3SQuOPaRVFiTI_forum.png",
+   "collections": [
+    "Forum",
+    "Prodotti gratuiti"
+   ]
+  },
+  {
+   "path": "/courses/contabilit%C3%A0pubblicaentilocali",
+   "name": "Contabilità pubblica - enti locali",
+   "kind": "Corso",
+   "description": "Con questo corso acquisirai le basi della contabilità degli enti locali: in particolare conoscerai i principali documenti contabili coinvolti nell'attività dell'ente locale e le loro funzioni. Non ti preoccupare se sei a zero, questo corso è per te!",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/5x6fau3Tb6dXCOAPX4hQ_pexels-gaspar-ferenc-322731648-13717406.jpg",
+   "collections": [
+    "Corsi per materia",
+    "Materie Economiche"
+   ]
+  },
+  {
+   "path": "/courses/economiapolitica",
+   "name": "Economia Politica",
+   "kind": "Corso",
+   "description": "Con questo corso riuscirai finalmente a comprendere economia politica . Pronto a capirci qualcosa di grafici e espressioni?",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/vpRdslZATaK0zcBsvzmt_economia%20politica%20cover.jpg",
+   "collections": [
+    "Corsi per materia",
+    "Materie Economiche"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/dirittopenalegenerale",
+   "name": "Dispensa di diritto penale - parte generale",
+   "kind": "Digital download",
+   "description": "Con questa dispensa potrai avere chiari tutti gli istituti del diritto penale e anche degli orientamenti dottrinali e giurisprudenziali più importanti!",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/f6pXAlZ5QHOWbWaiVsLC_diritto%20penale.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/live_events/new-event-2",
+   "name": "Tutor materie economiche",
+   "kind": "Coaching",
+   "description": "Pronto a superare i tuoi limiti e le tue paure?\nInizia ora a studiare per quell'esame che odi.\nSpoiler: farlo con qualcuno renderà tutto più semplice!",
+   "price": "€55",
+   "image": "https://import.cdn.thinkific.com/902376/G4jUS6gIRFyXzEGgzrdw_pexels-tima-miroshnichenko-6694543.jpg",
+   "collections": [
+    "Tutor e percorsi personalizzati"
+   ]
+  },
+  {
+   "path": "/products/live_events/new-event",
+   "name": "Svolgi la tua ora con la tutor Sabrina",
+   "kind": "Coaching",
+   "description": "",
+   "price": "€55",
+   "image": "https://import.cdn.thinkific.com/902376/cuEW4tg3QYuvzV5snYtW_pexels-bilakis-4069090.jpg",
+   "collections": [
+    "Tutor e percorsi personalizzati"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/new-digital-download",
+   "name": "Dispensa economia politica base",
+   "kind": "Digital download",
+   "description": "Approccia questa odiosa materia partendo dai principi base di economia politica: studia la legge della domanda, dell'offerta, l'elasticità e impara le teorie alla base dell'odierna società.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/cXyJsBjyRPCPwtQAKVmf_economia%20politica%20copertina.png",
+   "collections": [
+    "Materie Economiche",
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/contabilita-pubblica-la-base-1",
+   "name": "CONTABILITA' PUBBLICA DEGLI ENTI LOCALI - la base 1",
+   "kind": "Digital download",
+   "description": "Con questa dispensa acquisirai una preparazione super aggiornata e approfondita sulla contabilità degli enti locali.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/yF2HbFzS16rhobbEjgD3_contabilit%C3%A0%20enti%20locali.png",
+   "collections": [
+    "Materie Economiche",
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/diritto-del-lavoro",
+   "name": "Dispensa di diritto del lavoro",
+   "kind": "Digital download",
+   "description": "In questa dispensa troverai tutto quello che ti serve per coprire le basi del diritto del lavoro: redatta da chi interroga agli esami di diritto del lavoro in università, con questo ebook studierai anche la parte sul pubblico impiego.",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/PfqbPHiQxmQgsiQn4Ogu_diritto%20del%20lavoro%203.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/diritto-commerciale",
+   "name": "Dispensa di diritto commerciale",
+   "kind": "Digital download",
+   "description": "Con questa dispensa riuscirai a completare in pochissimo tempo il ripasso degli argomenti generali: abbiamo infatti deciso di selezionare e di affrontare lo studio delle società, puntando a farvi capire e apprendere i concetti fondamentali!",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/gimhUtg1RkabZ8Ltv4h2_Diritto%20(5).png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/contabilita-la-base-1",
+   "name": "CONTABILITA' AZIENDALE - la base 1",
+   "kind": "Digital download",
+   "description": "Impara le basi della contabilità aziendale: saper leggere un bilancio, capire quali sono gli indici più importanti e conoscere la Contabilità generale e molte altre informazioni sono contenute in questa dispensa. Ps. è piena di esempi!",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/beOhIDQAabMxkHaoa84A_contabilit%C3%A0%20aziendale.png",
+   "collections": [
+    "Materie Economiche",
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/products/digital_downloads/diritto-civile",
+   "name": "Dispensa di Diritto Civile - Obbligazione, contratti, responsabilità civile, atti/fatti idonei a far sorgere l'obbligazione",
+   "kind": "Digital download",
+   "description": "",
+   "price": "€50",
+   "image": "https://import.cdn.thinkific.com/902376/LzMDSoz3TG2a6sQvcmt5_copertina%20diritto%20civile.png",
+   "collections": [
+    "Tutte le dispense - Riassunti"
+   ]
+  },
+  {
+   "path": "/bundles/privato-commerciale",
+   "name": "Privato & Commerciale full immersion",
+   "kind": "Pacchetto",
+   "description": "Con questa accoppiata Diritto privato e diritto commerciale, sarai pronto a diventare un super civilista: che sia un contratto o un problema societario, sarai in grado di capire e comprendere a pieno i problemi giuridici!",
+   "price": "€225",
+   "image": "https://files.cdn.thinkific.com/bundles/bundle_card_image_000/169/919/1717164237.original.jpg",
+   "collections": [
+    "Pacchetti"
+   ]
+  },
+  {
+   "path": "/courses/diritto-privato-full-immersion-solo-obbligazioni-contratti-e-responsabilita",
+   "name": "Diritto privato - FULL IMMERSION (solo obbligazioni, contratti e responsabilità)",
+   "kind": "Corso",
+   "description": "",
+   "price": "€150",
+   "image": "https://import.cdn.thinkific.com/902376/qLPocI6VSAuByLz1munD_corso%20privato%20copertina.png",
+   "collections": [
+    "Corsi per materia"
+   ]
+  },
+  {
+   "path": "/courses/contabilita-corso-base",
+   "name": "Contabilità Aziendale - corso base",
+   "kind": "Corso",
+   "description": "Con questo corso, riuscirai a comprendere e capire la contabilità base aziendale, proprio quello che ti serve per affrontare il tuo esame, il tuo concorso o qualsiasi prova tu debba superare!",
+   "price": "€127",
+   "image": "https://import.cdn.thinkific.com/902376/aqJWS8FuQBm4fTWTFRWi_pexels-pixabay-53621.jpg",
+   "collections": [
+    "Corsi per materia",
+    "Materie Economiche"
+   ]
+  },
+  {
+   "path": "/courses/legalpath-cosa-fare-nel-post-laurea-con-giurisprudenza",
+   "name": "LEGALPATH: cosa fare nel post laurea con Giurisprudenza?",
+   "kind": "Corso",
+   "description": "Lo sapevi che il tuo post laurea e la ricerca del lavoro ideale per te inizia fin dal primo giorno di università? No? Beh allora scopri insieme a me cosa ti aspetta 😎",
+   "price": "€70",
+   "image": "https://import.cdn.thinkific.com/902376/KimKBTWZQSW6xhpcd1wF_graduation-2038864_1920.jpg",
+   "collections": [
+    "Metodo di studio, tesi e post laurea"
+   ]
+  },
+  {
+   "path": "/courses/smart-legal-studies-come-studiare-a-giurisprudenza",
+   "name": "Smart Legal Studies: come studiare a giurisprudenza",
+   "kind": "Corso",
+   "description": "Smart Legal Studies il mini-corso sul metodo di studio che ti insegna come studiare e come organizzare la sessione a giurisprudenza.",
+   "price": "€70",
+   "image": "https://import.cdn.thinkific.com/902376/hTf88Gq6SEKX6vedBuaX_how_to_study.jpg",
+   "collections": [
+    "Metodo di studio, tesi e post laurea"
+   ]
+  },
+  {
+   "path": "/courses/masterclass-tesi-di-laurea",
+   "name": "MASTERCLASS - Tesi di laurea",
+   "kind": "Corso",
+   "description": "In questo corso ti insegnerò come prepararti alla laurea: dalla scelta del professore al discorso di laurea.",
+   "price": "€70",
+   "image": "https://import.cdn.thinkific.com/902376/b0iGZii1SsKNeFYaI0Qo_lezione.jpg",
+   "collections": [
+    "Metodo di studio, tesi e post laurea"
+   ]
+  },
+  {
+   "path": "/courses/Dirittocommerciale",
+   "name": "Diritto Commerciale - full immersion",
+   "kind": "Corso",
+   "description": "Con questo breve corso in diritto commerciale sarai in grado di affrontare qualsiasi domanda!",
+   "price": "€159",
+   "image": "https://import.cdn.thinkific.com/902376/KnI7NpTQuK2TDZBprGA2_business.jpg",
+   "collections": [
+    "Corsi per materia"
+   ]
+  }
+ ]
+}

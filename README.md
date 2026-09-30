@@ -4,26 +4,32 @@ Demo del nuovo sito di [giurello.it](https://giurello.it), con uno stile moderno
 
 ## Cosa contiene
 
+Contenuti, testi, logo, colori e catalogo sono ripresi dal sito attuale ([giurello.it](https://www.giurello.it)) e dal negozio [giurello.thinkific.com](https://giurello.thinkific.com). La struttura e la navigazione sono le stesse, con una grafica più moderna.
+
 | Pagina | Contenuto |
 |---|---|
-| `/` | Hero, numeri, punti di forza, concorsi in evidenza, Galletto AI, come funziona, masterclass, testimonianze, FAQ |
-| `/concorsi` | Catalogo dei 14 simulatori con filtro per categoria e ricerca |
-| `/concorsi/:slug` | Scheda del corso: materie, prezzo, acquisto (link all'attuale Thinkific), corsi correlati |
-| `/universita` | Masterclass *Smart Legal Studies*, corsi per materia, supporto (metodo, sessione, tesi, post-laurea) |
-| `/galletto` | Chat demo con Galletto e **generatore del piano di studio** (calcolato sul server) |
-| `/simulatore` | Quiz demo con **correzione sul server** e spiegazione con il riferimento normativo |
-| `/chi-siamo`, `/contatti` | Presentazione dell'azienda e modulo di contatto (validazione e anti-spam lato server) |
-| `/privacy`, `/condizioni` | Testi segnaposto |
-| `/sitemap.xml`, `/robots.txt`, `/healthz` | SEO e health check |
+| `/` | Hero con claim, promo del simulatore in evidenza, "I nostri corsi più amati", aree di formazione con ricerca, "Che cosa troverai su Giurello" (simulatori, dispense, podcast), ultimi concorsi, riassunti dei manuali, "Tutti i nostri corsi comprendono", recensioni reali, newsletter "Rimani aggiornato", FAQ |
+| `/concorsi`, `/concorsi/:area` | Catalogo completo (163 prodotti Thinkific) con aree, filtri per tipologia, ricerca e paginazione, tutto lato server |
+| `/prodotto/:slug` | Scheda prodotto: descrizione, prezzo, acquisto su Thinkific. Per i simulatori anche "Perché scegliere il nostro simulatore" e le FAQ originali; in fondo i prodotti correlati |
+| `/dispense`, `/universita`, `/podcast-e-altro`, `/avvocato` | Pagine di sezione con i testi originali e i prodotti collegati |
+| `/galletto` | Galletto AI: presentazione, piani di abbonamento, chat demo e generatore del piano di studio |
+| `/chi-siamo`, `/help` | Team, community e modulo "Hai domande?" (nome, cognome, email, telefono, messaggio) |
+| `/prova-simulatore` | Quiz demo con correzione lato server |
 
-Il sito ha tema chiaro e scuro, è responsive e rispetta l'accessibilità di base (skip link, focus visibile, `prefers-reduced-motion`).
+### Aggiornare il catalogo
+
+```bash
+npm run sync-catalog   # scarica prodotti, prezzi, immagini e categorie da Thinkific
+```
+
+Lo script rigenera `server/data/catalog.json`. Tipologie (simulatore, dispensa, podcast…) e aree (giuridica, economica, enti locali…) vengono calcolate in `server/data/catalog.js`. Dopo il commit, il deploy su Cloud Run pubblica il catalogo aggiornato.
 
 ## Protezione del codice: cosa si ottiene e cosa no
 
 Nessun sito web può nascondere del tutto quello che il browser deve visualizzare: HTML e CSS arrivano sempre al visitatore. Questa architettura però fa sì che **niente di ciò che ha valore esca dal server**:
 
 - **Pagine renderizzate sul server** (Express + EJS): al browser arriva solo l'HTML finale, già minificato.
-- **Dati e logica solo sul server**: il catalogo, la banca dati dei quiz, le risposte corrette, la logica di Galletto e il calcolo del piano di studio stanno in `server/` e non vengono mai inviati al browser.
+- **Dati e logica solo sul server**: catalogo, filtri, ricerca, banca dati dei quiz, risposte corrette, logica di Galletto e calcolo del piano di studio stanno in `server/` e non vengono mai inviati al browser.
 - **Quiz a prova di sbirciata**: le opzioni vengono rimescolate e firmate con un token HMAC. La risposta giusta la conosce solo il server, e un token manomesso viene rifiutato.
 - **JavaScript client minificato e offuscato** (esbuild + javascript-obfuscator, con `selfDefending`). Il file ha un hash nel nome e non ci sono source map.
 - **L'immagine Docker di produzione contiene solo `server/` e `dist/`**: i sorgenti client (`client/`) non vengono pubblicati.
@@ -79,10 +85,8 @@ Lo script `gcp-build` esegue minificazione e offuscamento direttamente sui serve
 
 ## Da completare per il prodotto finale
 
-- [ ] Verificare con il cliente i testi, i prezzi, le materie dei corsi, l'email e la P.IVA (`server/data/*.js`). Il sito originale non era raggiungibile dall'ambiente di sviluppo, quindi i contenuti sono stati ricostruiti dalle pagine pubbliche indicizzate (sito, catalogo Thinkific, profili social).
-- [ ] Sostituire le testimonianze dimostrative con recensioni reali e autorizzate.
-- [ ] Testi legali definitivi (privacy, condizioni, cookie).
-- [ ] Galletto: collegare un modello linguistico (per esempio Vertex AI) dietro a `gallettoService.reply()`, mantenendo la stessa API.
-- [ ] Contatti: salvare su Firestore e inviare una notifica email.
-- [ ] Checkout interno o integrazione con Thinkific (oggi i pulsanti "Acquista" aprono lo store attuale).
-- [ ] Immagini e logo ufficiali (quelli attuali sono segnaposto in SVG).
+- [ ] Verificare con il cliente l'assegnazione automatica di aree e tipologie (regole in `server/data/catalog.js`).
+- [ ] Galletto: collegare il servizio reale (o un modello linguistico, per esempio Vertex AI) dietro a `gallettoService.reply()`, mantenendo la stessa API.
+- [ ] Modulo "Hai domande?" e newsletter: salvare su Firestore o CRM e inviare una notifica email (oggi finiscono in Cloud Logging).
+- [ ] Sincronizzazione automatica del catalogo (per esempio con Cloud Scheduler).
+- [ ] Il consenso cookie (iubenda) va aggiunto se si inseriscono strumenti di analisi.

@@ -1,0 +1,38 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<%- include('../partials/page-hero', { eyebrow: 'Help', heading: 'Hai <span class="hl">domande?</span>', lead: 'Contattaci per ricevere maggiori informazioni sui nostri servizi e su come possiamo supportarti nel tuo percorso di apprendimento. Ti rispondiamo entro 48 ore.' }) %>
+
+<section class="section" id="contatti">
+  <div class="container contact">
+    <form class="card form" data-contact-form novalidate>
+      <div class="form__row">
+        <label>Nome * <input name="firstName" autocomplete="given-name" required maxlength="80"><small class="form__err" data-err="firstName"></small></label>
+        <label>Cognome * <input name="lastName" autocomplete="family-name" required maxlength="80"><small class="form__err" data-err="lastName"></small></label>
+      </div>
+      <div class="form__row">
+        <label>Email * <input type="email" name="email" autocomplete="email" required maxlength="150"><small class="form__err" data-err="email"></small></label>
+        <label>Telefono <input type="tel" name="phone" autocomplete="tel" placeholder="+39" maxlength="30"><small class="form__err" data-err="phone"></small></label>
+      </div>
+      <label>Messaggio * <textarea name="message" rows="6" required maxlength="3000"></textarea><small class="form__err" data-err="message"></small></label>
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="check"><input type="checkbox" name="consent"> <span>Ho letto la <a href="<%= site.legal.privacy %>" target="_blank" rel="noopener">privacy policy</a> e acconsento al trattamento dei dati.</span></label>
+      <small class="form__err" data-err="consent"></small>
+      <button class="btn btn--primary btn--lg">Invia</button>
+      <p class="form__ok" data-contact-ok hidden>Grazie! Abbiamo ricevuto il tuo messaggio: ti risponderemo entro 48 ore.</p>
+    </form>
+    <aside class="contact__side">
+      <div class="card"><span class="icon-tile"><%- include('../partials/icon', { name: 'mail' }) %></span><h3>Scrivici</h3><p><a href="mailto:<%= site.company.email %>"><%= site.company.email %></a><br>Chiedi anche un’anteprima delle dispense.</p></div>
+      <div class="card"><span class="icon-tile"><%- include('../partials/icon', { name: 'instagram' }) %></span><h3>Instagram</h3><p><a href="<%= site.social[0].url %>" target="_blank" rel="noopener">@giurello_official</a>: nuovi simulatori ogni settimana.</p></div>
+      <div class="card"><span class="icon-tile"><%- include('../partials/icon', { name: 'spark' }) %></span><h3>Risposta immediata?</h3><p><a href="/galletto">Chiedi a Galletto</a>, la nostra IA per lo studio.</p></div>
+      <div class="card"><span class="icon-tile"><%- include('../partials/icon', { name: 'pin' }) %></span><h3>Sede</h3><p><%= site.company.legalName %><br><%= site.company.address %>, <%= site.company.zip %> <%= site.company.city %> (<%= site.company.province %>)</p></div>
+    </aside>
+  </div>
+</section>
+
+<section class="section section--cream">
+  <div class="container">
+    <div class="section__head center reveal"><span class="eyebrow">FAQ</span><h2>Domande frequenti</h2></div>
+    <div class="faq"><% site.faq.forEach(function (f) { %><details class="reveal"><summary><%= f.q %></summary><div><p><%= f.a %></p></div></details><% }) %></div>
+  </div>
+</section>
+<%- include('../partials/footer') %>

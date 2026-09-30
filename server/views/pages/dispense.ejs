@@ -1,0 +1,39 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<%- include('../partials/page-hero', { eyebrow: 'Dispense', heading: 'Dispense e <span class="hl">riassunti</span>', lead: site.dispense.intro }) %>
+<%- include('../partials/trust') %>
+
+<section class="section">
+  <div class="container split">
+    <div class="reveal">
+      <span class="eyebrow"><%= count %> dispense disponibili</span>
+      <h2>Più veloci dei manuali, <span class="hl">complete</span> come i manuali.</h2>
+      <ul class="checklist"><% site.dispense.bullets.forEach(function (b) { %><li><%- include('../partials/icon', { name: 'check' }) %><%= b %></li><% }) %></ul>
+      <a class="btn btn--primary btn--lg" href="/concorsi?tipo=dispensa">Sfoglia tutte le dispense <%- include('../partials/icon', { name: 'arrow' }) %></a>
+    </div>
+    <div class="card reveal">
+      <h3>€30 – €50</h3>
+      <p class="muted">PDF completi, in media non più di 200 pagine, stampabili. Periodicamente le dispense vanno in sconto: segui i nostri social per individuare il momento giusto. Vuoi un’anteprima? Scrivici a <a href="mailto:<%= site.company.email %>"><%= site.company.email %></a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--cream">
+  <div class="container">
+    <div class="section__head reveal"><span class="eyebrow">Categorie</span><h2>Trova la dispensa che ti serve</h2></div>
+    <div class="tiles">
+      <% site.dispense.categories.forEach(function (c) { %>
+        <a class="card tile reveal" href="<%= c.href %>"><span class="icon-tile"><%- include('../partials/icon', { name: 'doc' }) %></span><h3><%= c.title %></h3><p><%= c.text %></p><span class="link-arrow">Scopri <%- include('../partials/icon', { name: 'arrow' }) %></span></a>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section__head section__head--row reveal"><div><span class="eyebrow">Le più scelte</span><h2>Riassunti dei manuali fondamentali</h2></div><a class="btn btn--ghost" href="/concorsi?tipo=dispensa">Vedi tutte</a></div>
+    <div class="grid"><% manuals.forEach(function (p) { %><%- include('../partials/product-card', { p: p }) %><% }) %></div>
+  </div>
+</section>
+<%- include('../partials/cta-tutor') %>
+<%- include('../partials/footer') %>

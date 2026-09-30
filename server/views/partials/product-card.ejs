@@ -1,0 +1,19 @@
+<article class="pcard reveal">
+  <div class="pcard__img">
+    <% if (p.image) { %>
+      <img src="<%= p.image %>" alt="" loading="lazy" decoding="async">
+    <% } else { %>
+      <div class="pcard__ph pcard__ph--<%= p.type %>"><%- include('icon', { name: ({ dispensa: 'doc', schemi: 'doc', ebook: 'book', podcast: 'headphones', tutor: 'users', pacchetto: 'package', gratis: 'gift' })[p.type] || 'laptop' }) %></div>
+    <% } %>
+    <% if (p.isNew) { %><span class="badge">Nuovo</span><% } %>
+  </div>
+  <div class="pcard__body">
+    <span class="tag"><%= p.typeLabel %></span>
+    <h3><a href="/prodotto/<%= p.slug %>" class="stretched"><%= p.name %></a></h3>
+    <p><%= p.description %></p>
+    <div class="pcard__foot">
+      <% if (p.type === 'gratis') { %><span class="price price--free">Gratis</span><% } else { %><span class="price"><%= p.price %></span><% } %>
+      <span class="link-arrow">Scopri <%- include('icon', { name: 'arrow' }) %></span>
+    </div>
+  </div>
+</article>

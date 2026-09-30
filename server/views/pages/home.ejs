@@ -2,188 +2,187 @@
 <%- include('../partials/header') %>
 
 <section class="hero">
-  <div class="hero__bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="grid-lines"></span></div>
+  <span class="hero__blob" aria-hidden="true"></span>
+  <span class="hero__dots" aria-hidden="true"></span>
   <div class="container hero__inner">
-    <div class="hero__copy">
-      <span class="eyebrow"><span class="dot"></span> E-learning per il mondo giuridico</span>
-      <h1>Il tuo compagno di studio per diventare un <em>vero giurista</em>.</h1>
-      <p class="lead">Simulatori per i concorsi pubblici, metodo di studio per Giurisprudenza e Galletto, il tutor AI che ti dice esattamente cosa fare ogni giorno, settimana e mese.</p>
+    <div class="hero__copy reveal">
+      <span class="eyebrow">Il tuo compagno di studio per diventare giurista</span>
+      <h1>Giurello è la prima piattaforma che integra <span class="hl">piani di studio passo passo</span> nella formazione.</h1>
+      <p class="hero__claim"><%= site.claim %></p>
+      <p class="lead">Simulatori per i concorsi pubblici, dispense, podcast e corsi per università ed esame d’avvocato. Ti diciamo esattamente cosa fare ogni giorno, tu devi solo esercitarti.</p>
       <div class="hero__actions">
         <a href="/concorsi" class="btn btn--primary btn--lg">Trova il tuo concorso <%- include('../partials/icon', { name: 'arrow' }) %></a>
-        <a href="/simulatore" class="btn btn--ghost btn--lg">Prova un quiz gratis</a>
+        <a href="/prova-simulatore" class="btn btn--yellow btn--lg">Voglio provare</a>
       </div>
-      <ul class="hero__trust">
-        <li><%- include('../partials/icon', { name: 'check' }) %> Quiz dalla banca dati ufficiale</li>
-        <li><%- include('../partials/icon', { name: 'check' }) %> Piano di studio integrato</li>
-        <li><%- include('../partials/icon', { name: 'check' }) %> Da computer e smartphone</li>
-      </ul>
     </div>
-
-    <div class="hero__visual" aria-hidden="true">
-      <div class="mock card-glass">
-        <div class="mock__head">
-          <span class="mock__avatar"><%- include('../partials/logo', { uid: 'm' }) %></span>
-          <div><strong>Galletto</strong><small>il tuo piano di oggi</small></div>
-          <span class="pill pill--live">live</span>
-        </div>
-        <ul class="mock__tasks">
-          <li class="done"><span></span>30 quiz · Diritto amministrativo</li>
-          <li class="done"><span></span>Ripasso L. 241/1990</li>
-          <li><span></span>20 quiz · Diritto tributario</li>
-          <li><span></span>Quiz situazionali</li>
-        </ul>
-        <div class="mock__progress"><div><small>Settimana 2 di 6</small><small>62%</small></div><div class="bar"><i class="w-62"></i></div></div>
-      </div>
-      <div class="float-card card-glass f1"><%- include('../partials/icon', { name: 'trophy' }) %><div><strong>28/30</strong><small>ultima simulazione</small></div></div>
-      <div class="float-card card-glass f2"><%- include('../partials/icon', { name: 'clock' }) %><div><strong>45 min</strong><small>al giorno</small></div></div>
+    <div class="hero__media reveal">
+      <div class="hero__photo"><img src="/img/hero.jpg" alt="Bilancia della giustizia su una scrivania" width="800" height="533"></div>
+      <img class="hero__sticker" src="/img/logo-cerchio.webp" alt="" width="132" height="132">
+      <div class="hero__float"><span class="icon-tile"><%- include('../partials/icon', { name: 'users' }) %></span><div><strong>10.000+</strong><small>studenti formati</small></div></div>
     </div>
   </div>
 </section>
 
-<section class="stats">
-  <div class="container"><div class="stats__grid">
-    <% site.stats.forEach(function (s) { %>
-      <div class="stat reveal"><strong data-count="<%= s.value %>" data-suffix="<%= s.suffix %>"><%= s.value %><%= s.suffix %></strong><span><%= s.label %></span></div>
-    <% }) %>
+<% const promo = loved.find(function (p) { return /INPS/.test(p.name); }); if (promo) { %>
+<div class="container promo">
+  <div class="promo__inner reveal">
+    <% if (promo.image) { %><img src="<%= promo.image %>" alt="" loading="lazy"><% } %>
+    <div><strong>Preparati al concorso INPS per Funzionari PECS con il nostro simulatore!</strong><span><%= promo.description %></span></div>
+    <a href="/prodotto/<%= promo.slug %>" class="btn btn--yellow">Scopri di più</a>
   </div>
+</div>
+<% } %>
+
+<%- include('../partials/trust') %>
+
+<section class="section">
+  <div class="container">
+    <div class="section__head section__head--row reveal">
+      <div><span class="eyebrow">Simulatori</span><h2>I nostri corsi <span class="hl">più amati</span></h2></div>
+      <div class="rail__nav" data-rail-nav="loved"><button type="button" aria-label="Precedente"><%- include('../partials/icon', { name: 'arrow' }) %></button><button type="button" aria-label="Successivo"><%- include('../partials/icon', { name: 'arrow' }) %></button></div>
+    </div>
+    <div class="rail"><div class="rail__track" data-rail="loved">
+      <% loved.forEach(function (p) { %><%- include('../partials/product-card', { p: p }) %><% }) %>
+    </div></div>
+  </div>
+</section>
+
+<section class="section section--cream">
+  <div class="container">
+    <div class="section__head center reveal">
+      <span class="eyebrow">Aree di formazione</span>
+      <h2>Scegli la tua <span class="hl">area di formazione</span></h2>
+      <form class="search-xl" action="/concorsi" method="get" role="search">
+        <%- include('../partials/icon', { name: 'search' }) %>
+        <label class="sr-only" for="home-q">Cerca</label>
+        <input id="home-q" name="q" type="search" placeholder="Cerca un concorso, una categoria, un ente…">
+        <button class="btn btn--primary">Cerca</button>
+      </form>
+    </div>
+    <div class="areas">
+      <% areas.forEach(function (a) { %>
+        <a class="area reveal" href="/concorsi/<%= a.id %>">
+          <span class="icon-tile"><%- include('../partials/icon', { name: a.icon }) %></span>
+          <h3><%= a.label %></h3>
+          <p><%= a.text %></p>
+          <small><%= areaCounts[a.id] || 0 %> prodotti →</small>
+        </a>
+      <% }) %>
+
+    </div>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <div class="section__head reveal">
-      <span class="eyebrow">Perché Giurello</span>
-      <h2>Non devi più capire <em>come</em> studiare.<br>Devi solo studiare.</h2>
-      <p class="lead">Metodo, organizzazione e tempistiche li gestiamo noi: tu apri la piattaforma e sai cosa fare.</p>
+    <div class="section__head center reveal">
+      <span class="eyebrow">Che cosa troverai su Giurello</span>
+      <h2>Ogni prodotto è pensato per <span class="hl">semplificarti la vita</span></h2>
+      <p class="lead">Da concorsista o da studente di giurisprudenza.</p>
     </div>
-    <div class="bento">
-      <% site.pillars.forEach(function (p, i) { %>
-        <article class="card bento__item reveal <%= i === 2 ? 'bento__item--accent' : '' %>">
-          <span class="icon-tile"><%- include('../partials/icon', { name: p.icon }) %></span>
-          <h3><%= p.title %></h3>
-          <p><%= p.text %></p>
+    <div class="offers">
+      <% site.offers.forEach(function (o) { %>
+        <article class="offer reveal <%= o.featured ? 'offer--featured' : '' %>">
+          <span class="icon-tile"><%- include('../partials/icon', { name: o.icon }) %></span>
+          <h3><%= o.title %></h3>
+          <p><%= o.text %></p>
+          <ul><% o.bullets.forEach(function (b) { %><li><%- include('../partials/icon', { name: 'check' }) %><%= b %></li><% }) %></ul>
+          <div class="offer__price"><%= o.price %></div>
+          <p class="offer__note"><%= o.note %></p>
+          <a href="<%= o.href %>" class="btn <%= o.featured ? 'btn--yellow' : 'btn--primary' %>"><%= o.cta %> <%- include('../partials/icon', { name: 'arrow' }) %></a>
         </article>
       <% }) %>
     </div>
   </div>
 </section>
 
-<section class="section section--tint">
+<% if (latest.length) { %>
+<section class="section section--cream">
   <div class="container">
     <div class="section__head section__head--row reveal">
-      <div>
-        <span class="eyebrow">Concorsi pubblici</span>
-        <h2>Simulatori pensati per <em>superare la prova</em>.</h2>
-      </div>
-      <a href="/concorsi" class="btn btn--ghost">Tutti i <%= courseCount %> concorsi <%- include('../partials/icon', { name: 'arrow' }) %></a>
+      <div><span class="eyebrow">Le novità</span><h2>Ultimi concorsi</h2><p class="lead">I nostri simulatori hanno già il piano di studio integrato: tu devi solo acquistare ed esercitarti con le nostre indicazioni.</p></div>
+      <div class="rail__nav" data-rail-nav="latest"><button type="button" aria-label="Precedente"><%- include('../partials/icon', { name: 'arrow' }) %></button><button type="button" aria-label="Successivo"><%- include('../partials/icon', { name: 'arrow' }) %></button></div>
     </div>
-    <div class="chips-row reveal">
-      <% categories.forEach(function (cat) { %><a class="chip chip--lg" href="/concorsi?categoria=<%= cat.id %>"><%= cat.label %></a><% }) %>
-    </div>
-    <div class="course-grid">
-      <% featured.forEach(function (c) { %><%- include('../partials/course-card', { c: c }) %><% }) %>
-    </div>
+    <div class="rail"><div class="rail__track" data-rail="latest">
+      <% latest.forEach(function (p) { %><%- include('../partials/product-card', { p: p }) %><% }) %>
+    </div></div>
   </div>
 </section>
+<% } %>
 
 <section class="section">
-  <div class="container split">
-    <div class="split__copy reveal">
-      <span class="eyebrow">Galletto AI</span>
-      <h2>Un tutor che <em>ti conosce</em> e non si stanca mai.</h2>
-      <p class="lead">La sua peculiarità è la capacità empatica e il supporto personalizzato: ti dice esattamente cosa fare e quanto farne.</p>
-      <ul class="checklist">
-        <li><%- include('../partials/icon', { name: 'check' }) %> Pianifica lo studio in modo personalizzato</li>
-        <li><%- include('../partials/icon', { name: 'check' }) %> Ti interroga con domande d’esame sulle materie giuridiche</li>
-        <li><%- include('../partials/icon', { name: 'check' }) %> Analizza le risposte e ti guida nel miglioramento</li>
-        <li><%- include('../partials/icon', { name: 'check' }) %> Ti aiuta a ripassare e consolidare i concetti chiave</li>
-      </ul>
-      <a href="/galletto" class="btn btn--primary">Parla con Galletto <%- include('../partials/icon', { name: 'arrow' }) %></a>
+  <div class="container">
+    <div class="section__head section__head--row reveal">
+      <div><span class="eyebrow">Dispense</span><h2>Se cerchi riassunti di manuali…</h2><p class="lead">Questi sono alcuni dei testi fondamentali di cui hai bisogno per il tuo studio.</p></div>
+      <a href="/concorsi?tipo=dispensa" class="btn btn--ghost">Tutte le dispense <%- include('../partials/icon', { name: 'arrow' }) %></a>
     </div>
-    <div class="chat-preview card reveal" aria-hidden="true">
-      <div class="bubble bubble--user">Ho il concorso Agenzia delle Entrate fra 6 settimane, da dove parto?</div>
-      <div class="bubble bubble--bot">Partiamo dal diritto tributario: 45 minuti al giorno, 5 giorni a settimana. Le ultime due settimane le dedichiamo a ripasso e simulazioni complete. Ti preparo il piano?</div>
-      <div class="bubble bubble--user">Sì, grazie!</div>
-      <div class="typing"><span></span><span></span><span></span></div>
+    <div class="grid">
+      <% manuals.slice(0, 3).forEach(function (p) { %><%- include('../partials/product-card', { p: p }) %><% }) %>
     </div>
   </div>
 </section>
 
-<section class="section section--dark">
+<section class="section section--purple">
   <div class="container">
     <div class="section__head reveal">
-      <span class="eyebrow">Come funziona</span>
-      <h2>Quattro passi, un obiettivo.</h2>
+      <span class="eyebrow">Il metodo Giurello</span>
+      <h2>Tutti i nostri corsi comprendono</h2>
     </div>
-    <ol class="steps">
-      <% site.howItWorks.forEach(function (s) { %>
-        <li class="step reveal"><span class="step__n"><%= s.step %></span><h3><%= s.title %></h3><p><%= s.text %></p></li>
-      <% }) %>
-    </ol>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container split split--reverse">
-    <div class="split__copy reveal">
-      <span class="eyebrow">Università</span>
-      <h2><%= masterclass.title %>: <em>come studiare</em> a Giurisprudenza.</h2>
-      <p class="lead"><%= masterclass.description %></p>
-      <div class="hero__actions">
-        <a href="/universita" class="btn btn--primary">Scopri la masterclass</a>
-        <a href="/universita#supporto" class="btn btn--ghost">Tesi e post-laurea</a>
-      </div>
-    </div>
-    <div class="modules card reveal">
-      <% masterclass.modules.forEach(function (m, i) { %>
-        <div class="module"><span><%= String(i + 1).padStart(2, '0') %></span><p><%= m %></p></div>
+    <div class="features">
+      <% site.promises.forEach(function (f) { %>
+        <article class="card feature reveal"><span class="icon-tile"><%- include('../partials/icon', { name: f.icon }) %></span><h3><%= f.title %></h3><p><%= f.text %></p></article>
       <% }) %>
     </div>
   </div>
 </section>
 
-<section class="section section--tint">
+<section class="section">
   <div class="container">
-    <div class="section__head reveal">
-      <span class="eyebrow">Dicono di noi</span>
-      <h2>Chi ha studiato con Giurello.</h2>
+    <div class="section__head section__head--row reveal">
+      <div><span class="eyebrow">Recensioni</span><h2>Cosa dicono i nostri <span class="hl">studenti</span></h2><p class="lead">…dei nostri corsi-simulatori, corso avvocati, corsi per materia e dispense.</p></div>
+      <div class="rail__nav" data-rail-nav="reviews"><button type="button" aria-label="Precedente"><%- include('../partials/icon', { name: 'arrow' }) %></button><button type="button" aria-label="Successivo"><%- include('../partials/icon', { name: 'arrow' }) %></button></div>
     </div>
-    <div class="quotes">
-      <% site.testimonials.forEach(function (t) { %>
-        <figure class="card quote reveal">
-          <blockquote>“<%= t.quote %>”</blockquote>
-          <figcaption><strong><%= t.author %></strong><span><%= t.role %></span></figcaption>
+    <div class="rail"><div class="rail__track" data-rail="reviews">
+      <% site.reviews.forEach(function (r) { %>
+        <figure class="card review">
+          <div class="stars" aria-label="5 stelle su 5"><% for (let i = 0; i < 5; i++) { %><%- include('../partials/icon', { name: 'star' }) %><% } %></div>
+          <h3><%= r.title %></h3>
+          <blockquote><%= r.text %></blockquote>
+          <figcaption><span class="avatar"><%= r.author.split(' ').map(function (w) { return w[0]; }).join('').slice(0, 2) %></span><%= r.author %></figcaption>
         </figure>
       <% }) %>
-    </div>
+    </div></div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container faq-wrap">
-    <div class="section__head reveal">
-      <span class="eyebrow">FAQ</span>
-      <h2>Domande frequenti</h2>
-      <p class="lead">Non trovi la risposta? <a href="/contatti">Scrivici</a> o chiedi a <a href="/galletto">Galletto</a>.</p>
+<section class="section section--purple">
+  <div class="container newsletter">
+    <div class="reveal">
+      <span class="eyebrow">Newsletter</span>
+      <h2>Rimani aggiornato</h2>
+      <p>Nuovi concorsi in uscita, informazioni di nicchia (stipendio, futuri concorsi in programmazione…), sconti sui nuovi simulatori e molto altro ancora. È gratis.</p>
     </div>
+    <form class="reveal" data-newsletter novalidate>
+      <div class="row">
+        <label class="sr-only" for="nl-email">Email</label>
+        <input id="nl-email" type="email" name="email" placeholder="La tua email" required autocomplete="email">
+        <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn--yellow">Iscriviti</button>
+      </div>
+      <label class="check"><input type="checkbox" name="consent"> <span>Sì grazie, salva la mia mail così da ricevere le informazioni che mi servono per superare i concorsi, gli esami di abilitazione o i miei esami universitari!</span></label>
+      <p class="msg" data-newsletter-msg aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<section class="section section--cream">
+  <div class="container">
+    <div class="section__head center reveal"><span class="eyebrow">FAQ</span><h2>Domande frequenti</h2></div>
     <div class="faq">
-      <% site.faq.forEach(function (f) { %>
-        <details class="faq__item reveal"><summary><%= f.q %></summary><p><%= f.a %></p></details>
-      <% }) %>
+      <% site.faq.forEach(function (f) { %><details class="reveal"><summary><%= f.q %></summary><div><p><%= f.a %></p></div></details><% }) %>
     </div>
   </div>
 </section>
 
-<section class="cta-band">
-  <div class="container cta-band__inner reveal">
-    <div>
-      <h2>Inizia oggi. Poco, ma ogni giorno.</h2>
-      <p>Scegli il tuo percorso e lascia a Galletto l’organizzazione.</p>
-    </div>
-    <a href="/concorsi" class="btn btn--light btn--lg">Inizia ora <%- include('../partials/icon', { name: 'arrow' }) %></a>
-  </div>
-</section>
-
-<p class="container footnote">* Dato riferito al simulatore Magistratura tributaria, sulla base dei feedback degli utenti.</p>
-
+<div class="section--cream"><%- include('../partials/cta-tutor') %></div>
 <%- include('../partials/footer') %>

@@ -39,6 +39,11 @@ router.post('/contact', contactLimiter, async (req, res) => {
   res.status(result.ok ? 200 : 422).json(result);
 });
 
+router.post('/newsletter', contactLimiter, async (req, res) => {
+  const result = await contact.subscribe(req.body);
+  res.status(result.ok ? 200 : 422).json(result);
+});
+
 router.use((req, res) => res.status(404).json({ error: 'Not found' }));
 
 module.exports = router;

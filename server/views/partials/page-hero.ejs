@@ -1,7 +1,16 @@
 <section class="page-hero">
   <div class="container">
+    <% if (typeof crumbs !== 'undefined') { %><nav class="crumbs" aria-label="Percorso"><%- crumbs %></nav><% } %>
     <% if (typeof eyebrow !== 'undefined') { %><span class="eyebrow"><%= eyebrow %></span><% } %>
     <h1><%- heading %></h1>
     <% if (typeof lead !== 'undefined') { %><p class="lead"><%= lead %></p><% } %>
+    <% if (typeof search !== 'undefined' && search) { %>
+      <form class="search-xl" action="/concorsi" method="get" role="search">
+        <%- include('icon', { name: 'search' }) %>
+        <label class="sr-only" for="q">Cerca</label>
+        <input id="q" name="q" type="search" placeholder="Cerca un concorso, una materia, un ente…" value="<%= typeof q !== 'undefined' ? q : '' %>">
+        <button class="btn btn--primary">Cerca</button>
+      </form>
+    <% } %>
   </div>
 </section>

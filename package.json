@@ -12,7 +12,8 @@
     "start": "node server/index.js",
     "dev": "npm run build && NODE_ENV=development node server/index.js",
     "gcp-build": "npm run build",
-    "check": "node scripts/smoke-test.js"
+    "check": "node scripts/smoke-test.js",
+    "sync-catalog": "node scripts/sync-catalog.js"
   },
   "dependencies": {
     "compression": "^1.8.0",

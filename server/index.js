@@ -31,12 +31,14 @@ app.use(
         scriptSrc: ["'self'"],
         styleSrc: ["'self'", 'https://fonts.googleapis.com'],
         fontSrc: ["'self'", 'https://fonts.gstatic.com'],
-        imgSrc: ["'self'", 'data:'],
+        imgSrc: ["'self'", 'data:', 'https://import.cdn.thinkific.com', 'https://files.cdn.thinkific.com'],
         connectSrc: ["'self'"],
         frameAncestors: ["'none'"],
         formAction: ["'self'"],
         objectSrc: ["'none'"],
-        baseUri: ["'self'"]
+        baseUri: ["'self'"],
+        // In locale (http) non forziamo l'upgrade a https degli asset.
+        upgradeInsecureRequests: config.isProd ? [] : null
       }
     },
     crossOriginEmbedderPolicy: false

@@ -2,7 +2,7 @@
 
 // Verifica rapida: tutte le pagine rispondono 200 e le API funzionano. Uso: npm run build && npm run check
 const app = require('../server/index');
-const { courses } = require('../server/data/courses');
+const catalog = require('../server/data/catalog');
 const assert = require('assert');
 
 const server = app.listen(0, async () => {
@@ -14,7 +14,7 @@ const server = app.listen(0, async () => {
     try { await fn(); console.log(`  ok  ${name}`); } catch (e) { failures++; console.log(`  FAIL ${name}: ${e.message}`); }
   };
 
-  const pages = ['/', '/concorsi', '/universita', '/galletto', '/simulatore', '/chi-siamo', '/contatti', '/privacy', '/condizioni', '/robots.txt', '/sitemap.xml', '/healthz', ...courses.map((c) => `/concorsi/${c.slug}`)];
+  const pages = ['/', '/concorsi', '/concorsi?tipo=dispensa&pagina=2', '/concorsi?q=inps', '/dispense', '/universita', '/podcast-e-altro', '/galletto', '/avvocato', '/chi-siamo', '/help', '/prova-simulatore', '/robots.txt', '/sitemap.xml', '/healthz', ...catalog.areas.map((a) => `/concorsi/${a.id}`), ...catalog.products.map((p) => `/prodotto/${p.slug}`)];
   for (const p of pages) await check(`GET ${p}`, async () => assert.strictEqual((await get(p)).status, 200));
   await check('404', async () => assert.strictEqual((await get('/non-esiste')).status, 404));
   await check('CSP header', async () => assert.match((await get('/')).headers.get('content-security-policy'), /script-src 'self'/));
@@ -37,11 +37,20 @@ const server = app.listen(0, async () => {
   });
   await check('galletto chat', async () => {
     const r = await (await post('/api/galletto/chat', { message: 'concorso agenzia delle entrate' })).json();
-    assert.match(r.text, /Agenzia delle Entrate/);
+    assert.match(r.text, /Entrate/);
+  });
+  await check('redirect vecchi percorsi', async () => {
+    const r = await fetch(base + '/podcast-altro', { redirect: 'manual' });
+    assert.strictEqual(r.status, 301);
+  });
+  await check('newsletter: validazione', async () => {
+    const r = await post('/api/newsletter', { email: 'x' });
+    assert.strictEqual(r.status, 422);
   });
   await check('galletto plan', async () => {
     const d = new Date(Date.now() + 45 * 864e5).toISOString().slice(0, 10);
-    const r = await (await post('/api/galletto/plan', { course: 'magistratura-tributaria', examDate: d, hoursPerDay: 2, daysPerWeek: 5 })).json();
+    const slug = catalog.products.find((p) => p.type === 'simulatore').slug;
+    const r = await (await post('/api/galletto/plan', { course: slug, examDate: d, daysPerWeek: 5 })).json();
     assert.ok(r.weeks >= 6 && r.schedule.length === r.weeks);
   });
   await check('contatti: validazione', async () => {
